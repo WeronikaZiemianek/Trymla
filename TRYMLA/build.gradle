@@ -1,0 +1,12 @@
+subprojects {	
+	apply plugin: 'java'
+
+	repositories {
+	    jcenter()
+	}
+
+	dependencies {
+	    testCompile 'junit:junit:4.12'
+		compile 'ch.qos.logback:logback-classic:1.2.3'
+	}
+}

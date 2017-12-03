@@ -1,0 +1,10 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern> %-5level: core-%logger{0} [%thread] - %msg%n - %d </pattern>
+		</encoder>
+	</appender>
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
