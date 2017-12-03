@@ -90,7 +90,7 @@ Server
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
-RMIConnetion
+Connection
 --
 --
 --
@@ -190,37 +190,6 @@ and managment</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>588</x>
-      <y>174</y>
-      <w>162</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-Package::server
-IOpenGames
---
---
-storage of opened games</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>402</x>
-      <y>174</y>
-      <w>162</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>Package::server
-OpenGames
---
---
-storage of opened games</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>24</x>
       <y>546</y>
       <w>162</w>
@@ -232,29 +201,6 @@ IRulesManager
 --
 --</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>558</x>
-      <y>192</y>
-      <w>42</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>450</x>
-      <y>216</y>
-      <w>18</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -532,8 +478,8 @@ RegularBoard
 Field
 --
 -occupiedBy : Checker
+-type : Checker
 --
--init() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -915,31 +861,6 @@ BoardForTwoPlayers
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>240.0;110.0;100.0;110.0;100.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>96</x>
-      <y>888</y>
-      <w>126</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>Package::core
-RedField
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>216</x>
-      <y>894</y>
-      <w>60</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
