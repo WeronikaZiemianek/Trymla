@@ -1,5 +1,12 @@
 package checkers.core;
 
 public enum Checker {
-    RED, GREEN, BLUE, YELLOW, BLACK, WHITE, EMPTY
+    // on board from top clockwise
+    RED,
+    WHITE,
+    YELLOW ,
+    GREEN,
+    BLACK,
+    BLUE,
+    EMPTY
 }
