@@ -9,12 +9,12 @@ public class RegularBoardFactory implements BoardFactory {
     
     private Field[][] board;
     
-    public Board createNewBoard(int numbOfPlayers) throws WrongNumberOfPlayersException {
+    public Board createNewBoard(int numOfSets) throws WrongNumberOfSetsException {
         final int NUM_OF_COLUMNS = 25;
         final int NUM_OF_ROWS = 17;
         board = new Field[NUM_OF_COLUMNS][NUM_OF_ROWS];
         makeEmptyBoard();
-        switch(numbOfPlayers) {
+        switch(numOfSets) {
             case 6: createUprightTriangle(trianglesInfo[2],Checker.YELLOW);
                 createUpsideDownTriangle(trianglesInfo[5],Checker.BLUE);
             case 4: createUprightTriangle(trianglesInfo[4], Checker.BLACK);
@@ -26,7 +26,7 @@ public class RegularBoardFactory implements BoardFactory {
                 createUpsideDownTriangle(trianglesInfo[3], Checker.GREEN);
                 createUpsideDownTriangle(trianglesInfo[5], Checker.BLUE);
                 break;
-            default: throw new WrongNumberOfPlayersException();
+            default: throw new WrongNumberOfSetsException();
 
         }
         return new RegularBoard(board);

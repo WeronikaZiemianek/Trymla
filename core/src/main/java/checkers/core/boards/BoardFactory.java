@@ -1,5 +1,5 @@
 package checkers.core.boards;
 
 public interface BoardFactory {
-    Board createNewBoard(int numbOfPlayers) throws WrongNumberOfPlayersException;
+    Board createNewBoard(int numOfSets) throws WrongNumberOfSetsException;
 }
