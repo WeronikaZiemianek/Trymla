@@ -1,12 +1,12 @@
 package checkers.core.boards;
 
 import checkers.core.Checker;
-import checkers.core.fields.Field;
+import checkers.core.Field;
 
 public class RegularBoardFactory implements BoardFactory {
     //0-type, 1-column, 2-row, 3-limit
-    private final int[][] trianglesInfo = {{12,0,4}, {21,7,3}, {21,9,13}, {12,16,12}, {3,9,13}, {3,7,3}};
-    
+    private final int[][] TRIANGLE_INFO = {{12,0,4}, {21,7,3}, {21,9,13}, {12,16,12}, {3,9,13}, {3,7,3}};
+
     private Field[][] board;
     
     public Board createNewBoard(int numOfSets) throws WrongNumberOfSetsException {
@@ -15,16 +15,16 @@ public class RegularBoardFactory implements BoardFactory {
         board = new Field[NUM_OF_COLUMNS][NUM_OF_ROWS];
         makeEmptyBoard();
         switch(numOfSets) {
-            case 6: createUprightTriangle(trianglesInfo[2],Checker.YELLOW);
-                createUpsideDownTriangle(trianglesInfo[5],Checker.BLUE);
-            case 4: createUprightTriangle(trianglesInfo[4], Checker.BLACK);
-                createUpsideDownTriangle(trianglesInfo[1], Checker.WHITE);
-            case 2: createUprightTriangle(trianglesInfo[0],Checker.RED);
-                createUpsideDownTriangle(trianglesInfo[3], Checker.GREEN);
+            case 6: createUprightTriangle(TRIANGLE_INFO[2],Checker.YELLOW);
+                createUpsideDownTriangle(TRIANGLE_INFO[5],Checker.BLUE);
+            case 4: createUprightTriangle(TRIANGLE_INFO[4], Checker.BLACK);
+                createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.WHITE);
+            case 2: createUprightTriangle(TRIANGLE_INFO[0],Checker.RED);
+                createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.GREEN);
                 break;
-            case 3: createUpsideDownTriangle(trianglesInfo[1], Checker.WHITE);
-                createUpsideDownTriangle(trianglesInfo[3], Checker.GREEN);
-                createUpsideDownTriangle(trianglesInfo[5], Checker.BLUE);
+            case 3: createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.WHITE);
+                createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.GREEN);
+                createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.BLUE);
                 break;
             default: throw new WrongNumberOfSetsException();
 
@@ -34,12 +34,12 @@ public class RegularBoardFactory implements BoardFactory {
 
     private void makeEmptyBoard() {
         createCentralFields();
-        createUprightTriangle(trianglesInfo[0], Checker.EMPTY);
-        createUpsideDownTriangle(trianglesInfo[1], Checker.EMPTY);
-        createUprightTriangle(trianglesInfo[2], Checker.EMPTY);
-        createUpsideDownTriangle(trianglesInfo[3], Checker.EMPTY);
-        createUprightTriangle(trianglesInfo[4], Checker.EMPTY);
-        createUpsideDownTriangle(trianglesInfo[5], Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[0], Checker.EMPTY);
+        createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[2], Checker.EMPTY);
+        createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[4], Checker.EMPTY);
+        createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.EMPTY);
 
     }
 
