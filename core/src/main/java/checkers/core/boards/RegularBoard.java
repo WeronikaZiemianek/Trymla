@@ -1,16 +1,22 @@
 package checkers.core.boards;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.fields.Field;
+import checkers.core.Field;
 
 public class RegularBoard implements Board {
-    private final int NUM_OF_COLUMNS = 25;
-    private final int NUM_OF_ROWS = 17;
+    private final int NUM_OF_COLUMNS;
+    private final int NUM_OF_ROWS;
 
     private Field[][] board;
 
     RegularBoard(Field[][] board) {
         this.board = board;
+        NUM_OF_COLUMNS =board.length;
+        if(NUM_OF_COLUMNS != 0) {
+            NUM_OF_ROWS = board[0].length;
+        } else {
+            NUM_OF_ROWS = 0;
+        }
 
     }
 

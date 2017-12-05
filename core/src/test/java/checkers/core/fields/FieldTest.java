@@ -1,6 +1,7 @@
 package checkers.core.fields;
 
 import checkers.core.Checker;
+import checkers.core.Field;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

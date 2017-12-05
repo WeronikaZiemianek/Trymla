@@ -1,6 +1,5 @@
-package checkers.core.fields;
+package checkers.core;
 
-import checkers.core.Checker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
