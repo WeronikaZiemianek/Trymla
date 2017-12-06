@@ -13,7 +13,6 @@ public class RulesManager implements RegularRulesManager{
 
     RulesManager(RegularBoard board) {
         this.board = board;
-
     }
 
     @Override

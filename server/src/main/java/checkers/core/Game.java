@@ -10,5 +10,13 @@ public class Game implements IGame {
     private GamesManager gamesManager;
     private GameState state;
     private PlayerAdapter turn;
+    private RegularBoard board;
 
+    Game(RegularBoard board) {
+        this.board = board;
+    }
+
+    public endTurn(){
+
+    }
 }
