@@ -5,6 +5,6 @@ import checkers.core.fields.Field;
 public interface RegularRulesManager {
     Boolean checkMove(Coordinates destionation, Coordinates currLocation, Checker checker);
     Boolean checkChecker(PlayerAdapter Player, Checker checker);
-    void endTurn();
+    Boolean endTurn();
     Boolean chceckEnd();
 }

@@ -9,6 +9,7 @@ public class RulesManager implements RegularRulesManager{
     private int xDifference;
     private int yDifference;
     private Boolean endMove;
+    private Boolean moveFinished;
     private RegularBoard board;
 
     RulesManager(RegularBoard board) {
@@ -18,13 +19,14 @@ public class RulesManager implements RegularRulesManager{
     @Override
     public Boolean checkChecker(PlayerAdapter Player, Checker checker){
 
+        endMove=false;
+        moveFinished=false;
         if(checker.equals(Player)){
             return true;
         }
         else{
             return false;
         }
-
     }
 
     @Override
@@ -50,17 +52,23 @@ public class RulesManager implements RegularRulesManager{
             wasJump=true;
             return true;
         }
+        endMove=true;
         return false;
     }
 
     @Override
     public Boolean chceckEnd(){
+        wasJump=false;
+        /* to robimy jako przycisk?
+         if(kliknął że koniec){
+            moveFinished=true;
+        }*/
         return endMove;
     }
 
     @Override
-    public void endTurn(){
-        wasJump=false;
+    public Boolean endTurn(){
+        return moveFinished;
     }
 
 }
