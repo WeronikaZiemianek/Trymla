@@ -57,7 +57,7 @@ Board
 --
 - board : Field[][]
 --
-+makeMove(destionation : Cordinates,
++makeMove(destionation : Coordinates,
 currLocation : Cordinates) : void
 +checkPlayerOnField(location : Coordinates): 
 	checker
@@ -210,7 +210,7 @@ RulesManager
   checker: Checker): Boolean
 +checkChecker(Player: PlayerAdapter,
   checker: Checker): Boolean
-+endTurn(): void
++endTurn(): Boolean
 +chceckEnd(): Boolean</panel_attributes>
     <additional_attributes/>
   </element>
@@ -229,9 +229,9 @@ RulesManager
     <id>UMLClass</id>
     <coordinates>
       <x>680</x>
-      <y>520</y>
+      <y>490</y>
       <w>290</w>
-      <h>220</h>
+      <h>250</h>
     </coordinates>
     <panel_attributes>Package::server
 Game
@@ -239,13 +239,15 @@ Game
 -rulesManager : RulesManager
 -board :Board
 -gamesManager : GamesManager
--players[] : (PlayerAdapter, Checker)
+-players[] : (PlayerAdapter)
 -state : GameState
 -turn : PlayerAdapter
+-- whoseTurn: int
 --
-+makeMove(destionation : Cordinates,
-currLocation : Cordinates, Checker set)
-+endTurn();
++makeMove(destionation : Coordinates,
+currLocation : Coordinates, Checker set): void
++endTurn(): void
++wasMoveFinished(): void
 --
 connects all the components of a game
 </panel_attributes>
@@ -284,11 +286,11 @@ IGame
       <x>830</x>
       <y>400</y>
       <w>30</w>
-      <h>140</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
@@ -306,13 +308,13 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>960</x>
-      <y>500</y>
+      <y>480</y>
       <w>40</w>
-      <h>40</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>10.0;20.0;20.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;20.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
