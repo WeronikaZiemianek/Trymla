@@ -46,10 +46,17 @@ currLocation : Cordinates)
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>246</x>
       <y>606</y>
       <w>192</w>
       <h>108</h>
+=======
+      <x>420</x>
+      <y>1010</y>
+      <w>320</w>
+      <h>180</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::core.boards
@@ -68,10 +75,17 @@ currLocation : Cordinates) : void
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>288</x>
       <y>42</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>490</x>
+      <y>70</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -83,10 +97,17 @@ Server
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>480</x>
       <y>42</y>
       <w>162</w>
       <h>54</h>
+=======
+      <x>810</x>
+      <y>70</y>
+      <w>270</w>
+      <h>90</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -100,10 +121,17 @@ putting objects into registry</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>474</x>
       <y>108</y>
       <w>162</w>
       <h>42</h>
+=======
+      <x>800</x>
+      <y>180</y>
+      <w>270</w>
+      <h>70</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::server
 Factory
@@ -115,10 +143,17 @@ creating objects</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>444</x>
       <y>54</y>
       <w>48</w>
       <h>18</h>
+=======
+      <x>750</x>
+      <y>90</y>
+      <w>80</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
@@ -126,10 +161,17 @@ creating objects</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>534</x>
       <y>144</y>
       <w>18</w>
       <h>66</h>
+=======
+      <x>900</x>
+      <y>240</y>
+      <w>30</w>
+      <h>110</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
@@ -137,10 +179,17 @@ creating objects</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>654</x>
       <y>108</y>
       <w>162</w>
       <h>42</h>
+=======
+      <x>1100</x>
+      <y>180</y>
+      <w>270</w>
+      <h>70</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -152,10 +201,17 @@ IFactory
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>630</x>
       <y>114</y>
       <w>36</w>
       <h>18</h>
+=======
+      <x>1060</x>
+      <y>190</y>
+      <w>60</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -163,10 +219,17 @@ IFactory
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>414</x>
       <y>198</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>700</x>
+      <y>330</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::server
 GamesManager
@@ -179,10 +242,17 @@ and managment</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>414</x>
       <y>84</y>
       <w>18</w>
       <h>126</h>
+=======
+      <x>700</x>
+      <y>140</y>
+      <w>30</w>
+      <h>210</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
@@ -191,13 +261,20 @@ and managment</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>30</x>
+<<<<<<< HEAD
       <y>486</y>
       <w>186</w>
       <h>108</h>
+=======
+      <y>810</y>
+      <w>320</w>
+      <h>260</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::server
 RulesManager
 --
+<<<<<<< HEAD
 -currMove : Coordinates
 -wasJumpUsedAsAPartOfTheMove : Boolean
 --
@@ -206,15 +283,38 @@ RulesManager
 currLocation : Cordinates) : Boolean
 -checkEnd() : boolean
 -endTurn() : void</panel_attributes>
+=======
+-- currMove: Coordinates
+-- wasJump: false;
+-- xDifference: int
+-- yDifference: int
+-- endMove: Boolean
+-- RegularBoard: board
+--
++checkMove(destionation: Coordinates,
+  currLocation: Coordinates,
+  checker: Checker): Boolean
++checkChecker(Player: PlayerAdapter,
+  checker: Checker): Boolean
++endTurn(): Boolean
++chceckEnd(): Boolean</panel_attributes>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>324</x>
       <y>216</y>
       <w>102</w>
       <h>18</h>
+=======
+      <x>550</x>
+      <y>360</y>
+      <w>170</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
@@ -222,10 +322,17 @@ currLocation : Cordinates) : Boolean
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>402</x>
       <y>312</y>
       <w>174</w>
       <h>132</h>
+=======
+      <x>680</x>
+      <y>490</y>
+      <w>290</w>
+      <h>250</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::server
 Game
@@ -233,6 +340,7 @@ Game
 -rulesManager : RulesManager
 -board :Board
 -gamesManager : GamesManager
+<<<<<<< HEAD
 -players[] : (PlayerAdapter, Checker)
 -state : GameState
 -turn : PlayerAdapter
@@ -240,6 +348,17 @@ Game
 +makeMove(destionation : Cordinates,
 currLocation : Cordinates, Checker set)
 +endTurn();
+=======
+-players[] : (PlayerAdapter)
+-state : GameState
+-turn : PlayerAdapter
+-- whoseTurn: int
+--
++makeMove(destionation : Coordinates,
+currLocation : Coordinates, Checker set): void
++endTurn(): void
++wasMoveFinished(): void
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
 --
 connects all the components of a game
 </panel_attributes>
@@ -248,10 +367,17 @@ connects all the components of a game
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>630</x>
       <y>396</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>1060</x>
+      <y>660</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -264,10 +390,17 @@ IGame
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>570</x>
       <y>414</y>
       <w>72</w>
       <h>18</h>
+=======
+      <x>960</x>
+      <y>690</y>
+      <w>120</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
@@ -275,6 +408,7 @@ IGame
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>492</x>
       <y>240</y>
       <w>18</w>
@@ -283,14 +417,31 @@ IGame
     <panel_attributes>lt=&lt;-
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+=======
+      <x>830</x>
+      <y>400</y>
+      <w>30</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
+<<<<<<< HEAD
       <x>582</x>
       <y>288</y>
       <w>48</w>
       <h>18</h>
+=======
+      <x>980</x>
+      <y>480</y>
+      <w>80</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Mediator
 bg=blue</panel_attributes>
@@ -329,18 +480,35 @@ RUNNING
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>252</x>
       <y>486</y>
       <w>168</w>
       <h>78</h>
+=======
+      <x>430</x>
+      <y>810</y>
+      <w>280</w>
+      <h>130</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
 RegularRulesManager
 --
 --
+<<<<<<< HEAD
 +makeMove(destionation : Cordinates,
 currLocation : Cordinates, Checker set)
+=======
++checkMove(destionation: Coordinates,
+  currLocation: Coordinates,
+   checker: Checker): Boolean
++checkChecker(Player: PlayerAdapter,
+  checker: Checker): Boolean
++endTurn(): void
++chceckEnd(): Boolean
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
 --
 check if move meets the conditions</panel_attributes>
     <additional_attributes/>
@@ -348,10 +516,17 @@ check if move meets the conditions</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>168</x>
       <y>198</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>290</x>
+      <y>330</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -363,10 +538,17 @@ IGamesManager
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>570</x>
       <y>348</y>
       <w>84</w>
       <h>24</h>
+=======
+      <x>960</x>
+      <y>580</y>
+      <w>140</w>
+      <h>40</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=-&gt;
 </panel_attributes>
@@ -375,10 +557,17 @@ IGamesManager
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>414</x>
       <y>438</y>
       <w>42</w>
       <h>66</h>
+=======
+      <x>700</x>
+      <y>730</y>
+      <w>70</w>
+      <h>110</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
@@ -387,6 +576,7 @@ IGamesManager
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>210</x>
       <y>492</y>
       <w>54</w>
@@ -394,14 +584,30 @@ IGamesManager
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+=======
+      <x>340</x>
+      <y>820</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>690</x>
       <y>618</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>1160</x>
+      <y>1030</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -412,10 +618,17 @@ Player
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>498</x>
       <y>618</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>840</x>
+      <y>1030</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::bot
@@ -426,10 +639,17 @@ Bot
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>594</x>
       <y>570</y>
       <w>72</w>
       <h>60</h>
+=======
+      <x>1000</x>
+      <y>950</y>
+      <w>120</w>
+      <h>100</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>100.0;10.0;100.0;50.0;10.0;50.0;10.0;80.0</additional_attributes>
@@ -437,10 +657,17 @@ Bot
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>648</x>
       <y>570</y>
       <w>120</w>
       <h>60</h>
+=======
+      <x>1090</x>
+      <y>950</y>
+      <w>200</w>
+      <h>100</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0;180.0;50.0;180.0;80.0</additional_attributes>
@@ -448,10 +675,17 @@ Bot
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>534</x>
       <y>438</y>
       <w>48</w>
       <h>90</h>
+=======
+      <x>900</x>
+      <y>730</y>
+      <w>80</w>
+      <h>150</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
@@ -460,10 +694,17 @@ Bot
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>432</x>
       <y>438</y>
       <w>54</w>
       <h>228</h>
+=======
+      <x>730</x>
+      <y>730</y>
+      <w>90</w>
+      <h>380</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
@@ -472,10 +713,17 @@ Bot
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>282</x>
       <y>744</y>
       <w>156</w>
       <h>72</h>
+=======
+      <x>480</x>
+      <y>1240</y>
+      <w>260</w>
+      <h>120</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::core.boards
 RegularBoard
@@ -488,10 +736,17 @@ RegularBoard
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>294</x>
       <y>876</y>
       <w>126</w>
       <h>72</h>
+=======
+      <x>500</x>
+      <y>1460</y>
+      <w>210</w>
+      <h>120</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::core
 Field
@@ -506,10 +761,17 @@ Field(Checker type)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>294</x>
       <y>984</y>
       <w>126</w>
       <h>78</h>
+=======
+      <x>500</x>
+      <y>1640</y>
+      <w>210</w>
+      <h>130</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::core
 Coordinates
@@ -526,10 +788,17 @@ Coordinates(x: int, y: int)
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>354</x>
       <y>708</y>
       <w>18</w>
       <h>48</h>
+=======
+      <x>600</x>
+      <y>1180</y>
+      <w>30</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -537,10 +806,17 @@ Coordinates(x: int, y: int)
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>348</x>
       <y>810</y>
       <w>18</w>
       <h>78</h>
+=======
+      <x>590</x>
+      <y>1350</y>
+      <w>30</w>
+      <h>130</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
@@ -548,10 +824,17 @@ Coordinates(x: int, y: int)
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>348</x>
       <y>942</y>
       <w>18</w>
       <h>54</h>
+=======
+      <x>590</x>
+      <y>1570</y>
+      <w>30</w>
+      <h>90</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
@@ -559,10 +842,17 @@ Coordinates(x: int, y: int)
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>690</x>
       <y>768</y>
       <w>126</w>
       <h>42</h>
+=======
+      <x>1160</x>
+      <y>1280</y>
+      <w>210</w>
+      <h>70</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::server
 RegularPlayer
@@ -573,10 +863,17 @@ RegularPlayer
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>516</x>
       <y>768</y>
       <w>126</w>
       <h>42</h>
+=======
+      <x>870</x>
+      <y>1280</y>
+      <w>210</w>
+      <h>70</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::bot
 DefaultBot
@@ -587,10 +884,17 @@ DefaultBot
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>444</x>
       <y>1014</y>
       <w>126</w>
       <h>102</h>
+=======
+      <x>750</x>
+      <y>1690</y>
+      <w>210</w>
+      <h>170</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 Package::core
@@ -609,10 +913,17 @@ EMPTY
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>414</x>
       <y>882</y>
       <w>102</w>
       <h>144</h>
+=======
+      <x>700</x>
+      <y>1470</y>
+      <w>170</w>
+      <h>240</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;10.0;150.0;220.0</additional_attributes>
@@ -620,10 +931,17 @@ EMPTY
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>564</x>
       <y>804</y>
       <w>114</w>
       <h>282</h>
+=======
+      <x>950</x>
+      <y>1340</y>
+      <w>190</w>
+      <h>470</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>20.0;10.0;20.0;80.0;170.0;80.0;170.0;450.0;10.0;450.0</additional_attributes>
@@ -631,10 +949,17 @@ EMPTY
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>570</x>
       <y>660</y>
       <w>18</w>
       <h>120</h>
+=======
+      <x>960</x>
+      <y>1100</y>
+      <w>30</w>
+      <h>200</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
@@ -642,10 +967,17 @@ EMPTY
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>756</x>
       <y>660</y>
       <w>18</w>
       <h>120</h>
+=======
+      <x>1270</x>
+      <y>1100</y>
+      <w>30</w>
+      <h>200</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
@@ -653,10 +985,17 @@ EMPTY
   <element>
     <id>UMLNote</id>
     <coordinates>
+<<<<<<< HEAD
       <x>600</x>
       <y>186</y>
       <w>48</w>
       <h>18</h>
+=======
+      <x>1010</x>
+      <y>310</y>
+      <w>80</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Singleton
 bg=blue</panel_attributes>
@@ -665,10 +1004,17 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
+<<<<<<< HEAD
       <x>822</x>
       <y>78</y>
       <w>48</w>
       <h>24</h>
+=======
+      <x>1380</x>
+      <y>130</y>
+      <w>80</w>
+      <h>40</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Factory
 Singleton
@@ -678,10 +1024,17 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
+<<<<<<< HEAD
       <x>654</x>
       <y>18</y>
       <w>48</w>
       <h>18</h>
+=======
+      <x>1100</x>
+      <y>30</y>
+      <w>80</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Singleton
 bg=blue</panel_attributes>
@@ -690,10 +1043,17 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>570</x>
       <y>186</y>
       <w>42</w>
       <h>24</h>
+=======
+      <x>960</x>
+      <y>310</y>
+      <w>70</w>
+      <h>40</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -702,10 +1062,17 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>636</x>
       <y>24</y>
       <w>30</w>
       <h>30</h>
+=======
+      <x>1070</x>
+      <y>40</y>
+      <w>50</w>
+      <h>50</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -714,10 +1081,17 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>810</x>
       <y>96</y>
       <w>24</w>
       <h>24</h>
+=======
+      <x>1360</x>
+      <y>160</y>
+      <w>40</w>
+      <h>40</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -726,10 +1100,14 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1098</x>
+=======
+      <x>1840</x>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
       <y>0</y>
-      <w>126</w>
-      <h>114</h>
+      <w>210</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>Package::client
 Client
@@ -744,10 +1122,14 @@ Client
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1272</x>
+=======
+      <x>2130</x>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
       <y>0</y>
-      <w>126</w>
-      <h>42</h>
+      <w>210</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Package:: client
 View
@@ -759,10 +1141,17 @@ View
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1272</x>
       <y>60</y>
       <w>60</w>
       <h>18</h>
+=======
+      <x>2130</x>
+      <y>100</y>
+      <w>100</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>player: IPlayer</panel_attributes>
     <additional_attributes/>
@@ -770,10 +1159,17 @@ View
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1272</x>
       <y>90</y>
       <w>60</w>
       <h>18</h>
+=======
+      <x>2130</x>
+      <y>150</y>
+      <w>100</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>board: IBoard</panel_attributes>
     <additional_attributes/>
@@ -781,10 +1177,17 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1218</x>
       <y>60</y>
       <w>66</w>
       <h>18</h>
+=======
+      <x>2040</x>
+      <y>100</y>
+      <w>110</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
@@ -792,10 +1195,17 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1218</x>
       <y>90</y>
       <w>66</w>
       <h>18</h>
+=======
+      <x>2040</x>
+      <y>150</y>
+      <w>110</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
@@ -803,10 +1213,17 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1218</x>
       <y>12</y>
       <w>66</w>
       <h>18</h>
+=======
+      <x>2040</x>
+      <y>20</y>
+      <w>110</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
@@ -814,10 +1231,17 @@ View
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1272</x>
       <y>126</y>
       <w>72</w>
       <h>18</h>
+=======
+      <x>2130</x>
+      <y>210</y>
+      <w>120</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>factory: IFactory</panel_attributes>
     <additional_attributes/>
@@ -825,10 +1249,17 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>1212</x>
       <y>108</y>
       <w>72</w>
       <h>36</h>
+=======
+      <x>2030</x>
+      <y>180</y>
+      <w>120</w>
+      <h>60</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;100.0;40.0</additional_attributes>
@@ -836,10 +1267,17 @@ View
   <element>
     <id>UMLNote</id>
     <coordinates>
+<<<<<<< HEAD
       <x>738</x>
       <y>468</y>
       <w>48</w>
       <h>18</h>
+=======
+      <x>1240</x>
+      <y>780</y>
+      <w>80</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Adapter
 bg=blue</panel_attributes>
@@ -848,10 +1286,17 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>726</x>
       <y>480</y>
       <w>24</w>
       <h>24</h>
+=======
+      <x>1220</x>
+      <y>800</y>
+      <w>40</w>
+      <h>40</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -860,10 +1305,17 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>564</x>
       <y>804</y>
       <w>192</w>
       <h>282</h>
+=======
+      <x>950</x>
+      <y>1340</y>
+      <w>320</w>
+      <h>470</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>300.0;10.0;300.0;80.0;170.0;80.0;170.0;450.0;10.0;450.0</additional_attributes>
@@ -871,10 +1323,17 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>210</x>
       <y>294</y>
       <w>162</w>
       <h>48</h>
+=======
+      <x>360</x>
+      <y>490</y>
+      <w>270</w>
+      <h>80</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
@@ -887,6 +1346,7 @@ GameBuilder
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>282</x>
       <y>240</y>
       <w>162</w>
@@ -906,15 +1366,44 @@ GameBuilder
     <panel_attributes>Builder
 bg=blue</panel_attributes>
     <additional_attributes/>
+=======
+      <x>480</x>
+      <y>400</y>
+      <w>270</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>250.0;10.0;250.0;70.0;10.0;70.0;10.0;90.0</additional_attributes>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>UMLNote</id>
     <coordinates>
+<<<<<<< HEAD
       <x>210</x>
       <y>366</y>
       <w>162</w>
       <h>48</h>
     </coordinates>
+=======
+      <x>270</x>
+      <y>460</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Builder
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>610</y>
+      <w>270</w>
+      <h>80</h>
+    </coordinates>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::core.boards
 BoardFactory
@@ -926,10 +1415,17 @@ createBoard(int numOfSets) : </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>282</x>
       <y>336</y>
       <w>18</w>
       <h>42</h>
+=======
+      <x>480</x>
+      <y>560</y>
+      <w>30</w>
+      <h>70</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -937,10 +1433,17 @@ createBoard(int numOfSets) : </panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>18</x>
       <y>366</y>
       <w>180</w>
       <h>96</h>
+=======
+      <x>40</x>
+      <y>610</y>
+      <w>300</w>
+      <h>160</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::core.boards
 RegularBoardFactory
@@ -957,6 +1460,7 @@ type : Checker) : void</panel_attributes>
   </element>
   <element>
     <id>Relation</id>
+<<<<<<< HEAD
     <coordinates>
       <x>192</x>
       <y>384</y>
@@ -974,6 +1478,25 @@ type : Checker) : void</panel_attributes>
       <w>150</w>
       <h>30</h>
     </coordinates>
+=======
+    <coordinates>
+      <x>330</x>
+      <y>640</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>1230</y>
+      <w>250</w>
+      <h>50</h>
+    </coordinates>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     <panel_attributes>Package::core.boards
 WrongMoveException
 --
@@ -983,10 +1506,17 @@ WrongMoveException
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>252</x>
       <y>744</y>
       <w>42</w>
       <h>18</h>
+=======
+      <x>430</x>
+      <y>1240</y>
+      <w>70</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
@@ -994,10 +1524,17 @@ WrongMoveException
   <element>
     <id>UMLClass</id>
     <coordinates>
+<<<<<<< HEAD
       <x>108</x>
       <y>780</y>
       <w>150</w>
       <h>30</h>
+=======
+      <x>190</x>
+      <y>1300</y>
+      <w>250</w>
+      <h>50</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>Package::core.boards
 WrongNumOfSetsException
@@ -1008,10 +1545,17 @@ WrongNumOfSetsException
   <element>
     <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
       <x>252</x>
       <y>786</y>
       <w>42</w>
       <h>18</h>
+=======
+      <x>430</x>
+      <y>1310</y>
+      <w>70</w>
+      <h>30</h>
+>>>>>>> 0eb341d475dc41a384bc0d439f90a75a4b6820ff
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
