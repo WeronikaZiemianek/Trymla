@@ -1,5 +1,8 @@
 package checkers.core;
 
 public interface RegularRulesManager {
-    void makeMove(Coordinates destionation,  Coordinates currLocation, Checker set);
+    Boolean checkMove(Coordinates destionation, Coordinates currLocation, Checker checker);
+    Boolean checkChecker(PlayerAdapter Player, Checker checker);
+    Boolean endTurn();
+    Boolean chceckEnd();
 }
