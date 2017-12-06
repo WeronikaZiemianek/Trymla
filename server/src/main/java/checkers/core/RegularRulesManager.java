@@ -1,5 +1,10 @@
 package checkers.core;
 
+import checkers.core.fields.Field;
+
 public interface RegularRulesManager {
-    void makeMove(Coordinates destionation,  Coordinates currLocation, Checker set);
+    Boolean checkMove(Coordinates destionation, Coordinates currLocation, Checker checker);
+    Boolean checkChecker(PlayerAdapter Player, Checker checker);
+    void endTurn();
+    Boolean chceckEnd();
 }
