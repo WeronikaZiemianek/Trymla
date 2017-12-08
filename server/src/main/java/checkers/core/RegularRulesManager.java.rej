@@ -1,7 +1,0 @@
-diff a/server/src/main/java/checkers/core/RegularRulesManager.java b/server/src/main/java/checkers/core/RegularRulesManager.java	(rejected hunks)
-@@ -1,4 +1,5 @@
- package checkers.core;
- 
- public interface RegularRulesManager {
-+    void makeMove(Coordinates destionation,  Coordinates currLocation, Checker set);
- }

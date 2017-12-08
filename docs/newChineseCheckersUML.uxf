@@ -27,17 +27,18 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>618</x>
+      <x>576</x>
       <y>492</y>
       <w>162</w>
-      <h>84</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::core
-PlayerAdapter
+Player
 --
 +ID: int
 --
++update(int turnID)
 +makeMove(destionation : Cordinates,
 currLocation : Cordinates)
 +endMove()</panel_attributes>
@@ -46,7 +47,7 @@ currLocation : Cordinates)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>294</x>
+      <x>252</x>
       <y>606</y>
       <w>192</w>
       <h>108</h>
@@ -57,7 +58,7 @@ Board
 --
 - board : Field[][]
 --
-+makeMove(destionation : Coordinates,
++makeMove(destionation : Cordinates,
 currLocation : Cordinates) : void
 +checkPlayerOnField(location : Coordinates): 
 	checker
@@ -68,7 +69,7 @@ currLocation : Cordinates) : void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
+      <x>294</x>
       <y>42</y>
       <w>162</w>
       <h>48</h>
@@ -83,7 +84,7 @@ Server
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>528</x>
+      <x>486</x>
       <y>42</y>
       <w>162</w>
       <h>54</h>
@@ -100,7 +101,7 @@ putting objects into registry</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
+      <x>480</x>
       <y>108</y>
       <w>162</w>
       <h>42</h>
@@ -115,7 +116,7 @@ creating objects</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>492</x>
+      <x>450</x>
       <y>54</y>
       <w>48</w>
       <h>18</h>
@@ -126,7 +127,7 @@ creating objects</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>582</x>
+      <x>540</x>
       <y>144</y>
       <w>18</w>
       <h>66</h>
@@ -137,7 +138,7 @@ creating objects</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
+      <x>660</x>
       <y>108</y>
       <w>162</w>
       <h>42</h>
@@ -152,7 +153,7 @@ IFactory
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>678</x>
+      <x>636</x>
       <y>114</y>
       <w>36</w>
       <h>18</h>
@@ -163,7 +164,7 @@ IFactory
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
+      <x>420</x>
       <y>198</y>
       <w>162</w>
       <h>48</h>
@@ -179,7 +180,7 @@ and managment</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>420</x>
       <y>84</y>
       <w>18</w>
       <h>126</h>
@@ -190,34 +191,28 @@ and managment</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>60</x>
+      <x>36</x>
       <y>486</y>
-      <w>192</w>
-      <h>156</h>
+      <w>186</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Package::server
 RulesManager
 --
--- currMove: Coordinates
--- wasJump: false;
--- xDifference: int
--- yDifference: int
--- endMove: Boolean
--- RegularBoard: board
+-currMove : Coordinates
+-wasJumpUsedAsAPartOfTheMove : Boolean
 --
-+checkMove(destionation: Coordinates,
-  currLocation: Coordinates,
-  checker: Checker): Boolean
-+checkChecker(Player: PlayerAdapter,
-  checker: Checker): Boolean
-+endTurn(): Boolean
-+chceckEnd(): Boolean</panel_attributes>
+-checkChecker(player : Player) : Boolean
+-checkMove(estionation : Cordinates,
+currLocation : Cordinates) : Boolean
+-checkEnd() : boolean
+-endTurn() : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
+      <x>330</x>
       <y>216</y>
       <w>102</w>
       <h>18</h>
@@ -228,26 +223,23 @@ RulesManager
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>294</y>
+      <x>408</x>
+      <y>312</y>
       <w>174</w>
-      <h>150</h>
+      <h>132</h>
     </coordinates>
     <panel_attributes>Package::server
-Game
+RegularGame
 --
 -rulesManager : RulesManager
 -board :Board
 -gamesManager : GamesManager
--players[] : (PlayerAdapter)
+-players[] : (Player, Checker)
 -state : GameState
--turn : PlayerAdapter
--- whoseTurn: int
 --
-+makeMove(destionation : Coordinates,
-currLocation : Coordinates, Checker set): void
-+endTurn(): void
-+wasMoveFinished(): void
++makeMove(destionation : Cordinates,
+currLocation : Cordinates, Checker set)
++endTurn();
 --
 connects all the components of a game
 </panel_attributes>
@@ -256,14 +248,14 @@ connects all the components of a game
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>678</x>
+      <x>636</x>
       <y>396</y>
       <w>162</w>
       <h>48</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
-IGame
+Game
 --
 --
 </panel_attributes>
@@ -272,7 +264,7 @@ IGame
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>618</x>
+      <x>576</x>
       <y>414</y>
       <w>72</w>
       <h>18</h>
@@ -283,19 +275,19 @@ IGame
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
+      <x>498</x>
       <y>240</y>
       <w>18</w>
-      <h>66</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>630</x>
+      <x>588</x>
       <y>288</y>
       <w>48</w>
       <h>18</h>
@@ -307,19 +299,19 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>618</x>
-      <y>288</y>
+      <x>576</x>
+      <y>300</y>
       <w>24</w>
-      <h>30</h>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>10.0;10.0;20.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;20.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>690</x>
+      <x>648</x>
       <y>318</y>
       <w>126</w>
       <h>66</h>
@@ -337,7 +329,7 @@ RUNNING
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
+      <x>258</x>
       <y>486</y>
       <w>168</w>
       <h>78</h>
@@ -347,13 +339,8 @@ Package::server
 RegularRulesManager
 --
 --
-+checkMove(destionation: Coordinates,
-  currLocation: Coordinates,
-   checker: Checker): Boolean
-+checkChecker(Player: PlayerAdapter,
-  checker: Checker): Boolean
-+endTurn(): void
-+chceckEnd(): Boolean
++makeMove(destionation : Cordinates,
+currLocation : Cordinates, Checker set)
 --
 check if move meets the conditions</panel_attributes>
     <additional_attributes/>
@@ -361,7 +348,7 @@ check if move meets the conditions</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
+      <x>174</x>
       <y>198</y>
       <w>162</w>
       <h>48</h>
@@ -376,7 +363,7 @@ IGamesManager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>618</x>
+      <x>576</x>
       <y>348</y>
       <w>84</w>
       <h>24</h>
@@ -388,7 +375,7 @@ IGamesManager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>420</x>
       <y>438</y>
       <w>42</w>
       <h>66</h>
@@ -400,68 +387,40 @@ IGamesManager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>246</x>
+      <x>216</x>
       <y>492</y>
-      <w>66</w>
+      <w>54</w>
       <h>18</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>738</x>
-      <y>618</y>
-      <w>162</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-Package::server
-Player
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>546</x>
-      <y>618</y>
-      <w>162</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-Package::bot
-Bot
---</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>642</x>
-      <y>570</y>
-      <w>72</w>
-      <h>60</h>
+      <x>576</x>
+      <y>576</y>
+      <w>96</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>100.0;10.0;100.0;50.0;10.0;50.0;10.0;80.0</additional_attributes>
+    <additional_attributes>140.0;10.0;140.0;40.0;10.0;40.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>570</y>
+      <x>654</x>
+      <y>576</y>
       <w>120</w>
-      <h>60</h>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0;180.0;50.0;180.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;180.0;40.0;180.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>582</x>
+      <x>540</x>
       <y>438</y>
       <w>48</w>
       <h>90</h>
@@ -473,7 +432,7 @@ Bot
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
+      <x>438</x>
       <y>438</y>
       <w>54</w>
       <h>228</h>
@@ -485,7 +444,7 @@ Bot
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
+      <x>288</x>
       <y>744</y>
       <w>156</w>
       <h>72</h>
@@ -501,7 +460,7 @@ RegularBoard
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>300</x>
       <y>876</y>
       <w>126</w>
       <h>72</h>
@@ -519,7 +478,7 @@ Field(Checker type)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>300</x>
       <y>984</y>
       <w>126</w>
       <h>78</h>
@@ -539,7 +498,7 @@ Coordinates(x: int, y: int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>402</x>
+      <x>360</x>
       <y>708</y>
       <w>18</w>
       <h>48</h>
@@ -550,7 +509,7 @@ Coordinates(x: int, y: int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
+      <x>354</x>
       <y>810</y>
       <w>18</w>
       <h>78</h>
@@ -561,7 +520,7 @@ Coordinates(x: int, y: int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
+      <x>354</x>
       <y>942</y>
       <w>18</w>
       <h>54</h>
@@ -572,10 +531,10 @@ Coordinates(x: int, y: int)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>768</y>
+      <x>696</x>
+      <y>720</y>
       <w>126</w>
-      <h>42</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>Package::server
 RegularPlayer
@@ -586,10 +545,10 @@ RegularPlayer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>564</x>
-      <y>768</y>
+      <x>522</x>
+      <y>720</y>
       <w>126</w>
-      <h>42</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>Package::bot
 DefaultBot
@@ -600,7 +559,7 @@ DefaultBot
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
+      <x>450</x>
       <y>1014</y>
       <w>126</w>
       <h>102</h>
@@ -622,7 +581,7 @@ EMPTY
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>420</x>
       <y>882</y>
       <w>102</w>
       <h>144</h>
@@ -633,7 +592,7 @@ EMPTY
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>570</x>
       <y>804</y>
       <w>114</w>
       <h>282</h>
@@ -642,31 +601,9 @@ EMPTY
     <additional_attributes>20.0;10.0;20.0;80.0;170.0;80.0;170.0;450.0;10.0;450.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>618</x>
-      <y>660</y>
-      <w>18</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>804</x>
-      <y>660</y>
-      <w>18</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>648</x>
+      <x>606</x>
       <y>186</y>
       <w>48</w>
       <h>18</h>
@@ -678,7 +615,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>870</x>
+      <x>828</x>
       <y>78</y>
       <w>48</w>
       <h>24</h>
@@ -691,7 +628,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>702</x>
+      <x>660</x>
       <y>18</y>
       <w>48</w>
       <h>18</h>
@@ -703,7 +640,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>618</x>
+      <x>576</x>
       <y>186</y>
       <w>42</w>
       <h>24</h>
@@ -715,7 +652,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
+      <x>642</x>
       <y>24</y>
       <w>30</w>
       <h>30</h>
@@ -727,7 +664,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>858</x>
+      <x>816</x>
       <y>96</y>
       <w>24</w>
       <h>24</h>
@@ -739,7 +676,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1146</x>
+      <x>1104</x>
       <y>0</y>
       <w>126</w>
       <h>114</h>
@@ -757,7 +694,7 @@ Client
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1320</x>
+      <x>1278</x>
       <y>0</y>
       <w>126</w>
       <h>42</h>
@@ -772,7 +709,7 @@ View
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1320</x>
+      <x>1278</x>
       <y>60</y>
       <w>60</w>
       <h>18</h>
@@ -783,7 +720,7 @@ View
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1320</x>
+      <x>1278</x>
       <y>90</y>
       <w>60</w>
       <h>18</h>
@@ -794,7 +731,7 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1266</x>
+      <x>1224</x>
       <y>60</y>
       <w>66</w>
       <h>18</h>
@@ -805,7 +742,7 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1266</x>
+      <x>1224</x>
       <y>90</y>
       <w>66</w>
       <h>18</h>
@@ -816,7 +753,7 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1266</x>
+      <x>1224</x>
       <y>12</y>
       <w>66</w>
       <h>18</h>
@@ -827,7 +764,7 @@ View
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1320</x>
+      <x>1278</x>
       <y>126</y>
       <w>72</w>
       <h>18</h>
@@ -838,7 +775,7 @@ View
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1260</x>
+      <x>1218</x>
       <y>108</y>
       <w>72</w>
       <h>36</h>
@@ -849,7 +786,7 @@ View
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>786</x>
+      <x>744</x>
       <y>468</y>
       <w>48</w>
       <h>18</h>
@@ -861,7 +798,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>774</x>
+      <x>732</x>
       <y>480</y>
       <w>24</w>
       <h>24</h>
@@ -873,7 +810,7 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>570</x>
       <y>804</y>
       <w>192</w>
       <h>282</h>
@@ -884,7 +821,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>258</x>
+      <x>216</x>
       <y>294</y>
       <w>162</w>
       <h>48</h>
@@ -900,7 +837,7 @@ GameBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
+      <x>288</x>
       <y>240</y>
       <w>162</w>
       <h>66</h>
@@ -911,7 +848,7 @@ GameBuilder
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>204</x>
+      <x>162</x>
       <y>276</y>
       <w>54</w>
       <h>18</h>
@@ -923,7 +860,7 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>258</x>
+      <x>216</x>
       <y>366</y>
       <w>162</w>
       <h>48</h>
@@ -939,7 +876,7 @@ createBoard(int numOfSets) : </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
+      <x>288</x>
       <y>336</y>
       <w>18</w>
       <h>42</h>
@@ -950,7 +887,7 @@ createBoard(int numOfSets) : </panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>66</x>
+      <x>24</x>
       <y>366</y>
       <w>180</w>
       <h>96</h>
@@ -971,7 +908,7 @@ type : Checker) : void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
+      <x>198</x>
       <y>384</y>
       <w>30</w>
       <h>18</h>
@@ -982,7 +919,7 @@ type : Checker) : void</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>156</x>
+      <x>114</x>
       <y>738</y>
       <w>150</w>
       <h>30</h>
@@ -996,7 +933,7 @@ WrongMoveException
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>258</x>
       <y>744</y>
       <w>42</w>
       <h>18</h>
@@ -1007,8 +944,8 @@ WrongMoveException
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>156</x>
-      <y>780</y>
+      <x>6</x>
+      <y>306</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -1021,12 +958,36 @@ WrongNumOfSetsException
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>786</y>
-      <w>42</w>
-      <h>18</h>
+      <x>114</x>
+      <y>330</y>
+      <w>18</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>708</x>
+      <y>198</y>
+      <w>60</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Move
+--
+-turn</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>234</y>
+      <w>222</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;60.0;350.0;60.0;350.0;10.0</additional_attributes>
   </element>
 </diagram>
