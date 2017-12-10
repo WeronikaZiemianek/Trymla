@@ -1,5 +1,10 @@
 package checkers.server;
 
+import checkers.server.boards.Board;
+
 public interface Player {
-    void update(Player turn);
+
+    Checker getColor();
+    void update(Boolean isMyTurn);
+    Coordinates[] makeMove();
 }

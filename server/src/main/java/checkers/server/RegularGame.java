@@ -2,8 +2,10 @@ package checkers.server;
 
 import checkers.server.boards.RegularBoard;
 
+import java.util.List;
+
 public class RegularGame implements Game {
-    private PlayersList players;
+    private List<Player> players;
     private int numOfPlayers;
     private RegularRulesManager rulesManager;
     private RegularBoard board;
@@ -18,7 +20,7 @@ public class RegularGame implements Game {
 
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player){
         if(player == turn.getTurn()) {
-            if(rulesManager.checkMove(destination, currLocation, players.getColor(player))) {
+            if(rulesManager.checkMove(destination, currLocation, player.getColor())) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
             }
@@ -32,9 +34,9 @@ public class RegularGame implements Game {
     }
 
     private void updatePlayers() {
-        int numOfPlayers = players.numOfPlayers();
+        int numOfPlayers = players.size();
         for(int i = 0; i < numOfPlayers; i++) {
-            players.getPlayer(i).update(turn.getTurn());
+            players.get(i).update(turn.getTurn());
         }
     }
 
