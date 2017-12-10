@@ -24,5 +24,6 @@ class Turn {
     }
 
     void playerJumped(){ this.jumped = true;}
+    void jumpReset(){ this.jumped = false;}
 
 }

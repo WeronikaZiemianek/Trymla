@@ -37,6 +37,7 @@ public class RegularRulesManager implements RulesManager {
             }
             return (diff == 2) || (diff == 4);
         } else {
+            game.getTrun().jumpReset();
             return currLocation.equals(game.getCurrMov()) && diff == 4;
         }
     }
