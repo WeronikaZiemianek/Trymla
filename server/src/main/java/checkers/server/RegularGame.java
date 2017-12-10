@@ -30,6 +30,8 @@ public class RegularGame implements Game {
     @Override
     public void endMove() {
         turnPlayer++;
+        if(numOfPlayers < turnPlayer)
+            turnPlayer = 0;
         turn = new Turn(players.get(turnPlayer));
         updatePlayers();
     }
