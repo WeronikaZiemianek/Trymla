@@ -7,6 +7,7 @@ import java.util.List;
 public class RegularGame implements Game {
     private List<Player> players;
     private int numOfPlayers;
+    private int turnPlayer;
     private RegularRulesManager rulesManager;
     private RegularBoard board;
     private GamesManager gamesManager;
@@ -28,7 +29,8 @@ public class RegularGame implements Game {
     }
     @Override
     public void endMove() {
-        turn = new Turn(players.nextPlayer(turn.getTurn()));
+        turnPlayer++;
+        turn = new Turn(players.get(turnPlayer));
         updatePlayers();
 
     }
@@ -36,8 +38,9 @@ public class RegularGame implements Game {
     private void updatePlayers() {
         int numOfPlayers = players.size();
         for(int i = 0; i < numOfPlayers; i++) {
-            players.get(i).update(turn.getTurn());
+            players.get(i).update(false);
         }
+        players.get(turnPlayer).update(true);
     }
 
     @Override
