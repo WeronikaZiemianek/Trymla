@@ -1,4 +1,4 @@
-package checkers.core;
+package checkers.server;
 
 public class Coordinates {
     private int x;

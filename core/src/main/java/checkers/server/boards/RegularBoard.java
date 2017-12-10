@@ -1,7 +1,7 @@
-package checkers.core.boards;
-import checkers.core.Checker;
-import checkers.core.Coordinates;
-import checkers.core.Field;
+package checkers.server.boards;
+import checkers.server.Checker;
+import checkers.server.Coordinates;
+import checkers.server.Field;
 
 public class RegularBoard implements Board {
     private final int NUM_OF_COLUMNS;

@@ -1,7 +1,7 @@
-package checkers.core.fields;
+package checkers.server.fields;
 
-import checkers.core.Checker;
-import checkers.core.Field;
+import checkers.server.Checker;
+import checkers.server.Field;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

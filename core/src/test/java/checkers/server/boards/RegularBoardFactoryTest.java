@@ -1,4 +1,4 @@
-package checkers.core.boards;
+package checkers.server.boards;
 import org.junit.Before;
 import org.junit.Test;
 

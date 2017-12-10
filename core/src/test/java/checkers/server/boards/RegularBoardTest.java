@@ -1,7 +1,7 @@
-package checkers.core.boards;
+package checkers.server.boards;
 
-import checkers.core.Checker;
-import checkers.core.Coordinates;
+import checkers.server.Checker;
+import checkers.server.Coordinates;
 import org.junit.Before;
 import org.junit.Test;
 

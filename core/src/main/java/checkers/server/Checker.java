@@ -1,4 +1,4 @@
-package checkers.core;
+package checkers.server;
 
 public enum Checker {
     // on board from top clockwise

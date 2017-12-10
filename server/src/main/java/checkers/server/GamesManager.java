@@ -1,4 +1,4 @@
-package checkers.core;
+package checkers.server;
 
 public class GamesManager {
 }
