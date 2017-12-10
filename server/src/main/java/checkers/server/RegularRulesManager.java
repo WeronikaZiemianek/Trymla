@@ -31,6 +31,10 @@ public class RegularRulesManager implements RulesManager {
             if(diff == 2) {
                 game.endMove();
             }
+            else if(diff == 4)
+            {
+                game.getTrun().playerJumped();
+            }
             return (diff == 2) || (diff == 4);
         } else {
             return currLocation.equals(game.getCurrMov()) && diff == 4;

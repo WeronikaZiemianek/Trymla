@@ -3,10 +3,12 @@ package checkers.server;
 class Turn {
     private Player player;
     private Coordinates currMov;
+    private boolean jumped;
 
     Turn(Player player) {
         this.player = player;
         currMov = null;
+        jumped = false;
     }
 
     Coordinates getCurrMov() {
@@ -20,5 +22,7 @@ class Turn {
     Player getPlayer() {
         return this.player;
     }
+
+    void playerJumped(){ this.jumped = true;}
 
 }

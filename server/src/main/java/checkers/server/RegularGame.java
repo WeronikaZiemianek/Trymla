@@ -32,7 +32,6 @@ public class RegularGame implements Game {
         turnPlayer++;
         turn = new Turn(players.get(turnPlayer));
         updatePlayers();
-
     }
 
     private void updatePlayers() {
@@ -46,6 +45,11 @@ public class RegularGame implements Game {
     @Override
     public Coordinates getCurrMov() {
         return turn.getCurrMov();
+    }
+
+    @Override
+    public Turn getTrun() {
+        return turn;
     }
 
     @Override

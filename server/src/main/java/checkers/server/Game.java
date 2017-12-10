@@ -7,6 +7,7 @@ public interface Game {
     Checker getOccupiedByType(Coordinates location);
     Checker getFieldType(Coordinates location);
     Coordinates getCurrMov();
+    Turn getTrun();
     void endMove();
 
 }
