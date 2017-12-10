@@ -20,7 +20,7 @@ public class RegularGame implements Game {
     }
 
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player){
-        if(player == turn.getTurn()) {
+        if(player == turn.getPlayer()) {
             if(rulesManager.checkMove(destination, currLocation, player.getColor())) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);

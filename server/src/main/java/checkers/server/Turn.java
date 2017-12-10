@@ -1,11 +1,11 @@
 package checkers.server;
 
 class Turn {
-    private Player turn;
+    private Player player;
     private Coordinates currMov;
 
     Turn(Player player) {
-        turn = player;
+        this.player = player;
         currMov = null;
     }
 
@@ -17,8 +17,8 @@ class Turn {
         this.currMov = currMov;
     }
 
-    Player getTurn() {
-        return turn;
+    Player getPlayer() {
+        return this.player;
     }
 
 }
