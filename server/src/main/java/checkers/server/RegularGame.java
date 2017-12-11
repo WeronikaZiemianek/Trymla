@@ -1,6 +1,5 @@
 package checkers.server;
 
-import checkers.server.boards.Board;
 import checkers.server.boards.RegularBoard;
 
 import java.util.List;
@@ -15,8 +14,8 @@ public class RegularGame implements Game {
     private GameState state;
     private Turn turn;
 
-    RegularGame(int numOfPlayers, Board board) {
-        this.board = (RegularBoard) board;
+    RegularGame(int numOfPlayers, RegularBoard board) {
+        this.board = board;
         this.numOfPlayers = numOfPlayers;
         state = GameState.OPEN;
     }

@@ -22,6 +22,7 @@ public class Field {
     public Field(Checker type) {
         Checker values[] = Checker.values();
         int t = 0;
+        this.type = type;
         int size = values.length;
         for(int i=0; i< size; i++) {
             if(values[i].equals(type)) {

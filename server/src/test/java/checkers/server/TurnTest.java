@@ -10,7 +10,6 @@ import static org.junit.Assert.assertEquals;
 
 public class TurnTest {
 
-    private RegularGame regularGame;
     private RegularBoardFactory factory;
     private RegularBoard board;
 
@@ -18,7 +17,6 @@ public class TurnTest {
     public void createGame() {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
-        regularGame = new RegularGame(6,board);
     }
 
     @Test

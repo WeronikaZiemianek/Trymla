@@ -8,7 +8,8 @@ public class RegularRulesManager implements RulesManager {
     }
 
     private Boolean checkChecker(Checker checker, Coordinates currLocation){
-        return (game.getOccupiedByType(currLocation) == checker);
+        Checker color = game.getOccupiedByType(currLocation);
+        return (color.equals(checker));
     }
     private Boolean checkIfEscapesFromTriangle(Coordinates destination, Coordinates currLocation, Checker checker) {
         return game.getFieldType(currLocation) != checker || game.getFieldType(destination) == checker;
