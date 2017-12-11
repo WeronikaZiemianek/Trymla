@@ -9,7 +9,7 @@ public class RegularBoardFactory implements BoardFactory {
 
     private Field[][] board;
     
-    public Board createNewBoard(int numOfSets) throws WrongNumberOfSetsException {
+    public RegularBoard createNewBoard(int numOfSets) throws WrongNumberOfSetsException {
         final int NUM_OF_COLUMNS = 25;
         final int NUM_OF_ROWS = 17;
         board = new Field[NUM_OF_COLUMNS][NUM_OF_ROWS];

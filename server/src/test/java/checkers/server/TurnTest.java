@@ -1,6 +1,6 @@
 package checkers.server;
 
-import checkers.server.boards.Board;
+import checkers.server.boards.RegularBoard;
 import checkers.server.boards.RegularBoardFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,16 +12,17 @@ public class TurnTest {
 
     private RegularGame regularGame;
     private RegularBoardFactory factory;
+    private RegularBoard board;
 
     @Before
     public void createGame() {
-        regularGame = new RegularGame(6);
         factory = new RegularBoardFactory();
+        board = factory.createNewBoard(6);
+        regularGame = new RegularGame(6,board);
     }
 
     @Test
     public void testGetCurrentMove() {
-        Board board = factory.createNewBoard(6);
         DefaultPlayer player = new DefaultPlayer(board, Checker.GREEN);
         Turn turn = new Turn(player);
         assertEquals(null, turn.getCurrMov());
@@ -29,7 +30,6 @@ public class TurnTest {
 
     @Test
     public void testSetCurrentMove() {
-        Board board = factory.createNewBoard(6);
         DefaultPlayer player = new DefaultPlayer(board, Checker.GREEN);
         Turn turn = new Turn(player);
         turn.setCurrMov(new Coordinates(6,6));
@@ -39,7 +39,6 @@ public class TurnTest {
 
     @Test
     public void testGetPlayer() {
-        Board board = factory.createNewBoard(6);
         DefaultPlayer player = new DefaultPlayer(board, GREEN);
         Turn turn = new Turn(player);
         turn.setCurrMov(new Coordinates(12,0));
@@ -49,7 +48,6 @@ public class TurnTest {
 
     @Test
     public void testPlayerJumped() {
-        Board board = factory.createNewBoard(6);
         DefaultPlayer player = new DefaultPlayer(board, GREEN);
         Turn turn = new Turn(player);
         turn.playerJumped();
@@ -58,7 +56,6 @@ public class TurnTest {
 
     @Test
     public void testJumpReset() {
-        Board board = factory.createNewBoard(6);
         DefaultPlayer player = new DefaultPlayer(board, GREEN);
         Turn turn = new Turn(player);
         turn.playerJumped();
