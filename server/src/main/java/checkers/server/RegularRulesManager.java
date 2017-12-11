@@ -25,7 +25,7 @@ public class RegularRulesManager implements RulesManager {
             return false;
         }
 
-        int diff = Math.abs(currLocation.y()-destination.y()) + Math.abs(currLocation.x()-destination.x());
+        int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());
 
         if(game.getCurrMov() == null) {
             if(diff == 2) {

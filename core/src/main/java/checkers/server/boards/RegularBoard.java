@@ -21,26 +21,26 @@ public class RegularBoard implements Board {
     }
 
     public void makeMove(Coordinates currLocation, Coordinates destination) throws WrongMoveException {
-        if(board[currLocation.x()][currLocation.y()] == null || board[destination.x()][destination.y()] == null) {
+        if(board[currLocation.X()][currLocation.Y()] == null || board[destination.X()][destination.Y()] == null) {
             throw new WrongMoveException();
         }
-        Checker curr = board[currLocation.x()][currLocation.y()].getOccupiedBy();
-        Checker dest = board[destination.x()][destination.y()].getOccupiedBy();
+        Checker curr = board[currLocation.X()][currLocation.Y()].getOccupiedBy();
+        Checker dest = board[destination.X()][destination.Y()].getOccupiedBy();
 
         if(curr.equals(Checker.EMPTY) || !(dest.equals(Checker.EMPTY))) {
             throw new WrongMoveException();
         }
-        board[destination.x()][destination.y()].setOccupiedBy(curr);
-        board[currLocation.x()][currLocation.y()].setOccupiedBy(Checker.EMPTY);
+        board[destination.X()][destination.Y()].setOccupiedBy(curr);
+        board[currLocation.X()][currLocation.Y()].setOccupiedBy(Checker.EMPTY);
 
     }
 
     public Checker getFieldType(Coordinates location) {
-        return board[location.x()][location.y()].getType();
+        return board[location.X()][location.Y()].getType();
     }
 
     public Checker getFieldOccupiedBy(Coordinates location) {
-        return board[location.x()][location.y()].getOccupiedBy();
+        return board[location.X()][location.Y()].getOccupiedBy();
     }
 
     @Override
