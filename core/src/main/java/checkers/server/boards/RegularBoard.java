@@ -19,7 +19,7 @@ public class RegularBoard implements Board {
         }
 
     }
-
+    @Override
     public void makeMove(Coordinates currLocation, Coordinates destination) throws WrongMoveException {
         if(board[currLocation.X()][currLocation.Y()] == null || board[destination.X()][destination.Y()] == null) {
             throw new WrongMoveException();
@@ -34,11 +34,12 @@ public class RegularBoard implements Board {
         board[currLocation.X()][currLocation.Y()].setOccupiedBy(Checker.EMPTY);
 
     }
-
+    @Override
     public Checker getFieldType(Coordinates location) {
         return board[location.X()][location.Y()].getType();
     }
 
+    @Override
     public Checker getFieldOccupiedBy(Coordinates location) {
         return board[location.X()][location.Y()].getOccupiedBy();
     }
