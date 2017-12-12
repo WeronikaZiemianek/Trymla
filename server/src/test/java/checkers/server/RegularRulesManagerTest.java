@@ -3,6 +3,9 @@ package checkers.server;
 import checkers.server.boards.RegularBoard;
 import checkers.server.boards.RegularBoardFactory;
 import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class RegularRulesManagerTest {
     private RegularGame regularGame;

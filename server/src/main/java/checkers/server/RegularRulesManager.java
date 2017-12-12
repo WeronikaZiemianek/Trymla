@@ -34,11 +34,11 @@ public class RegularRulesManager implements RulesManager {
             }
             else if(diff == 4)
             {
-                game.getTrun().playerJumped();
+                game.getTurn().playerJumped();
             }
             return (diff == 2) || (diff == 4);
         } else {
-            game.getTrun().jumpReset();
+            game.getTurn().jumpReset();
             return currLocation.equals(game.getCurrMov()) && diff == 4;
         }
     }
