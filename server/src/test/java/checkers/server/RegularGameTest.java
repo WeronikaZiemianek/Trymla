@@ -1,6 +1,6 @@
 package checkers.server;
 
-import checkers.server.boards.RegularBoard;
+import checkers.server.boards.Board;
 import checkers.server.boards.RegularBoardFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ public class RegularGameTest
 {
     private RegularGame regularGame;
     private RegularBoardFactory factory;
-    private RegularBoard board;
+    private Board board;
 
     @Before
     public void createGame() {
@@ -44,7 +44,7 @@ public class RegularGameTest
     public void testGetTurn() {
         DefaultPlayer player = new DefaultPlayer(board, GREEN);
         Turn turn = new Turn(player);
-        assertEquals(null, regularGame.getTrun());
+        assertEquals(null, regularGame.getTurn());
     }
 
     @Test

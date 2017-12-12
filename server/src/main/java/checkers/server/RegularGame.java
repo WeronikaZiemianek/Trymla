@@ -1,5 +1,6 @@
 package checkers.server;
 
+import checkers.server.boards.Board;
 import checkers.server.boards.RegularBoard;
 
 import java.util.List;
@@ -9,12 +10,12 @@ public class RegularGame implements Game {
     private int numOfPlayers;
     private int turnPlayer;
     private RegularRulesManager rulesManager;
-    private RegularBoard board;
+    private Board board;
     private GamesManager gamesManager;
     private GameState state;
     private Turn turn;
 
-    RegularGame(int numOfPlayers, RegularBoard board) {
+    RegularGame(int numOfPlayers, Board board) {
         this.board = board;
         this.numOfPlayers = numOfPlayers;
         state = GameState.OPEN;
@@ -51,7 +52,7 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public Turn getTrun() {
+    public Turn getTurn() {
         return turn;
     }
 
