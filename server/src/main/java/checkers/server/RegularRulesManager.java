@@ -12,7 +12,7 @@ public class RegularRulesManager implements RulesManager {
         return (color.equals(checker));
     }
     private Boolean checkIfEscapesFromTriangle(Coordinates destination, Coordinates currLocation, Checker checker) {
-        return game.getFieldType(currLocation) != checker || game.getFieldType(destination) == checker;
+        return (game.getFieldType(currLocation) == checker && game.getFieldType(destination) != checker);
     }
 
     @Override
@@ -28,19 +28,20 @@ public class RegularRulesManager implements RulesManager {
 
         int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());
 
-        if(game.getCurrMov() == null) {
+
             if(diff == 2) {
-                game.endMove();
+                return true;
             }
             else if(diff == 4)
             {
                 game.getTrun().playerJumped();
+                return true;
             }
-            return (diff == 2) || (diff == 4);
-        } else {
+
             game.getTrun().jumpReset();
-            return currLocation.equals(game.getCurrMov()) && diff == 4;
-        }
+            return false;
+
+
     }
 
 }
