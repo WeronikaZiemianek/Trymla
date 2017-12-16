@@ -16,30 +16,30 @@ public class RegularRulesManager implements RulesManager {
     }
 
     @Override
-    public Boolean checkMove(Coordinates destination, Coordinates currLocation, Checker checker){
+    public int checkMove(Coordinates destination, Coordinates currLocation, Checker checker){
 
         if(!checkChecker(checker, currLocation)) {
-            return false;
+            return  0;
         }
 
         if(checkIfEscapesFromTriangle(destination, currLocation, checker)) {
-            return false;
+            return 0;
         }
 
         int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());
 
 
             if(diff == 2) {
-                return true;
+                return 1;
             }
             else if(diff == 4)
             {
                 game.getTurn().playerJumped();
-                return true;
+                return 2;
             }
 
             game.getTurn().jumpReset();
-            return false;
+            return 0;
 
 
     }

@@ -1,7 +1,6 @@
 package checkers.server;
 
 import checkers.server.boards.Board;
-import checkers.server.boards.RegularBoard;
 
 import java.util.List;
 
@@ -23,7 +22,8 @@ public class RegularGame implements Game {
 
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player){
         if(player == turn.getPlayer()) {
-            if(rulesManager.checkMove(destination, currLocation, player.getColor())) {
+            int validationOfMove = rulesManager.checkMove(destination, currLocation, player.getColor());
+            if(validationOfMove == 1 || validationOfMove == 2 ) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
             }
