@@ -6,12 +6,14 @@ import java.util.List;
 
 public class RegularGame implements Game {
     private List<Player> players;
+    private List<Integer> playersInHome;
     private int numOfPlayers;
     private int turnPlayer;
     private RegularRulesManager rulesManager;
     private Board board;
     private GamesManager gamesManager;
     private GameState state;
+
     private Turn turn;
 
     RegularGame(int numOfPlayers, Board board) {
@@ -26,12 +28,18 @@ public class RegularGame implements Game {
             if(validationOfMove == 1 || validationOfMove == 2 ) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
+                if((getFieldType(currLocation) != player.getColor() && getFieldType(destination) == player.getColor())) {
+                    int buf = playersInHome.get(players.indexOf(player));
+                    buf++;
+                    playersInHome.set(players.indexOf(player),buf);
+                }
             }
         }
     }
     @Override
     public void endMove() {
         turnPlayer++;
+
         if(numOfPlayers < turnPlayer)
             turnPlayer = 0;
         turn = new Turn(players.get(turnPlayer));

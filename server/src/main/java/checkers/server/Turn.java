@@ -10,7 +10,6 @@ class Turn {
         currMov = null;
         jumped = false;
     }
-
     Coordinates getCurrMov() {
         return currMov;
     }
