@@ -29,9 +29,14 @@ public class RegularGame implements Game {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
                 if((getFieldType(currLocation) != player.getColor() && getFieldType(destination) == player.getColor())) {
-                    int buf = playersInHome.get(players.indexOf(player));
+                    int index = players.indexOf(player);
+                    int buf = playersInHome.get(index);
                     buf++;
-                    playersInHome.set(players.indexOf(player),buf);
+                    playersInHome.set(index,buf);
+                    if(playersInHome.get(index) == 10){
+                        //Player win
+                    }
+
                 }
             }
         }
