@@ -182,7 +182,7 @@ GamesManager
 --
 games and players storage 
 and managment
-bg=yellow</panel_attributes>
+bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -375,7 +375,7 @@ Package::server
 IGamesManager
 --
 --
-bg=yellow</panel_attributes>
+bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
