@@ -42,7 +42,7 @@ public class RegularGameTest
 
     @Test
     public void testGetTurn() {
-        DefaultPlayer player = new DefaultPlayer(board, GREEN);
+        Player player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         assertEquals(null, regularGame.getTurn());
     }

@@ -10,7 +10,7 @@ public class RegularGame implements Game {
     private int turnPlayer;
     private RegularRulesManager rulesManager;
     private Board board;
-    private GamesManager gamesManager;
+    private GamesMenager gamesManager;
     private GameState state;
     private Turn turn;
 

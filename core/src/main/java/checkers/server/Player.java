@@ -2,9 +2,12 @@ package checkers.server;
 
 import checkers.server.boards.Board;
 
-public interface Player {
+public interface Player extends java.rmi.Remote {
+    boolean isMyTurn = false;
+    Board board = null;
+    Checker color = Checker.EMPTY;
 
     Checker getColor();
     void update(Boolean isMyTurn);
-    Coordinates[] makeMove();
+    void makeMove(Coordinates location, Coordinates destination);
 }

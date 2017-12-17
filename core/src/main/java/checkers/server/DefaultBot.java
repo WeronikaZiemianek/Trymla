@@ -2,7 +2,7 @@ package checkers.server;
 
 import checkers.server.boards.Board;
 
-public class DefaultBot implements Player {
+public class DefaultBot {
 
     private boolean isMyTurn;
     private Board board;
@@ -18,12 +18,10 @@ public class DefaultBot implements Player {
     }
 
 
-    @Override
     public void update(Boolean isMyTurn) {
         this.isMyTurn = isMyTurn;
     }
 
-    @Override
     public Coordinates[] makeMove() {
         return new Coordinates[2];
     }
