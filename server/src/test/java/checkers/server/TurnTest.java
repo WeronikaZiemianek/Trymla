@@ -5,20 +5,22 @@ import checkers.server.boards.RegularBoardFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.rmi.RemoteException;
+
 import static checkers.server.Checker.GREEN;
 import static org.junit.Assert.assertEquals;
 
 public class TurnTest {
 
     @Test
-    public void testGetCurrentMove() {
+    public void testGetCurrentMove() throws RemoteException {
         DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         assertEquals(null, turn.getCurrMov());
     }
 
     @Test
-    public void testSetCurrentMove() {
+    public void testSetCurrentMove() throws RemoteException {
         DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         turn.setCurrMov(new Coordinates(6,6));
@@ -27,7 +29,7 @@ public class TurnTest {
     }
 
     @Test
-    public void testGetPlayer() {
+    public void testGetPlayer() throws RemoteException {
         DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         turn.setCurrMov(new Coordinates(12,0));
@@ -36,7 +38,7 @@ public class TurnTest {
     }
 
     @Test
-    public void testPlayerJumped() {
+    public void testPlayerJumped() throws RemoteException {
         DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         turn.playerJumped();
@@ -44,7 +46,7 @@ public class TurnTest {
     }
 
     @Test
-    public void testJumpReset() {
+    public void testJumpReset() throws RemoteException {
         DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         turn.playerJumped();

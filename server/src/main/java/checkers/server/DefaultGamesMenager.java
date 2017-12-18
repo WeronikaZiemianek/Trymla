@@ -1,13 +1,28 @@
 package checkers.server;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
-public class DefaultGamesMenager extends UnicastRemoteObject implements GamesMenager {
+public class DefaultGamesMenager implements GamesMenager {
+    private PlayerFactory factory;
+    private Connection connection;
 
-    protected DefaultGamesMenager() throws RemoteException {
+    DefaultGamesMenager() {
+        try {
+            factory = new DefaultPlayerFactory(this);
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
+        connection = new Connection(factory);
     }
 
     @Override
-    public void sayHello() throws RemoteException { System.out.println("Hello world");}
+    public void addPlayer(Player player) {
+       connection.putPlayer(player);
+    }
+
+    //  @Override
+  //  public void sayHello() throws RemoteException { System.out.println("Hello world");}
+
+
+
 }

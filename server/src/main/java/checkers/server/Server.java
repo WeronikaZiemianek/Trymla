@@ -14,7 +14,6 @@ public class Server {
 
     private Server() throws RemoteException {
         GamesMenager gamesMenager = new DefaultGamesMenager();
-        Connection connection = new Connection(gamesMenager);
     }
 
     public static void main(String [ ] args) throws InterruptedException, RemoteException {

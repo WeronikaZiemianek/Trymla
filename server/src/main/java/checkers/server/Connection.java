@@ -8,17 +8,31 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 class Connection {
-    Connection(GamesMenager gamesMenager) {
-        Logger logger = LoggerFactory.getLogger(Connection.class);
+    private Registry registry;
+    private Logger logger;
+
+    Connection(PlayerFactory factory) {
+        logger = LoggerFactory.getLogger(Connection.class);
         try {
-            Registry registry = LocateRegistry.createRegistry(1099);
-            registry.bind("menager", gamesMenager);
+            registry = LocateRegistry.createRegistry(1099);
+            registry.bind("factory", factory);
+            logger.info("Factory bind");
         } catch(RemoteException e) {
-            logger.error("Can't create registry");
+            logger.error("Remote Exception");
         } catch(AlreadyBoundException e) {
-            logger.error("Menager already bound");
+            logger.error("Factory already bound");
         }
 
+    }
+
+    void putPlayer(Player player) {
+        try {
+            registry.bind(player.getLogin(), player);
+        } catch(RemoteException e) {
+            logger.error("Remote Exception");
+        } catch(AlreadyBoundException e) {
+            logger.error("Factory already bound");
+        }
     }
 
 }

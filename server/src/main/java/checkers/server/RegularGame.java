@@ -1,7 +1,10 @@
 package checkers.server;
 
 import checkers.server.boards.Board;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 public class RegularGame implements Game {
@@ -13,6 +16,7 @@ public class RegularGame implements Game {
     private Board board;
     private GamesMenager gamesManager;
     private GameState state;
+    private Logger logger;
 
     private Turn turn;
 
@@ -20,9 +24,10 @@ public class RegularGame implements Game {
         this.board = board;
         this.numOfPlayers = numOfPlayers;
         state = GameState.OPEN;
+        logger = LoggerFactory.getLogger(RegularGame.class);
     }
 
-    public void makeMove(Coordinates destination, Coordinates currLocation, Player player){
+    public void makeMove(Coordinates destination, Coordinates currLocation, Player player) throws RemoteException {
         if(player == turn.getPlayer()) {
             int validationOfMove = rulesManager.checkMove(destination, currLocation, player.getColor());
             if(validationOfMove == 1 || validationOfMove == 2 ) {
@@ -48,10 +53,14 @@ public class RegularGame implements Game {
         if(numOfPlayers < turnPlayer)
             turnPlayer = 0;
         turn = new Turn(players.get(turnPlayer));
-        updatePlayers();
+        try {
+            updatePlayers();
+        } catch(RemoteException e) {
+            logger.error("Can't update players");
+        }
     }
 
-    private void updatePlayers() {
+    private void updatePlayers() throws RemoteException {
         int numOfPlayers = players.size();
         for(int i = 0; i < numOfPlayers; i++) {
             players.get(i).update(false);

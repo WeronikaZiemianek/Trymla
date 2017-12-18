@@ -5,6 +5,8 @@ import checkers.server.boards.RegularBoardFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.rmi.RemoteException;
+
 import static checkers.server.Checker.GREEN;
 import static org.junit.Assert.assertEquals;
 
@@ -41,7 +43,7 @@ public class RegularGameTest
 
 
     @Test
-    public void testGetTurn() {
+    public void testGetTurn() throws RemoteException {
         Player player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         assertEquals(null, regularGame.getTurn());

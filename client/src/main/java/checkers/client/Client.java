@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 public class Client {
     public static void main(String [ ] args) throws RemoteException {
-        Connection connection = new Connection();
-        connection.rmi();
+        ClientConnection clientConnection = new ClientConnection();
+        System.out.println(clientConnection.addPlayer("login"));
     }
 }
