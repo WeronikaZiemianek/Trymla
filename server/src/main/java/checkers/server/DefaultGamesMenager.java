@@ -16,7 +16,7 @@ public class DefaultGamesMenager implements GamesMenager {
     }
 
     @Override
-    public void addPlayer(Player player) {
+    public void addPlayer(RemotePlayer player) {
        connection.putPlayer(player);
     }
 

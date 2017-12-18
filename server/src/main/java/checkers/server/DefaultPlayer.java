@@ -5,7 +5,7 @@ import checkers.server.boards.Board;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class DefaultPlayer extends UnicastRemoteObject implements Player {
+public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, Player {
     private boolean isMyTurn;
     private Board board;
     private Checker color;
@@ -19,12 +19,12 @@ public class DefaultPlayer extends UnicastRemoteObject implements Player {
     }
 
     @Override
-    public Checker getColor() throws RemoteException {
+    public Checker getColor() {
         return null;
     }
 
     @Override
-    public void update (Boolean isMyTurn) throws RemoteException {
+    public void update (Boolean isMyTurn) {
 
     }
 
@@ -36,15 +36,15 @@ public class DefaultPlayer extends UnicastRemoteObject implements Player {
     void endMove() throws RemoteException {
     }
 
-    public void setGame(Game game) throws RemoteException {
+    public void setGame(Game game) {
         this.game = game;
     }
 
-    public void setBoard(Board board) throws RemoteException {
+    public void setBoard(Board board) {
         this.board = board;
     }
 
-    public void setMyTurn(boolean myTurn) throws RemoteException {
+    public void setMyTurn(boolean myTurn) {
         isMyTurn = myTurn;
     }
 

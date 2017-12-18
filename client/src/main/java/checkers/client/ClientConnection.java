@@ -1,6 +1,6 @@
 package checkers.client;
 
-import checkers.server.Player;
+import checkers.server.RemotePlayer;
 import checkers.server.PlayerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +27,9 @@ public class ClientConnection {
         return playerFactory.createPlayer(login);
     }
 
-    Player getPlayer() throws RemoteException {
+    RemotePlayer getPlayer() throws RemoteException {
         try {
-            Player player = (Player) Naming.lookup(login);
+            RemotePlayer player = (RemotePlayer) Naming.lookup(login);
             return player;
         }
         catch( Exception e ) {

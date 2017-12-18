@@ -16,7 +16,7 @@ public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerF
 
     @Override
     synchronized public boolean createPlayer(String login) throws RemoteException {
-        for(Player p : players) {
+        for(RemotePlayer p : players) {
             if(Objects.equals(login, p.getLogin())) {
                 return false;
             }

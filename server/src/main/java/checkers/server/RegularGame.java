@@ -53,14 +53,10 @@ public class RegularGame implements Game {
         if(numOfPlayers < turnPlayer)
             turnPlayer = 0;
         turn = new Turn(players.get(turnPlayer));
-        try {
-            updatePlayers();
-        } catch(RemoteException e) {
-            logger.error("Can't update players");
-        }
+        updatePlayers();
     }
 
-    private void updatePlayers() throws RemoteException {
+    private void updatePlayers() {
         int numOfPlayers = players.size();
         for(int i = 0; i < numOfPlayers; i++) {
             players.get(i).update(false);

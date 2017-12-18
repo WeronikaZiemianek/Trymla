@@ -25,7 +25,7 @@ class Connection {
 
     }
 
-    void putPlayer(Player player) {
+    void putPlayer(RemotePlayer player) {
         try {
             registry.bind(player.getLogin(), player);
         } catch(RemoteException e) {

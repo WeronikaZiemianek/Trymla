@@ -1,5 +1,5 @@
 package checkers.client;
-import checkers.server.Player;
+import checkers.server.RemotePlayer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class ConnectionTest {
     @Test
     public void testCreatePlayerLogin() throws RemoteException {
         clientConnection.addPlayer("login");
-        Player player = clientConnection.getPlayer();
+        RemotePlayer player = clientConnection.getPlayer();
         assertEquals("login", player.getLogin());
     }
 }
