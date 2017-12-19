@@ -33,15 +33,15 @@ public class RegularRulesManager implements RulesManager {
 
 
             if(diff == 2) {
-                return checkWin()? 3 : 1;
+                return 1;
             }
             else if(diff == 4)
             {
-                game.getTurn().playerJumped();
-                return checkWin()? 3 : 2;
+               // game.getTurn().playerJumped();
+                return 1;
             }
 
-            game.getTurn().jumpReset();
+           // game.getTurn().jumpReset();
             return 0;
     }
 
