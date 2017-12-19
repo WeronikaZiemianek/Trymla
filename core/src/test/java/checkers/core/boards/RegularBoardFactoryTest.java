@@ -1,4 +1,7 @@
-package checkers.server.boards;
+package checkers.core.boards;
+import checkers.core.boards.Board;
+import checkers.core.boards.RegularBoardFactory;
+import checkers.core.boards.WrongNumberOfSetsException;
 import org.junit.Before;
 import org.junit.Test;
 

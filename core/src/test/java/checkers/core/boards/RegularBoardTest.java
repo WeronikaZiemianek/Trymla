@@ -1,7 +1,10 @@
-package checkers.server.boards;
+package checkers.core.boards;
 
-import checkers.server.Checker;
-import checkers.server.Coordinates;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
+import checkers.core.boards.Board;
+import checkers.core.boards.RegularBoardFactory;
+import checkers.core.boards.WrongMoveException;
 import org.junit.Before;
 import org.junit.Test;
 

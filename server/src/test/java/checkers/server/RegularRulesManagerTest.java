@@ -1,7 +1,9 @@
 package checkers.server;
 
-import checkers.server.boards.RegularBoard;
-import checkers.server.boards.RegularBoardFactory;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
+import checkers.core.boards.RegularBoard;
+import checkers.core.boards.RegularBoardFactory;
 import org.junit.Before;
 import org.junit.Test;
 

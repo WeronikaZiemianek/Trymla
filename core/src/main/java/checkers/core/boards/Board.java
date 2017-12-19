@@ -1,7 +1,7 @@
-package checkers.server.boards;
+package checkers.core.boards;
 
-import checkers.server.Checker;
-import checkers.server.Coordinates;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
 
 public interface Board {
     Checker getFieldOccupiedBy(Coordinates location);

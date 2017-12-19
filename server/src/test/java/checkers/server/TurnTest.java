@@ -1,13 +1,10 @@
 package checkers.server;
 
-import checkers.server.boards.RegularBoard;
-import checkers.server.boards.RegularBoardFactory;
-import org.junit.Before;
+import checkers.core.Coordinates;
 import org.junit.Test;
 
 import java.rmi.RemoteException;
 
-import static checkers.server.Checker.GREEN;
 import static org.junit.Assert.assertEquals;
 
 public class TurnTest {

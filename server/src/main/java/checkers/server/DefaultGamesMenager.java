@@ -1,5 +1,8 @@
 package checkers.server;
 
+import checkers.core.PlayerFactory;
+import checkers.core.RemotePlayer;
+
 import java.rmi.RemoteException;
 
 public class DefaultGamesMenager implements GamesMenager {

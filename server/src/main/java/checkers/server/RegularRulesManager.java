@@ -1,5 +1,8 @@
 package checkers.server;
 
+import checkers.core.Checker;
+import checkers.core.Coordinates;
+
 public class RegularRulesManager implements RulesManager {
     private Game game;
 

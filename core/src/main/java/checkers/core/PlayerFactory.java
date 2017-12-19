@@ -1,4 +1,4 @@
-package checkers.server;
+package checkers.core;
 
 import java.rmi.RemoteException;
 

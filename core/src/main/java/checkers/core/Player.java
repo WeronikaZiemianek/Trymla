@@ -1,4 +1,4 @@
-package checkers.server;
+package checkers.core;
 
 public interface Player {
     Checker getColor();

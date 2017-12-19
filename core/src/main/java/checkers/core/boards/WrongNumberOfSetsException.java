@@ -1,4 +1,4 @@
-package checkers.server.boards;
+package checkers.core.boards;
 
 public class WrongNumberOfSetsException extends RuntimeException {
 }

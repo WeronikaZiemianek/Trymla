@@ -1,6 +1,6 @@
-package checkers.server;
+package checkers.core;
 
-import checkers.server.boards.Board;
+import checkers.core.boards.Board;
 
 public class DefaultBot {
 

@@ -1,10 +1,10 @@
-package checkers.server;
+package checkers.core;
 
-import checkers.server.boards.Board;
+import checkers.core.boards.Board;
 
 import java.rmi.RemoteException;
 
-public interface Player extends java.rmi.Remote {
+public interface RemotePlayer extends java.rmi.Remote {
     boolean isMyTurn = false;
     Board board = null;
     Checker color = Checker.EMPTY;

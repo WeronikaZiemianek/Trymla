@@ -1,7 +1,7 @@
 package checkers.server;
 
-import checkers.server.Checker;
-import checkers.server.Coordinates;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
 
 public interface Game {
     Checker getOccupiedByType(Coordinates location);

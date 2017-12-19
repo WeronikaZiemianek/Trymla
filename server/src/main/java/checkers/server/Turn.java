@@ -1,5 +1,8 @@
 package checkers.server;
 
+import checkers.core.Coordinates;
+import checkers.core.Player;
+
 class Turn {
     private Player player;
     private Coordinates currMov;

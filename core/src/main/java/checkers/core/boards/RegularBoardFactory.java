@@ -1,7 +1,7 @@
-package checkers.server.boards;
+package checkers.core.boards;
 
-import checkers.server.Checker;
-import checkers.server.Field;
+import checkers.core.Checker;
+import checkers.core.Field;
 
 public class RegularBoardFactory implements BoardFactory {
     //0-type, 1-column, 2-row, 3-limit

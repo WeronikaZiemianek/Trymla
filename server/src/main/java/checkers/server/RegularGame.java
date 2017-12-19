@@ -1,6 +1,9 @@
 package checkers.server;
 
-import checkers.server.boards.Board;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
+import checkers.core.Player;
+import checkers.core.boards.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

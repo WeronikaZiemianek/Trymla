@@ -1,6 +1,10 @@
 package checkers.server;
 
-import checkers.server.boards.Board;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
+import checkers.core.Player;
+import checkers.core.RemotePlayer;
+import checkers.core.boards.Board;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
