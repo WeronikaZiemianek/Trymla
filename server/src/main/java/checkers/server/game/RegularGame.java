@@ -25,8 +25,8 @@ public class RegularGame implements Game {
     private Turn turn;
 
     public RegularGame(Board board) throws RemoteException {
-        players = new ArrayList<Player>();
-        playersInHome = new ArrayList<Integer>();
+        players = new ArrayList<>();
+        playersInHome = new ArrayList<>();
         this.numOfPlayers = 0;
         this.board = board;
         state = GameState.OPEN;
@@ -56,10 +56,16 @@ public class RegularGame implements Game {
     @Override
     public void endMove() {
         turnPlayer++;
-        if(numOfPlayers < turnPlayer)
+        if(numOfPlayers <= turnPlayer)
             turnPlayer = 0;
         turn = new Turn(players.get(turnPlayer));
         updatePlayers();
+    }
+
+    @Override
+    public void addPlayer(Player player) {
+        numOfPlayers++;
+        players.add(player);
     }
 
     private void updatePlayers() {
@@ -89,5 +95,4 @@ public class RegularGame implements Game {
     public Checker getFieldType (Coordinates location) {
         return board.getFieldType(location);
     }
-
 }

@@ -27,11 +27,11 @@ public class RegularBoard implements Board {
         Checker curr = board[currLocation.X()][currLocation.Y()].getOccupiedBy();
         Checker dest = board[destination.X()][destination.Y()].getOccupiedBy();
 
-        if(curr.equals(Checker.EMPTY) || !(dest.equals(Checker.EMPTY))) {
+        if(!curr.equals(Checker.EMPTY) || (dest.equals(Checker.EMPTY))) {
             throw new WrongMoveException();
         }
         board[destination.X()][destination.Y()].setOccupiedBy(curr);
-        board[currLocation.X()][currLocation.Y()].setOccupiedBy(Checker.EMPTY);
+        board[currLocation.X()][currLocation.Y()].setOccupiedBy(dest);
 
     }
     @Override
