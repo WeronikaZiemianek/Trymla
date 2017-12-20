@@ -2,7 +2,6 @@ package checkers.server;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.Player;
 import checkers.core.boards.RegularBoard;
 import checkers.core.boards.RegularBoardFactory;
 import checkers.server.game.DefaultGamesManager;
@@ -46,8 +45,9 @@ public class RegularRulesManagerTest {
 
     @Test
     public void testJumpCheckMove() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer( gamesManager, "player", Checker.EMPTY);
-        turn = new Turn(player);
+        DefaultPlayer player = new DefaultPlayer( gamesManager, "player", Checker.YELLOW);
+        regularGame.addPlayer(player);
+        regularGame.endMove();
         assertEquals(1, regularRulesManager.checkMove(regularGame,new Coordinates(8,4), new Coordinates(4,4), Checker.YELLOW));
     }
 
@@ -59,10 +59,7 @@ public class RegularRulesManagerTest {
 
     @Test
     public void testEscapeFromHouse() throws RemoteException {
-        Player Janusz = new DefaultPlayer(gamesManager,"Janusz", Checker.RED);
-        regularGame.addPlayer(Janusz);
-        regularGame.makeMove(new Coordinates(11,13),new Coordinates(10,12),Janusz);
-        regularGame.endMove();
+
     }
 
     @Test
