@@ -1,13 +1,11 @@
 package checkers.server;
 
+import checkers.server.game.DefaultGamesMenager;
+import checkers.server.game.GamesMenager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
 public class Server {
     static Logger logger = LoggerFactory.getLogger(Server.class);

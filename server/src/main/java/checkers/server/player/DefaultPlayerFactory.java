@@ -13,7 +13,7 @@ public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerF
     private GamesMenager menager;
     private ArrayList<DefaultPlayer> players;
 
-    DefaultPlayerFactory(GamesMenager menager) throws RemoteException {
+    public DefaultPlayerFactory(GamesMenager menager) throws RemoteException {
         players = new ArrayList<>();
         this.menager = menager;
     }

@@ -1,15 +1,17 @@
-package checkers.server;
+package checkers.server.game;
 
 import checkers.core.PlayerFactory;
 import checkers.core.RemotePlayer;
+import checkers.server.player.DefaultPlayerFactory;
 
 import java.rmi.RemoteException;
+import java.sql.Connection;
 
-public class DefaultGamesMenager implements GamesMenager {
+public class DefaultGamesMenager implements GamesMenager{
     private PlayerFactory factory;
     private Connection connection;
 
-    DefaultGamesMenager() {
+    public DefaultGamesMenager(){
         try {
             factory = new DefaultPlayerFactory(this);
         } catch(RemoteException e) {
@@ -20,12 +22,9 @@ public class DefaultGamesMenager implements GamesMenager {
 
     @Override
     public void addPlayer(RemotePlayer player) {
-       connection.putPlayer(player);
+        connection.putPlayer(player);
     }
 
-    //  @Override
-  //  public void sayHello() throws RemoteException { System.out.println("Hello world");}
-
-
-
+    // @Override
+    // public void sayHe;;p() throws RemoteException { System.out.println("Hello world");}
 }

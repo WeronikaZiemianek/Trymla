@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-class Connection {
+public class Connection {
     private Registry registry;
     private Logger logger;
 
