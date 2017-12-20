@@ -30,7 +30,7 @@ public class RegularRulesManagerTest {
         board = factory.createNewBoard(6);
         regularRulesManager = new RegularRulesManager(board);
         gamesManager = new DefaultGamesManager();
-        regularGame = new RegularGame( board, gamesManager);
+        regularGame = new RegularGame( board);
     }
 
     @Test

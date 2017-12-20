@@ -19,18 +19,16 @@ public class RegularGame implements Game {
     private int turnPlayer;
     private RegularRulesManager rulesManager;
     private Board board;
-    private GamesManager gamesManager;
     private GameState state;
     private Logger logger;
 
     private Turn turn;
 
-    public RegularGame(Board board, GamesManager gamesManager) throws RemoteException {
+    public RegularGame(Board board) throws RemoteException {
         players = new ArrayList<Player>();
         playersInHome = new ArrayList<Integer>();
         this.numOfPlayers = 0;
         this.board = board;
-        this.gamesManager = gamesManager;
         state = GameState.OPEN;
         logger = LoggerFactory.getLogger(RegularGame.class);
         turnPlayer = 0;
