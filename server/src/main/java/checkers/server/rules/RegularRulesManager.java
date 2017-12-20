@@ -9,7 +9,7 @@ public class RegularRulesManager implements RulesManager {
     private Game game;
     private RegularBoard board;
 
-    RegularRulesManager(Game game, RegularBoard board) {
+    public RegularRulesManager(Game game, RegularBoard board) {
         this.game = game;
         this.board = board;
     }

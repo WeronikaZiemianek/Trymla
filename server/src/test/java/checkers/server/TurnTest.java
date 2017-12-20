@@ -1,6 +1,8 @@
 package checkers.server;
 
 import checkers.core.Coordinates;
+import checkers.server.game.Turn;
+import checkers.server.player.DefaultPlayer;
 import org.junit.Test;
 
 import java.rmi.RemoteException;

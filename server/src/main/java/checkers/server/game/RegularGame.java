@@ -24,7 +24,7 @@ public class RegularGame implements Game {
 
     private Turn turn;
 
-    RegularGame(int numOfPlayers, Board board) {
+    public RegularGame(int numOfPlayers, Board board) {
         this.board = board;
         this.numOfPlayers = numOfPlayers;
         state = GameState.OPEN;

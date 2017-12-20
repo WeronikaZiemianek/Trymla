@@ -8,7 +8,7 @@ public class Turn {
     private Coordinates currMov;
     private boolean jumped;
 
-    Turn(Player player) {
+    public Turn(Player player) {
         this.player = player;
         currMov = null;
         jumped = false;

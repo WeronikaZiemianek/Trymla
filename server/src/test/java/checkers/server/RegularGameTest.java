@@ -5,6 +5,9 @@ import checkers.core.Coordinates;
 import checkers.core.Player;
 import checkers.core.boards.Board;
 import checkers.core.boards.RegularBoardFactory;
+import checkers.server.game.RegularGame;
+import checkers.server.game.Turn;
+import checkers.server.player.DefaultPlayer;
 import org.junit.Before;
 import org.junit.Test;
 

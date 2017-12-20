@@ -19,7 +19,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     private GamesMenager gamesManager;
     private String login;
 
-    DefaultPlayer(GamesMenager gamesManager, String login) throws RemoteException {
+    public DefaultPlayer(GamesMenager gamesManager, String login) throws RemoteException {
         this.gamesManager = gamesManager;
         this.login = login;
     }
