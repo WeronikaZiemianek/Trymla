@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegularGame implements Game {
@@ -18,22 +19,27 @@ public class RegularGame implements Game {
     private int turnPlayer;
     private RegularRulesManager rulesManager;
     private Board board;
-    private GamesMenager gamesManager;
+    private GamesManager gamesManager;
     private GameState state;
     private Logger logger;
 
     private Turn turn;
 
-    public RegularGame(int numOfPlayers, Board board) {
+    public RegularGame(Board board, GamesManager gamesManager) throws RemoteException {
+        players = new ArrayList<Player>();
+        playersInHome = new ArrayList<Integer>();
+        this.numOfPlayers = 0;
         this.board = board;
-        this.numOfPlayers = numOfPlayers;
+        this.gamesManager = gamesManager;
         state = GameState.OPEN;
         logger = LoggerFactory.getLogger(RegularGame.class);
+        turnPlayer = 0;
+        rulesManager = new RegularRulesManager(board);
     }
 
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player) throws RemoteException {
         if(player == turn.getPlayer()) {
-            int validationOfMove = rulesManager.checkMove(destination, currLocation, player.getColor());
+            int validationOfMove = rulesManager.checkMove(this ,destination, currLocation, player.getColor());
             if(validationOfMove == 1 || validationOfMove == 2 ) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
@@ -45,7 +51,6 @@ public class RegularGame implements Game {
                     if(playersInHome.get(index) == 10){
                         //Player win
                     }
-
                 }
             }
         }
@@ -53,7 +58,6 @@ public class RegularGame implements Game {
     @Override
     public void endMove() {
         turnPlayer++;
-
         if(numOfPlayers < turnPlayer)
             turnPlayer = 0;
         turn = new Turn(players.get(turnPlayer));

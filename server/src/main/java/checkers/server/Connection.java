@@ -13,7 +13,7 @@ public class Connection {
     private Registry registry;
     private Logger logger;
 
-    Connection(PlayerFactory factory) {
+    public Connection(PlayerFactory factory) {
         logger = LoggerFactory.getLogger(Connection.class);
         try {
             registry = LocateRegistry.createRegistry(1099);

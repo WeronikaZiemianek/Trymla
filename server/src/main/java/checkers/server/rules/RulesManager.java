@@ -2,7 +2,8 @@ package checkers.server.rules;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
+import checkers.server.game.Game;
 
 public interface RulesManager {
-    int checkMove(Coordinates destination, Coordinates currLocation, Checker checker);
+    int checkMove(Game game, Coordinates destination, Coordinates currLocation, Checker checker);
 }

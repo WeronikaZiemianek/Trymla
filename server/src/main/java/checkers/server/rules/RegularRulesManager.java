@@ -2,34 +2,32 @@ package checkers.server.rules;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.boards.RegularBoard;
+import checkers.core.boards.Board;
 import checkers.server.game.Game;
 
 public class RegularRulesManager implements RulesManager {
-    private Game game;
-    private RegularBoard board;
+    private Board board;
 
-    public RegularRulesManager(Game game, RegularBoard board) {
-        this.game = game;
+    public RegularRulesManager(Board board) {
         this.board = board;
     }
 
-    private Boolean checkChecker(Checker checker, Coordinates currLocation){
+    private Boolean checkChecker(Game game,Checker checker, Coordinates currLocation){
         Checker color = game.getOccupiedByType(currLocation);
         return (color.equals(checker));
     }
-    private Boolean checkIfEscapesFromTriangle(Coordinates destination, Coordinates currLocation, Checker checker) {
+    private Boolean checkIfEscapesFromTriangle(Game game,Coordinates destination, Coordinates currLocation, Checker checker) {
         return (game.getFieldType(currLocation) == checker && game.getFieldType(destination) != checker);
     }
 
     @Override
-    public int checkMove(Coordinates destination, Coordinates currLocation, Checker checker){
+    public int checkMove(Game game,Coordinates destination, Coordinates currLocation, Checker checker){
 
-        if(!checkChecker(checker, currLocation)) {
+        if(!checkChecker(game, checker, currLocation)) {
             return  0;
         }
 
-        if(checkIfEscapesFromTriangle(destination, currLocation, checker)) {
+        if(checkIfEscapesFromTriangle(game, destination, currLocation, checker)) {
             return 0;
         }
 
@@ -42,7 +40,7 @@ public class RegularRulesManager implements RulesManager {
             else if(diff == 4)
             {
 
-              //  game.getTurn().playerJumped();
+                game.getTurn().playerJumped();
                 System.out.print("4");
                 return 1;
             }

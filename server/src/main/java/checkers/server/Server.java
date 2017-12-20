@@ -1,7 +1,7 @@
 package checkers.server;
 
-import checkers.server.game.DefaultGamesMenager;
-import checkers.server.game.GamesMenager;
+import checkers.server.game.DefaultGamesManager;
+import checkers.server.game.GamesManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +11,7 @@ public class Server {
     static Logger logger = LoggerFactory.getLogger(Server.class);
 
     private Server() throws RemoteException {
-        GamesMenager gamesMenager = new DefaultGamesMenager();
+        GamesManager gamesMenager = new DefaultGamesManager();
     }
 
     public static void main(String [ ] args) throws InterruptedException, RemoteException {

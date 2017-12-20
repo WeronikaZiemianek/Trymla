@@ -3,15 +3,15 @@ package checkers.server.game;
 import checkers.core.PlayerFactory;
 import checkers.core.RemotePlayer;
 import checkers.server.player.DefaultPlayerFactory;
+import checkers.server.Connection;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
 
-public class DefaultGamesMenager implements GamesMenager{
+public class DefaultGamesManager implements GamesManager {
     private PlayerFactory factory;
     private Connection connection;
 
-    public DefaultGamesMenager(){
+    public DefaultGamesManager(){
         try {
             factory = new DefaultPlayerFactory(this);
         } catch(RemoteException e) {

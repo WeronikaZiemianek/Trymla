@@ -5,6 +5,7 @@ import checkers.core.Coordinates;
 import checkers.core.Player;
 import checkers.core.boards.Board;
 import checkers.core.boards.RegularBoardFactory;
+import checkers.server.game.DefaultGamesManager;
 import checkers.server.game.RegularGame;
 import checkers.server.game.Turn;
 import checkers.server.player.DefaultPlayer;
@@ -20,12 +21,14 @@ public class RegularGameTest
     private RegularGame regularGame;
     private RegularBoardFactory factory;
     private Board board;
+    private DefaultGamesManager gamesManager;
 
     @Before
-    public void createGame() {
+    public void createGame() throws RemoteException {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
-        regularGame = new RegularGame(6, board);
+        gamesManager = new DefaultGamesManager();
+        regularGame = new RegularGame( board, gamesManager);
     }
 
     @Test
