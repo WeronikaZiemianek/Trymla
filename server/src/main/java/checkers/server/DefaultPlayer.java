@@ -37,7 +37,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     }
 
-    void endMove() throws RemoteException {
+    public void endMove() throws RemoteException {
     }
 
     public void setGame(Game game) {

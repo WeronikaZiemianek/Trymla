@@ -2,12 +2,15 @@ package checkers.server;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
+import checkers.core.boards.RegularBoard;
 
 public class RegularRulesManager implements RulesManager {
     private Game game;
+    private RegularBoard board;
 
-    RegularRulesManager(Game game) {
+    RegularRulesManager(Game game, RegularBoard board) {
         this.game = game;
+        this.board = board;
     }
 
     private Boolean checkChecker(Checker checker, Coordinates currLocation){
@@ -37,11 +40,13 @@ public class RegularRulesManager implements RulesManager {
             }
             else if(diff == 4)
             {
-               // game.getTurn().playerJumped();
+
+              //  game.getTurn().playerJumped();
+                System.out.print("4");
                 return 1;
             }
 
-           // game.getTurn().jumpReset();
+            game.getTurn().jumpReset();
             return 0;
     }
 

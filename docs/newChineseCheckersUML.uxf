@@ -207,12 +207,17 @@ bg=blue</panel_attributes>
     <panel_attributes>Package::server
 RulesManager
 --
-
+-game: Game
+-board: Board
 --
--checkChecker(player : Player) : Boolean
--checkMove(estionation : Cordinates,
-currLocation : Cordinates) : Boolean
-
+-checkChecker(player : Player, currLocation : Cordinates) : Boolean
+-checkIfEscapeFromTriange (destionation : Cordinates,
+	currLocation : Cordinates,
+	checker: Checker)
++checkMove(destionation : Cordinates,
+	currLocation : Cordinates,
+	checker: Checker)
+- checkWin(): boolean
 bg=green
 </panel_attributes>
     <additional_attributes/>
@@ -243,14 +248,22 @@ RegularGame
 -board :Board
 -gamesManager : GamesManager
 -players: List&lt;Player&gt;
+-numOfPlayers: int
+-turnPlayer: int
 -state : GameState
 -turn : Turn
 -turnPlayer : int
+-rulesManager: RulesManager
+-state: GameState
+-logger: Logger
 --
 +makeMove(destionation : Cordinates,
-currLocation : Cordinates, Checker set)
-+endTurn();
-getTrun() : turn;
+currLocation : Cordinates, Checker set): void
++endMove(): void;
++getTrun() : turn;
++getCurrMov(): Coordinates
++getOccupiedByType(location: Coordinates)
++getFieldType(location: Coordinates
 --
 connects all the components of a game
 
@@ -271,6 +284,13 @@ Package::server
 Game
 --
 --
+getOccupiedByType(location: Coordinates)
+	: Checker
+getFieldType(location: Coordinates)
+	: Checker
+getCurrMov(): Coordinates
+getTurn(): Turn
+endMove(): void
 bg=green
 </panel_attributes>
     <additional_attributes/>
@@ -351,7 +371,7 @@ bg=green
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Package::server
-RegularRulesManager
+RulesManager
 --
 --
 +makeMove(destionation : Cordinates,
@@ -375,6 +395,7 @@ Package::server
 IGamesManager
 --
 --
+addPlayer(player: RemotePlayer)
 bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
@@ -419,10 +440,10 @@ bg=blue</panel_attributes>
       <x>855</x>
       <y>864</y>
       <w>144</w>
-      <h>234</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>140.0;10.0;140.0;40.0;10.0;40.0;10.0;240.0</additional_attributes>
+    <additional_attributes>140.0;10.0;140.0;40.0;10.0;40.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -430,10 +451,10 @@ bg=blue</panel_attributes>
       <x>972</x>
       <y>864</y>
       <w>180</w>
-      <h>234</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;180.0;40.0;180.0;240.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;180.0;40.0;180.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -553,23 +574,37 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1035</x>
-      <y>1080</y>
+      <y>963</y>
       <w>189</w>
-      <h>135</h>
+      <h>252</h>
     </coordinates>
     <panel_attributes>Package::server
-RegularPlayer
+DefaultPlayer
 --
-</panel_attributes>
+-isMyTurn: boolean
+-board: Board
+-color:Checker
+-game: Game
+-gamesManager: GamesManager
+-login: String
+--
++getColor():Checker
++upgate(): void
++makeMove:void
++endMove(): void
++setBoard():void
++setGame():void
++setMyTurn():void
++getLogin: String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>774</x>
-      <y>1080</y>
+      <y>963</y>
       <w>189</w>
-      <h>135</h>
+      <h>252</h>
     </coordinates>
     <panel_attributes>Package::bot
 DefaultBot
@@ -819,12 +854,12 @@ View
     <id>Relation</id>
     <coordinates>
       <x>423</x>
-      <y>360</y>
-      <w>243</w>
-      <h>207</h>
+      <y>495</y>
+      <w>63</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>250.0;10.0;250.0;70.0;10.0;70.0;10.0;210.0</additional_attributes>
+    <additional_attributes>50.0;10.0;50.0;20.0;10.0;20.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -849,7 +884,7 @@ bg=green</panel_attributes>
       <x>27</x>
       <y>549</y>
       <w>270</w>
-      <h>144</h>
+      <h>162</h>
     </coordinates>
     <panel_attributes>Package::core.boards
 RegularBoardFactory
@@ -940,16 +975,16 @@ bg=green
     <panel_attributes>Package::server
 Trun
 --
-player : Player
-currMov : Coordinate
-jumped : boolean
+-player : Player
+-currMov : Coordinate
+-jumped : boolean
 --
-getCurrMov(): Coordinate
-setCurrMov(Coordiante currMov)
-getPlayer():Player
-playerJumped()
-jumpReset()
-
++getCurrMov(): Coordinate
++setCurrMov(Coordiante currMov)
++getPlayer():Player
++playerJumped()
++jumpReset()
++getJumped(): boolean
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -965,5 +1000,35 @@ bg=green</panel_attributes>
     <panel_attributes>lt=-&gt;
 </panel_attributes>
     <additional_attributes>190.0;10.0;90.0;90.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>351</x>
+      <y>405</y>
+      <w>243</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Package::server
+DefaultGameManager
+--
+-factory
+-connection
+--
++addPlayer(): void
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>477</x>
+      <y>360</y>
+      <w>198</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;180.0;50.0;80.0;20.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
