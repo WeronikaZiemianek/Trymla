@@ -41,6 +41,4 @@ public class DefaultGamesManager implements GamesManager {
         connection.putPlayer(player);
     }
 
-    // @Override
-    // public void sayHe;;p() throws RemoteException { System.out.println("Hello world");}
 }

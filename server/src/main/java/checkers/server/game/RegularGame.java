@@ -34,21 +34,25 @@ public class RegularGame implements Game {
         rulesManager = new RegularRulesManager(board);
     }
 
+    private void countHome(Coordinates destination, Coordinates currLocation, Player player) {
+        if((board.getFieldType(currLocation) != player.getColor() && board.getFieldType(destination) == player.getColor())) {
+            int index = players.indexOf(player);
+            int buf = playersInHome.get(index);
+            buf++;
+            playersInHome.set(index,buf);
+            if(playersInHome.get(index) == 10) {
+                state = GameState.CLOSED;
+            }
+        }
+    }
+
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player) throws RemoteException {
         if(player == turn.getPlayer()) {
-            int validationOfMove = rulesManager.checkMove(this ,destination, currLocation, player.getColor());
-            if(validationOfMove == 1 || validationOfMove == 2 ) {
+            boolean validationOfMove = rulesManager.checkMove(this ,destination, currLocation, player.getColor());
+            if(validationOfMove) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
-                if((board.getFieldType(currLocation) != player.getColor() && board.getFieldType(destination) == player.getColor())) {
-                    int index = players.indexOf(player);
-                    int buf = playersInHome.get(index);
-                    buf++;
-                    playersInHome.set(index,buf);
-                    if(playersInHome.get(index) == 10){
-                        //Player win
-                    }
-                }
+                countHome(destination, currLocation, player);
             }
         }
     }
@@ -65,6 +69,7 @@ public class RegularGame implements Game {
     public void addPlayer(Player player) {
         numOfPlayers++;
         players.add(player);
+        turn = new Turn(players.get(turnPlayer));
     }
 
     private void updatePlayers() {
@@ -81,8 +86,13 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public Turn getTurn() {
-        return turn;
+    public void setCurrMov(Coordinates player) {
+         turn.setCurrMov(player);
+    }
+
+    @Override
+    public Player getTurn() {
+        return turn.getPlayer();
     }
 
 }

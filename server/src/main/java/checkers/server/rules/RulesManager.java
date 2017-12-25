@@ -5,5 +5,5 @@ import checkers.core.Coordinates;
 import checkers.server.game.Game;
 
 public interface RulesManager {
-    int checkMove(Game game, Coordinates destination, Coordinates currLocation, Checker checker);
+    boolean checkMove(Game game, Coordinates destination, Coordinates currLocation, Checker checker);
 }

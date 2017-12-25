@@ -41,12 +41,6 @@ public class RegularGameTest
         assertEquals(Checker.RED, board.getFieldOccupiedBy(new Coordinates(10,12)));
     }
 
-    @Test
-    public void testGetTurn() throws RemoteException {
-        Player player = new DefaultPlayer(null, "login", Checker.EMPTY);
-        Turn turn = new Turn(player);
-        assertEquals(null, regularGame.getTurn());
-    }
 
     @Test
     public void testEndMove() {

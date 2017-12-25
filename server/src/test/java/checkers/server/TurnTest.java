@@ -37,21 +37,4 @@ public class TurnTest {
         assertEquals(new Coordinates(12,0).Y(), turn.getCurrMov().Y());
     }
 
-    @Test
-    public void testPlayerJumped() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer(null, "login", Checker.EMPTY);
-        Turn turn = new Turn(player);
-        turn.playerJumped();
-        assertEquals(true, turn.getJumped());
-    }
-
-    @Test
-    public void testJumpReset() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer(null, "login", Checker.EMPTY);
-        Turn turn = new Turn(player);
-        turn.playerJumped();
-        assertEquals(true, turn.getJumped());
-        turn.jumpReset();
-        assertEquals(false, turn.getJumped());
-    }
 }

@@ -21,38 +21,36 @@ public class RegularRulesManager implements RulesManager {
     }
 
     @Override
-    public int checkMove(Game game,Coordinates destination, Coordinates currLocation, Checker checker){
+    public boolean checkMove(Game game,Coordinates destination, Coordinates currLocation, Checker checker){
 
         if(!checkChecker(checker, currLocation)) {
-            return  0;
+            return  false;
         }
 
         if(checkIfEscapesFromTriangle(destination, currLocation, checker)) {
-            return 0;
+            return false;
+        }
+
+        if(game.getCurrMov() != null && game.getCurrMov() != currLocation) {
+            return false;
         }
 
         int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());
 
-
-            if(diff == 2) {
-                return 1;
+        if(diff == 2) {
+            if(game.getCurrMov() == null) {
+                game.endMove();
+                return true;
+            } else {
+                return false;
             }
-            else if(diff == 4)
-            {
-
-                game.getTurn().playerJumped();
-                System.out.print("4");
-                return 1;
-            }
-
-            game.getTurn().jumpReset();
-            return 0;
-    }
-
-    private boolean checkWin(){
-
-
+        }
+        else if(diff == 4)
+        {
+            return true;
+        }
         return false;
     }
+
 
 }
