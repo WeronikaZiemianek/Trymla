@@ -24,7 +24,7 @@ public class RegularGame implements Game {
 
     private Turn turn;
 
-    public RegularGame(Board board) throws RemoteException {
+    public RegularGame(Board board) {
         players = new ArrayList<>();
         playersInHome = new ArrayList<>();
         this.numOfPlayers = 0;

@@ -2,6 +2,8 @@ package checkers.server.game;
 
 import checkers.core.PlayerFactory;
 import checkers.core.RemotePlayer;
+import checkers.core.boards.BoardFactory;
+import checkers.core.boards.RegularBoardFactory;
 import checkers.server.player.DefaultPlayerFactory;
 import checkers.server.Connection;
 import org.slf4j.Logger;
@@ -12,18 +14,26 @@ import java.rmi.RemoteException;
 public class DefaultGamesManager implements GamesManager {
     static Logger logger = LoggerFactory.getLogger(DefaultGamesManager.class);
 
-    private PlayerFactory factory;
+    private PlayerFactory playerFactory;
     private Connection connection;
+    private BoardFactory boardFactory;
+    private Game game;
+
 
     public DefaultGamesManager(){
         logger.debug("Creating player factory");
         try {
-            factory = new DefaultPlayerFactory(this);
+            playerFactory = new DefaultPlayerFactory(this);
         } catch(RemoteException e) {
             e.printStackTrace();
         }
         logger.debug("Connecting to factory");
-        connection = new Connection(factory);
+        connection = new Connection(playerFactory);
+
+        // To zamknąć i obsługiwac w UI
+        boardFactory = new RegularBoardFactory();
+        game = new RegularGame(boardFactory.createNewBoard(6));
+
     }
 
     @Override
