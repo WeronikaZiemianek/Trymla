@@ -1,5 +1,6 @@
 package checkers.server.player;
 
+import checkers.core.Checker;
 import checkers.core.PlayerFactory;
 import checkers.core.RemotePlayer;
 import checkers.server.game.GamesManager;
@@ -25,7 +26,7 @@ public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerF
                 return false;
             }
         }
-        DefaultPlayer player = new DefaultPlayer(menager, login);
+        DefaultPlayer player = new DefaultPlayer(menager, login, Checker.RED);
         players.add(player);
         menager.addPlayer(player);
         return true;

@@ -25,19 +25,19 @@ public class RegularRulesManagerTest {
     private DefaultGamesManager gamesManager;
 
     @Before
-    public void createGame() {
+    public void createGame() throws RemoteException {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
-        regularGame = new RegularGame(6, board);
-        regularRulesManager = new RegularRulesManager(regularGame, board);
+        regularRulesManager = new RegularRulesManager(board);
         gamesManager = new DefaultGamesManager();
+        regularGame = new RegularGame( board);
     }
 
     @Test
     public void testMoveCheckMove() {
         System.out.print(regularGame.getFieldType(new Coordinates(11,3)));
-        assertEquals(1, regularRulesManager.checkMove(new Coordinates(12,4), new Coordinates(11,3), Checker.GREEN));
-    }
+        assertEquals(1, regularRulesManager.checkMove(regularGame,new Coordinates(12,4), new Coordinates(11,3), Checker.GREEN));
+}
 
     @Test
     public void test4MovesCheckMove() {
@@ -45,9 +45,10 @@ public class RegularRulesManagerTest {
 
     @Test
     public void testJumpCheckMove() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
-        turn = new Turn(player);
-        assertEquals(1, regularRulesManager.checkMove(new Coordinates(8,4), new Coordinates(4,4), Checker.YELLOW));
+        DefaultPlayer player = new DefaultPlayer( gamesManager, "player", Checker.YELLOW);
+        regularGame.addPlayer(player);
+        regularGame.endMove();
+        assertEquals(1, regularRulesManager.checkMove(regularGame,new Coordinates(8,4), new Coordinates(4,4), Checker.YELLOW));
     }
 
     @Test
@@ -57,7 +58,8 @@ public class RegularRulesManagerTest {
 
 
     @Test
-    public void testEscapeFromHouse() {
+    public void testEscapeFromHouse() throws RemoteException {
+
     }
 
     @Test

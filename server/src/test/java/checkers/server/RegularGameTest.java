@@ -5,6 +5,7 @@ import checkers.core.Coordinates;
 import checkers.core.Player;
 import checkers.core.boards.Board;
 import checkers.core.boards.RegularBoardFactory;
+import checkers.server.game.DefaultGamesManager;
 import checkers.server.game.RegularGame;
 import checkers.server.game.Turn;
 import checkers.server.player.DefaultPlayer;
@@ -20,19 +21,24 @@ public class RegularGameTest
     private RegularGame regularGame;
     private RegularBoardFactory factory;
     private Board board;
+    private DefaultGamesManager gamesManager;
 
     @Before
-    public void createGame() {
+    public void createGame() throws RemoteException {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
-        regularGame = new RegularGame(6, board);
+        regularGame = new RegularGame( board);
     }
 
     @Test
-    public void testMakeMove() {
-        board.makeMove(new Coordinates(12,0), new Coordinates(6, 6));
-        assertEquals(Checker.EMPTY, board.getFieldOccupiedBy(new Coordinates(12,0)));
-        assertEquals(Checker.GREEN, board.getFieldOccupiedBy(new Coordinates(6,6)));
+    public void testMakeMove() throws RemoteException {
+        Player Janusz = new DefaultPlayer(gamesManager,"Janusz",Checker.RED);
+        regularGame.addPlayer(Janusz);
+        regularGame.endMove();
+        regularGame.makeMove(new Coordinates(10,12),new Coordinates(9,13),Janusz);
+
+        assertEquals(Checker.EMPTY, board.getFieldOccupiedBy(new Coordinates(9,13)));
+        assertEquals(Checker.RED, board.getFieldOccupiedBy(new Coordinates(10,12)));
     }
 
     @Test
@@ -49,7 +55,7 @@ public class RegularGameTest
 
     @Test
     public void testGetTurn() throws RemoteException {
-        Player player = new DefaultPlayer(null, "login");
+        Player player = new DefaultPlayer(null, "login", Checker.EMPTY);
         Turn turn = new Turn(player);
         assertEquals(null, regularGame.getTurn());
     }
