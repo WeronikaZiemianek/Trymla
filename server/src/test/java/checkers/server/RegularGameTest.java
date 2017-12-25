@@ -42,18 +42,6 @@ public class RegularGameTest
     }
 
     @Test
-    public void testGetOccupiedBy() {
-        assertEquals(board.getFieldOccupiedBy(new Coordinates(12,0)), regularGame.getOccupiedByType(new Coordinates(12,0)));
-    }
-
-    @Test
-    public void testGetFieldType() {
-        Checker color = regularGame.getFieldType(new Coordinates(12,0));
-        assertEquals(color,Checker.RED);
-    }
-
-
-    @Test
     public void testGetTurn() throws RemoteException {
         Player player = new DefaultPlayer(null, "login", Checker.EMPTY);
         Turn turn = new Turn(player);

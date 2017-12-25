@@ -20,14 +20,14 @@ public class RegularBoard implements Board {
 
     }
     @Override
-    public void makeMove(Coordinates currLocation, Coordinates destination) throws WrongMoveException {
+    public void makeMove(Coordinates destination, Coordinates currLocation) throws WrongMoveException {
         if(board[currLocation.X()][currLocation.Y()] == null || board[destination.X()][destination.Y()] == null) {
             throw new WrongMoveException();
         }
         Checker curr = board[currLocation.X()][currLocation.Y()].getOccupiedBy();
         Checker dest = board[destination.X()][destination.Y()].getOccupiedBy();
 
-        if(!curr.equals(Checker.EMPTY) || (dest.equals(Checker.EMPTY))) {
+        if(curr.equals(Checker.EMPTY) || !(dest.equals(Checker.EMPTY))) {
             throw new WrongMoveException();
         }
         board[destination.X()][destination.Y()].setOccupiedBy(curr);

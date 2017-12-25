@@ -1,6 +1,5 @@
 package checkers.server.game;
 
-import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.Player;
 import checkers.core.boards.Board;
@@ -41,7 +40,7 @@ public class RegularGame implements Game {
             if(validationOfMove == 1 || validationOfMove == 2 ) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
-                if((getFieldType(currLocation) != player.getColor() && getFieldType(destination) == player.getColor())) {
+                if((board.getFieldType(currLocation) != player.getColor() && board.getFieldType(destination) == player.getColor())) {
                     int index = players.indexOf(player);
                     int buf = playersInHome.get(index);
                     buf++;
@@ -86,13 +85,4 @@ public class RegularGame implements Game {
         return turn;
     }
 
-    @Override
-    public Checker getOccupiedByType (Coordinates location) {
-        return board.getFieldOccupiedBy(location);
-    }
-
-    @Override
-    public Checker getFieldType (Coordinates location) {
-        return board.getFieldType(location);
-    }
 }

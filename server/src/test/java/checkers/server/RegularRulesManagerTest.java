@@ -35,7 +35,7 @@ public class RegularRulesManagerTest {
 
     @Test
     public void testMoveCheckMove() {
-        System.out.print(regularGame.getFieldType(new Coordinates(11,3)));
+        System.out.print(board.getFieldType(new Coordinates(11,3)));
         assertEquals(1, regularRulesManager.checkMove(regularGame,new Coordinates(12,4), new Coordinates(11,3), Checker.GREEN));
 }
 

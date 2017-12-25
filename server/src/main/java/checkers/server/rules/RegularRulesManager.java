@@ -12,22 +12,22 @@ public class RegularRulesManager implements RulesManager {
         this.board = board;
     }
 
-    private Boolean checkChecker(Game game,Checker checker, Coordinates currLocation){
-        Checker color = game.getOccupiedByType(currLocation);
+    private Boolean checkChecker(Checker checker, Coordinates currLocation){
+        Checker color = board.getFieldOccupiedBy(currLocation);
         return (color.equals(checker));
     }
-    private Boolean checkIfEscapesFromTriangle(Game game,Coordinates destination, Coordinates currLocation, Checker checker) {
-        return (game.getFieldType(currLocation) == checker && game.getFieldType(destination) != checker);
+    private Boolean checkIfEscapesFromTriangle(Coordinates destination, Coordinates currLocation, Checker checker) {
+        return (board.getFieldType(currLocation) == checker && board.getFieldType(destination) != checker);
     }
 
     @Override
     public int checkMove(Game game,Coordinates destination, Coordinates currLocation, Checker checker){
 
-        if(!checkChecker(game, checker, currLocation)) {
+        if(!checkChecker(checker, currLocation)) {
             return  0;
         }
 
-        if(checkIfEscapesFromTriangle(game, destination, currLocation, checker)) {
+        if(checkIfEscapesFromTriangle(destination, currLocation, checker)) {
             return 0;
         }
 
