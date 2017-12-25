@@ -4,7 +4,7 @@ import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.boards.RegularBoard;
 import checkers.core.boards.RegularBoardFactory;
-import checkers.server.game.DefaultGamesMenager;
+import checkers.server.game.DefaultGamesManager;
 import checkers.server.game.RegularGame;
 import checkers.server.game.Turn;
 import checkers.server.player.DefaultPlayer;
@@ -22,7 +22,7 @@ public class RegularRulesManagerTest {
     private RegularRulesManager regularRulesManager;
     private RegularBoard board;
     private Turn turn;
-    private DefaultGamesMenager gamesManager;
+    private DefaultGamesManager gamesManager;
 
     @Before
     public void createGame() {
@@ -30,7 +30,7 @@ public class RegularRulesManagerTest {
         board = factory.createNewBoard(6);
         regularGame = new RegularGame(6, board);
         regularRulesManager = new RegularRulesManager(regularGame, board);
-        gamesManager = new DefaultGamesMenager();
+        gamesManager = new DefaultGamesManager();
     }
 
     @Test

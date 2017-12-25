@@ -13,9 +13,11 @@ public class Connection {
     private Registry registry;
     private Logger logger;
 
-    Connection(PlayerFactory factory) {
+    public Connection(PlayerFactory factory) {
         logger = LoggerFactory.getLogger(Connection.class);
+      //  System.setProperty("java.rmi.server.hostname", "localhost");
         try {
+            logger.debug("Setting up player factory");
             registry = LocateRegistry.createRegistry(1099);
             registry.bind("factory", factory);
             logger.info("Factory bind");
@@ -30,6 +32,7 @@ public class Connection {
     public void putPlayer(RemotePlayer player) {
         try {
             registry.bind(player.getLogin(), player);
+            logger.debug("Remote player " + player.getLogin() + " registered");
         } catch(RemoteException e) {
             logger.error("Remote Exception");
         } catch(AlreadyBoundException e) {

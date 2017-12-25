@@ -14,8 +14,11 @@ public class ClientConnection {
     static Logger logger = LoggerFactory.getLogger(ClientConnection.class);
 
     ClientConnection() throws RemoteException {
+        System.setProperty("java.rmi.server.hostname", "localhost");
         try {
-            playerFactory = (PlayerFactory) Naming.lookup("factory");
+            logger.debug("Looking up for remote player factory");
+            playerFactory = (PlayerFactory) Naming.lookup("//localhost:1099/factory");
+            logger.debug("Remote player factory found");
         }
         catch( Exception e ) {
             logger.error("Can't find factory in registry");
@@ -29,7 +32,7 @@ public class ClientConnection {
 
     RemotePlayer getPlayer() throws RemoteException {
         try {
-            RemotePlayer player = (RemotePlayer) Naming.lookup(login);
+            RemotePlayer player = (RemotePlayer) Naming.lookup("//localhost:1099/".concat(login));
             return player;
         }
         catch( Exception e ) {

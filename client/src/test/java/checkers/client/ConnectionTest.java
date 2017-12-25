@@ -19,10 +19,10 @@ public class ConnectionTest {
         clientConnection = new ClientConnection();
     }
 
-    @Test
-    public void testCreatePlayer() throws RemoteException {
-        assertTrue(clientConnection.addPlayer("login"));
-    }
+//    @Test
+//    public void testCreatePlayer() throws RemoteException {
+//        assertTrue(clientConnection.addPlayer("login"));
+//    }
 
     @Test
     public void testCreatePlayerLogin() throws RemoteException {

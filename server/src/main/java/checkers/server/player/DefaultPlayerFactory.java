@@ -2,7 +2,7 @@ package checkers.server.player;
 
 import checkers.core.PlayerFactory;
 import checkers.core.RemotePlayer;
-import checkers.server.game.GamesMenager;
+import checkers.server.game.GamesManager;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerFactory {
-    private GamesMenager menager;
+    private GamesManager menager;
     private ArrayList<DefaultPlayer> players;
 
-    public DefaultPlayerFactory(GamesMenager menager) throws RemoteException {
+    public DefaultPlayerFactory(GamesManager menager) throws RemoteException {
         players = new ArrayList<>();
         this.menager = menager;
     }

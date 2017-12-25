@@ -3,20 +3,26 @@ package checkers.server.game;
 import checkers.core.PlayerFactory;
 import checkers.core.RemotePlayer;
 import checkers.server.player.DefaultPlayerFactory;
+import checkers.server.Connection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
 
-public class DefaultGamesMenager implements GamesMenager{
+public class DefaultGamesManager implements GamesManager {
+    static Logger logger = LoggerFactory.getLogger(DefaultGamesManager.class);
+
     private PlayerFactory factory;
     private Connection connection;
 
-    public DefaultGamesMenager(){
+    public DefaultGamesManager(){
+        logger.debug("Creating player factory");
         try {
             factory = new DefaultPlayerFactory(this);
         } catch(RemoteException e) {
             e.printStackTrace();
         }
+        logger.debug("Connecting to factory");
         connection = new Connection(factory);
     }
 

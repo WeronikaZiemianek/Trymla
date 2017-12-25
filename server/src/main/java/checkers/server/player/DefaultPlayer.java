@@ -6,7 +6,7 @@ import checkers.core.Player;
 import checkers.core.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
-import checkers.server.game.GamesMenager;
+import checkers.server.game.GamesManager;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -16,10 +16,10 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     private Board board;
     private Checker color;
     private Game game;
-    private GamesMenager gamesManager;
+    private GamesManager gamesManager;
     private String login;
 
-    public DefaultPlayer(GamesMenager gamesManager, String login) throws RemoteException {
+    public DefaultPlayer(GamesManager gamesManager, String login) throws RemoteException {
         this.gamesManager = gamesManager;
         this.login = login;
     }
