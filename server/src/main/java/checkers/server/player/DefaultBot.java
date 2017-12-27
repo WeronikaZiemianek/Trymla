@@ -77,52 +77,102 @@ public class DefaultBot extends UnicastRemoteObject implements RemotePlayer, Pla
                         case RED:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y-2),new Coordinates(x,y),color)) {
                                 return game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
-
                             }
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y-2),new Coordinates(x,y),color)) {
-                                return game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
-
+                                return game.makeMove(new Coordinates(x - 2, y - 2), new Coordinates(x, y), this);
                             }
-                            break;
                         case BLUE:
-                            break;
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+4,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 4, y), new Coordinates(x, y), this);
+                            }
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y+2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 2, y + 2), new Coordinates(x, y), this);
+                            }
                         case GREEN:
-                            break;
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y+2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 2, y + 2), new Coordinates(x, y), this);
+                            }
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y+2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x - 2, y + 2), new Coordinates(x, y), this);
+                            }
                         case WHITE:
-                            break;
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-4,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x - 4, y), new Coordinates(x, y), this);
+                            }
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y-2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x - 2, y - 2), new Coordinates(x, y), this);
+                            }
                         case YELLOW:
-                            break;
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-4,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x - 4, y), new Coordinates(x, y), this);
+                            }
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y+2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x - 2, y + 2), new Coordinates(x, y), this);
+                            }
+                        case BLACK:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+4,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 4, y), new Coordinates(x, y), this);
+                            }
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y-2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
+                            }
                     }
                 }
             }
         }
-            for(int x = 0; x<25; x++)
+        for(int x = 0; x<25; x++)
+        {
+            for(int y = 0; y<17; y++)
             {
-                for(int y = 0; y<17; y++)
+                if(board.getFieldOccupiedBy(new Coordinates(x,y)) == color)
                 {
-                    if(board.getFieldOccupiedBy(new Coordinates(x,y)) == color)
-                    {
-                        switch (color){
-                            case RED:
-                                if(game.GetRulesManager().checkMove(game, new Coordinates(x-1,y-1),new Coordinates(x,y),color)) {
-                                    return game.makeMove(new Coordinates(x-1,y-1),new Coordinates(x,y), this);
-                                }
-                                if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y-1),new Coordinates(x,y),color)) {
-                                    return game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
-                                }
-                                break;
-                            case BLUE:
-                                break;
-                            case GREEN:
-                                break;
-                            case WHITE:
-                                break;
-                            case YELLOW:
-                                break;
-                        }
+                    switch (color){
+                        case RED:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-1,y-1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x-1,y-1),new Coordinates(x,y), this);
+                            }
+                            if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y-1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
+                            }
+                        case BLUE:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x+2,y),new Coordinates(x,y), this);
+                            }
+                            if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y+1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x+1,y+1),new Coordinates(x,y), this);
+                            }
+                        case GREEN:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-1,y+1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x-1,y+1),new Coordinates(x,y), this);
+                            }
+                            if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y+1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x+1,y+1),new Coordinates(x,y), this);
+                            }
+                        case WHITE:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x-2,y),new Coordinates(x,y), this);
+                            }
+                            if( game.GetRulesManager().checkMove(game, new Coordinates(x-1,y-1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x-1,y-1),new Coordinates(x,y), this);
+                            }
+                        case YELLOW:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x-2,y),new Coordinates(x,y), this);
+                            }
+                            if( game.GetRulesManager().checkMove(game, new Coordinates(x-1,y+1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x-1,y+1),new Coordinates(x,y), this);
+                            }
+                        case BLACK:
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x+2,y),new Coordinates(x,y), this);
+                            }
+                            if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y-1),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
+                            }
                     }
                 }
             }
+        }
         return false;
     }
 
