@@ -58,7 +58,7 @@ public class GameTest {
     }
 
     @Test
-    public void testMakingTwoJumpsInRow() throws RemoteException {
+    public void testMakingJump() throws RemoteException {
         startGame();
         System.out.println(game.getBoard());
       //  assertEquals(true, player0.makeMove(new Coordinates(9,13), new Coordinates(,15)));

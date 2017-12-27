@@ -37,10 +37,14 @@ public class RegularRulesManager implements RulesManager {
             }
         }
 
-        int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());
+        int yDiff = Math.abs(currLocation.Y()-destination.Y());
+        int diff = yDiff + Math.abs(currLocation.X()-destination.X());
 
         if(diff == 2) {
             if(game.getCurrMov() == null) {
+                if(yDiff == 2) {
+                    return false;
+                }
                 game.endMove();
                 return true;
             } else {
@@ -49,6 +53,9 @@ public class RegularRulesManager implements RulesManager {
         }
         else if(diff == 4)
         {
+            if(yDiff == 4) {
+                return false;
+            }
             Coordinates between = new Coordinates((currLocation.X()+destination.X())/2,(currLocation.Y()+destination.Y())/2);
             return board.getFieldOccupiedBy(between) != Checker.EMPTY;
         }
