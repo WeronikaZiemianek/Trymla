@@ -1,8 +1,8 @@
 package checkers.server.player;
 
 import checkers.core.Checker;
-import checkers.core.PlayerFactory;
-import checkers.core.RemotePlayer;
+import checkers.core.clientServerInterfaces.PlayerFactory;
+import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.server.game.GamesManager;
 
 import java.rmi.RemoteException;

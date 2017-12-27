@@ -1,7 +1,7 @@
 package checkers.server.game;
 
 import checkers.core.Coordinates;
-import checkers.core.Player;
+import checkers.server.Player;
 
 public class Turn {
     private Player player;

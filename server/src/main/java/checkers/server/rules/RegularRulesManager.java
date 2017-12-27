@@ -31,8 +31,10 @@ public class RegularRulesManager implements RulesManager {
             return false;
         }
 
-        if(game.getCurrMov() != null && game.getCurrMov() != currLocation) {
-            return false;
+        if(game.getCurrMov() != null) {
+            if(game.getCurrMov() != currLocation) {
+                return false;
+            }
         }
 
         int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());

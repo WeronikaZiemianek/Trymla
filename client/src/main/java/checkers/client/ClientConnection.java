@@ -1,7 +1,7 @@
 package checkers.client;
 
-import checkers.core.RemotePlayer;
-import checkers.core.PlayerFactory;
+import checkers.core.clientServerInterfaces.RemotePlayer;
+import checkers.core.clientServerInterfaces.PlayerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

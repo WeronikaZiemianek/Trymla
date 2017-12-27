@@ -1,8 +1,8 @@
 package checkers.server.game;
 
-import checkers.core.Player;
-import checkers.core.PlayerFactory;
-import checkers.core.RemotePlayer;
+import checkers.server.Player;
+import checkers.core.clientServerInterfaces.PlayerFactory;
+import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.core.boards.BoardFactory;
 import checkers.core.boards.RegularBoardFactory;
@@ -36,17 +36,19 @@ public class DefaultGamesManager implements GamesManager {
         boardFactory = new RegularBoardFactory();
     }
 
-    public void createNewGame(int numOfPlayers) {
+    @Override
+    synchronized public void createNewGame(int numOfPlayers) {
         Board board = boardFactory.createNewBoard(numOfPlayers);
         openGame = new RegularGame(board, new RegularRulesManager(board));
     }
 
     @Override
-    public void addPlayer(RemotePlayer player) {
+    synchronized public void addPlayer(RemotePlayer player) {
         connection.putPlayer(player);
     }
 
-    public boolean joinGame(Player player) {
+    @Override
+    synchronized public boolean joinGame(Player player) {
         if(openGame != null) {
             openGame.addPlayer(player);
             if(openGame.getState() == GameState.RUNNING) {
@@ -56,6 +58,16 @@ public class DefaultGamesManager implements GamesManager {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public synchronized void addBot() {
+        //TODO: create bot and add to open game
+    }
+
+    Player addBot(Game game) {
+        //TODO: create bot and return it
+        return null;
     }
 
 }

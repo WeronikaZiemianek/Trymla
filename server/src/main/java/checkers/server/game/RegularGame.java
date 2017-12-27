@@ -1,11 +1,11 @@
 package checkers.server.game;
 
 import checkers.core.Coordinates;
-import checkers.core.Player;
+import checkers.server.Player;
 import checkers.core.boards.Board;
 import checkers.server.rules.RulesManager;
-
-import java.rmi.RemoteException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,16 +16,14 @@ public class RegularGame implements Game {
     private int turnPlayer;
     private RulesManager rulesManager;
     private Board board;
+    private GameState state;
+    private Logger logger;
+    private Turn turn;
 
     @Override
     public GameState getState() {
         return state;
     }
-
-    private GameState state;
-   // private Logger logger;
-
-    private Turn turn;
 
     public RegularGame(Board board, RulesManager rulesManager) {
         players = new ArrayList<>();
@@ -33,7 +31,7 @@ public class RegularGame implements Game {
         this.numOfPlayers = 0;
         this.board = board;
         state = GameState.OPEN;
-        //logger = LoggerFactory.getLogger(RegularGame.class);
+        logger = LoggerFactory.getLogger(RegularGame.class);
         turnPlayer = 0;
         this.rulesManager = rulesManager;
     }
@@ -50,7 +48,7 @@ public class RegularGame implements Game {
         }
     }
 
-    public void makeMove(Coordinates destination, Coordinates currLocation, Player player) throws RemoteException {
+    public void makeMove(Coordinates destination, Coordinates currLocation, Player player) {
         if(state != GameState.RUNNING) {
             return;
         }
@@ -71,6 +69,10 @@ public class RegularGame implements Game {
         state = GameState.RUNNING;
     }
 
+    private void endGame(String login) {
+
+    }
+
     @Override
     public void endMove() {
         turnPlayer++;
@@ -84,6 +86,7 @@ public class RegularGame implements Game {
     public void addPlayer(Player player) {
         numOfPlayers++;
         players.add(player);
+        player.setGame(this);
         if(numOfPlayers == board.getExNumOfPlayers()) {
             startGame();
         }
@@ -98,6 +101,7 @@ public class RegularGame implements Game {
 
     @Override
     public Coordinates getCurrMov() {
+        logger.debug("value of currMov " + turn.getCurrMov());
         return turn.getCurrMov();
     }
 
@@ -109,6 +113,10 @@ public class RegularGame implements Game {
     @Override
     public Board getBoard() {
         return board;
+    }
+
+    @Override
+    public void disconnectPlayer(Player player) {
     }
 
 

@@ -1,8 +1,7 @@
 package checkers.server.game;
 
-import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.Player;
+import checkers.server.Player;
 import checkers.core.boards.Board;
 
 public interface Game { ;
@@ -14,6 +13,7 @@ public interface Game { ;
     void addPlayer(Player player);
     GameState getState();
     Board getBoard();
+    void disconnectPlayer(Player player);
 
 }
 

@@ -1,5 +1,5 @@
 package checkers.client;
-import checkers.core.RemotePlayer;
+import checkers.core.clientServerInterfaces.RemotePlayer;
 
 import org.junit.Before;
 import org.junit.Test;

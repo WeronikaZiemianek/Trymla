@@ -2,12 +2,10 @@ package checkers.server;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.Player;
 import checkers.core.boards.Board;
 import checkers.core.boards.RegularBoardFactory;
 import checkers.server.game.DefaultGamesManager;
 import checkers.server.game.RegularGame;
-import checkers.server.game.Turn;
 import checkers.server.player.DefaultPlayer;
 import checkers.server.rules.RegularRulesManager;
 import org.junit.Before;
@@ -35,6 +33,7 @@ public class RegularGameTest
     public void testMakeMove() throws RemoteException {
         Player Janusz = new DefaultPlayer(gamesManager,"Janusz",Checker.RED);
         regularGame.addPlayer(Janusz);
+        regularGame.startGame();
         regularGame.endMove();
         regularGame.makeMove(new Coordinates(10,12),new Coordinates(9,13),Janusz);
 
