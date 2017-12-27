@@ -1,5 +1,6 @@
 package checkers.server.game;
 
+import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.server.Player;
 import checkers.core.clientServerInterfaces.PlayerFactory;
 import checkers.core.clientServerInterfaces.RemotePlayer;
@@ -40,6 +41,11 @@ public class DefaultGamesManager implements GamesManager {
     synchronized public void createNewGame(int numOfPlayers) {
         Board board = boardFactory.createNewBoard(numOfPlayers);
         openGame = new RegularGame(board, new RegularRulesManager(board));
+    }
+
+    @Override
+    public ClientPlayer getClientPlayer(Player player) {
+        return connection.getClientPlayer(player);
     }
 
     @Override

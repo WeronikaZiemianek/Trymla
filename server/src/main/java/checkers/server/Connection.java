@@ -1,10 +1,12 @@
 package checkers.server;
+import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.PlayerFactory;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.rmi.AlreadyBoundException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -38,6 +40,17 @@ public class Connection {
         } catch(AlreadyBoundException e) {
             logger.error("Factory already bound");
         }
+    }
+
+    public ClientPlayer getClientPlayer(Player player) {
+        try {
+            return (ClientPlayer) registry.lookup("//localhost:1099/" + "CLIENT" + player.getPlayerName());
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        } catch(NotBoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

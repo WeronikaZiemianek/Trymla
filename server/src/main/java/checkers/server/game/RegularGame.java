@@ -100,6 +100,12 @@ public class RegularGame implements Game {
         player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
         logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
         numOfPlayers++;
+        for(Player p: players) {
+            player.addNewPlayer(p.getPlayerName(), p.getColor());
+            if(player != p) {
+                p.addNewPlayer(player.getPlayerName(), player.getColor());
+            }
+        }
         if(numOfPlayers == board.getExNumOfPlayers()) {
             startGame();
         }

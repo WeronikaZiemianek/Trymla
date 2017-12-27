@@ -38,29 +38,43 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void update (Boolean isMyTurn) {
         this.isMyTurn = isMyTurn;
-//        try {
-//            clientPlayer.update(isMyTurn);
-//        } catch(RemoteException e) {
-//        }
+        if(clientPlayer != null) {
+            try {
+                clientPlayer.update(isMyTurn);
+            } catch(RemoteException e) {
+                logger.error("cant update client player");
+            }
+        } else {
+            logger.warn("clientPlayer = null");
+        }
 
     }
 
     @Override
     public void endGame(String login) {
         logger.info("game finished winner is: " + login);
-//        try {
-//            clientPlayer.gameOver(login);
-//        } catch(RemoteException e) {
-//            e.printStackTrace();
-//        }
+        if(clientPlayer != null) {
+            try {
+                clientPlayer.gameOver(login);
+            } catch(RemoteException e) {
+                logger.error("cant do gameOver on clientPlayer");
+            }
+        } else {
+            logger.warn("clienPlayer = null");
+        }
     }
 
     @Override
     public void addNewPlayer(String login, Checker color) {
-        try {
-            clientPlayer.newPlayerAdded(login, color);
-        } catch(RemoteException e) {
-            e.printStackTrace();
+        logger.info("new player " + login + " " + color + " in player " + this.login);
+        if(clientPlayer != null) {
+            try {
+                clientPlayer.newPlayerAdded(login, color);
+            } catch(RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            logger.warn("client player is null");
         }
 
     }
@@ -104,6 +118,11 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public String getPlayerName() {
         return login;
+    }
+
+    @Override
+    public void getClientPlayer() throws RemoteException {
+        clientPlayer = gamesManager.getClientPlayer(this);
     }
 
     @Override

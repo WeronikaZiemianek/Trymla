@@ -18,4 +18,5 @@ public interface RemotePlayer extends java.rmi.Remote {
     void createGame(int numOfPlayers) throws  RemoteException;
     boolean joinGame() throws RemoteException;
     void addBot() throws RemoteException;
+    void getClientPlayer() throws RemoteException;
 }
