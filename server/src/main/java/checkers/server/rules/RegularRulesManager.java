@@ -49,7 +49,8 @@ public class RegularRulesManager implements RulesManager {
         }
         else if(diff == 4)
         {
-            return true;
+            Coordinates between = new Coordinates((currLocation.X()+destination.X())/2,(currLocation.Y()+destination.Y())/2);
+            return board.getFieldOccupiedBy(between) != Checker.EMPTY;
         }
         return false;
     }

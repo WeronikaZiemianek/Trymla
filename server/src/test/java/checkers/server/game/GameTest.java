@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
 
 import static org.junit.Assert.assertEquals;
 
-public class RegularGameTest {
+public class GameTest {
     Game game;
     DefaultPlayer player0;
     DefaultPlayer player1;

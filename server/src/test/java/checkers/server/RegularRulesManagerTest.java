@@ -26,6 +26,7 @@ public class RegularRulesManagerTest {
 
     @Before
     public void createGame() throws RemoteException {
+        System.setProperty("java.rmi.server.hostname", "localhost");
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
         regularRulesManager = new RegularRulesManager(board);
@@ -50,7 +51,15 @@ public class RegularRulesManagerTest {
         DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
         regularGame.addPlayer(player);
         regularGame.startGame();
-        assertEquals(true, regularRulesManager.checkMove(regularGame,new Coordinates(4,4), new Coordinates(8,4), Checker.YELLOW));
+        assertEquals(true, regularRulesManager.checkMove(regularGame ,new Coordinates(4,4), new Coordinates(8,4), Checker.YELLOW));
+    }
+
+    @Test
+    public void testWrongJumpCheckMove() throws RemoteException {
+        DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
+        regularGame.addPlayer(player);
+        regularGame.startGame();
+        assertEquals(false, regularRulesManager.checkMove(regularGame, new Coordinates(9,13), new Coordinates(11,14), Checker.RED));
     }
 
     @Test
