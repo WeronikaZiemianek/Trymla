@@ -3,9 +3,7 @@ package checkers.server.game;
 import checkers.core.Coordinates;
 import checkers.core.Player;
 import checkers.core.boards.Board;
-import checkers.server.rules.RegularRulesManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import checkers.server.rules.RulesManager;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -16,22 +14,28 @@ public class RegularGame implements Game {
     private List<Integer> playersInHome;
     private int numOfPlayers;
     private int turnPlayer;
-    private RegularRulesManager rulesManager;
+    private RulesManager rulesManager;
     private Board board;
+
+    @Override
+    public GameState getState() {
+        return state;
+    }
+
     private GameState state;
-    private Logger logger;
+   // private Logger logger;
 
     private Turn turn;
 
-    public RegularGame(Board board) {
+    public RegularGame(Board board, RulesManager rulesManager) {
         players = new ArrayList<>();
         playersInHome = new ArrayList<>();
         this.numOfPlayers = 0;
         this.board = board;
         state = GameState.OPEN;
-        logger = LoggerFactory.getLogger(RegularGame.class);
+        //logger = LoggerFactory.getLogger(RegularGame.class);
         turnPlayer = 0;
-        rulesManager = new RegularRulesManager(board);
+        this.rulesManager = rulesManager;
     }
 
     private void countHome(Coordinates destination, Coordinates currLocation, Player player) {
@@ -47,6 +51,9 @@ public class RegularGame implements Game {
     }
 
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player) throws RemoteException {
+        if(state != GameState.RUNNING) {
+            return;
+        }
         if(player == turn.getPlayer()) {
             boolean validationOfMove = rulesManager.checkMove(this ,destination, currLocation, player.getColor());
             if(validationOfMove) {
@@ -56,6 +63,14 @@ public class RegularGame implements Game {
             }
         }
     }
+
+    @Override
+    public void startGame() {
+        turn = new Turn(players.get(turnPlayer));
+        updatePlayers();
+        state = GameState.RUNNING;
+    }
+
     @Override
     public void endMove() {
         turnPlayer++;
@@ -69,13 +84,14 @@ public class RegularGame implements Game {
     public void addPlayer(Player player) {
         numOfPlayers++;
         players.add(player);
-        turn = new Turn(players.get(turnPlayer));
+        if(numOfPlayers == board.getExNumOfPlayers()) {
+            startGame();
+        }
     }
 
     private void updatePlayers() {
-        int numOfPlayers = players.size();
-        for(int i = 0; i < numOfPlayers; i++) {
-            players.get(i).update(false);
+        for(Player player : players) {
+            player.update(false);
         }
         players.get(turnPlayer).update(true);
     }
@@ -91,8 +107,9 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public Player getTurn() {
-        return turn.getPlayer();
+    public Board getBoard() {
+        return board;
     }
+
 
 }

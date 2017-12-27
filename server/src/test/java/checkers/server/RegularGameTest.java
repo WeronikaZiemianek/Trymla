@@ -9,6 +9,7 @@ import checkers.server.game.DefaultGamesManager;
 import checkers.server.game.RegularGame;
 import checkers.server.game.Turn;
 import checkers.server.player.DefaultPlayer;
+import checkers.server.rules.RegularRulesManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ public class RegularGameTest
     public void createGame() throws RemoteException {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
-        regularGame = new RegularGame( board);
+        regularGame = new RegularGame(board, new RegularRulesManager(board));
     }
 
     @Test

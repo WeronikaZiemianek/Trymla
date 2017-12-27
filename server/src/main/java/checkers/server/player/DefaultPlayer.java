@@ -32,6 +32,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     @Override
     public void update (Boolean isMyTurn) {
+        this.isMyTurn = isMyTurn;
 
     }
 
@@ -41,14 +42,14 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     public void endMove() throws RemoteException {
+        if(isMyTurn) {
+            game.endMove();
+        }
     }
 
     public void setGame(Game game) {
         this.game = game;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
+        board = game.getBoard();
     }
 
     public void setMyTurn(boolean myTurn) {

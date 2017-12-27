@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerFactory {
-    private GamesManager menager;
+    private GamesManager manager;
     private ArrayList<DefaultPlayer> players;
 
-    public DefaultPlayerFactory(GamesManager menager) throws RemoteException {
+    public DefaultPlayerFactory(GamesManager manager) throws RemoteException {
         players = new ArrayList<>();
-        this.menager = menager;
+        this.manager = manager;
     }
 
     @Override
@@ -26,9 +26,9 @@ public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerF
                 return false;
             }
         }
-        DefaultPlayer player = new DefaultPlayer(menager, login, Checker.RED);
+        DefaultPlayer player = new DefaultPlayer(manager, login, Checker.RED);
         players.add(player);
-        menager.addPlayer(player);
+        manager.addPlayer(player);
         return true;
     }
 }

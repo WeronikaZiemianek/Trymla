@@ -8,9 +8,11 @@ public class RegularBoard implements Board {
     private final int NUM_OF_ROWS;
 
     private Field[][] board;
+    private int numOfPlayers;
 
-    RegularBoard(Field[][] board) {
+    RegularBoard(Field[][] board, int numOfPlayers) {
         this.board = board;
+        this.numOfPlayers = numOfPlayers;
         NUM_OF_COLUMNS =board.length;
         if(NUM_OF_COLUMNS != 0) {
             NUM_OF_ROWS = board[0].length;
@@ -34,6 +36,12 @@ public class RegularBoard implements Board {
         board[currLocation.X()][currLocation.Y()].setOccupiedBy(dest);
 
     }
+
+    @Override
+    public int getExNumOfPlayers() {
+        return numOfPlayers;
+    }
+
     @Override
     public Checker getFieldType(Coordinates location) {
         return board[location.X()][location.Y()].getType();

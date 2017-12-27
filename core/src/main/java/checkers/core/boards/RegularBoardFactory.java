@@ -29,7 +29,7 @@ public class RegularBoardFactory implements BoardFactory {
             default: throw new WrongNumberOfSetsException();
 
         }
-        return new RegularBoard(board);
+        return new RegularBoard(board, numOfSets);
     }
 
     private void makeEmptyBoard() {
