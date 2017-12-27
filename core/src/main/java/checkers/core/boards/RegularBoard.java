@@ -44,10 +44,7 @@ public class RegularBoard implements Board {
 
     @Override
     public Checker colorForPlayer(int num) {
-        int number = num;
-        if(num != 0) {
-            number = num + (6 / getExNumOfPlayers());
-        }
+        int number = num*(6 / getExNumOfPlayers());
         switch(number) {
             case 0: return Checker.RED;
             case 1: return Checker.WHITE;

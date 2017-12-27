@@ -49,9 +49,13 @@ public class RegularGame implements Game {
             return false;
         }
         if(player == turn.getPlayer()) {
-            boolean validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
-            if(validationOfMove) {
-                turn.setCurrMov(destination);
+            int validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
+            if(validationOfMove != -1) {
+                if(validationOfMove == 4) {
+                    turn.setCurrMov(destination);
+                } else {
+                    endMove();
+                }
                 board.makeMove(currLocation, destination);
                 countHome(currLocation, destination, player);
                 return true;

@@ -4,7 +4,6 @@ import checkers.core.Coordinates;
 import checkers.core.boards.Board;
 import checkers.core.boards.BoardFactory;
 import checkers.core.boards.RegularBoardFactory;
-import checkers.server.Player;
 import checkers.server.player.DefaultPlayer;
 import checkers.server.rules.RegularRulesManager;
 import org.junit.Before;
@@ -60,9 +59,37 @@ public class GameTest {
     @Test
     public void testMakingJump() throws RemoteException {
         startGame();
+        assertEquals(true, player0.makeMove(new Coordinates(10,14), new Coordinates(12,12)));
         System.out.println(game.getBoard());
-      //  assertEquals(true, player0.makeMove(new Coordinates(9,13), new Coordinates(,15)));
-      //  assertEquals(false, player0.makeMove(new Coordinates(8,14), new Coordinates(10, 16)));
+    }
+
+    private void player0Moves() throws RemoteException {
+        System.out.print(game.getBoard().toString());
+        player0.makeMove(new Coordinates(11,13), new Coordinates(10,12));
+       // player0.endMove();
+    }
+
+    @Test
+    public void player2Move() throws RemoteException {
+        startGame();
+        player0Moves();
+        System.out.println(player1.getColor());
+        assertEquals(true, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
+    }
+
+    private void player23Move() throws RemoteException {
+        player1.makeMove(new Coordinates(4,4), new Coordinates(8,4));
+        player1.endMove();
+        player2.makeMove(new Coordinates(18, 4), new Coordinates(17, 5));
+    }
+
+    @Test
+    public void make2Jumps() throws RemoteException {
+        startGame();
+        player0Moves();
+        player23Move();
+        assertEquals(true, player0.makeMove(new Coordinates(13, 15), new Coordinates(11, 13)));
+        assertEquals(true, player0.makeMove(new Coordinates(11, 13), new Coordinates(9, 11)));
     }
 
 }

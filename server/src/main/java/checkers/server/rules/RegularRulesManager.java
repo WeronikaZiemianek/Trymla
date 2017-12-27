@@ -4,12 +4,16 @@ import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RegularRulesManager implements RulesManager {
     private Board board;
+    private Logger logger;
 
     public RegularRulesManager(Board board) {
         this.board = board;
+        logger = LoggerFactory.getLogger(RegularRulesManager.class);
     }
 
     private Boolean checkChecker(Checker checker, Coordinates currLocation){
@@ -21,19 +25,19 @@ public class RegularRulesManager implements RulesManager {
     }
 
     @Override
-    public boolean checkMove(Game game, Coordinates currLocation, Coordinates destination, Checker checker){
+    public int checkMove(Game game, Coordinates currLocation, Coordinates destination, Checker checker){
 
         if(!checkChecker(checker, currLocation)) {
-            return  false;
+            return  -1;
         }
 
         if(checkIfEscapesFromTriangle(currLocation, destination, checker)) {
-            return false;
+            return -1;
         }
 
         if(game.getCurrMov() != null) {
-            if(game.getCurrMov() != currLocation) {
-                return false;
+            if(game.getCurrMov().equals(currLocation)) {
+                return -1;
             }
         }
 
@@ -43,23 +47,28 @@ public class RegularRulesManager implements RulesManager {
         if(diff == 2) {
             if(game.getCurrMov() == null) {
                 if(yDiff == 2) {
-                    return false;
+                    return -1;
                 }
-                game.endMove();
-                return true;
+               // game.endMove();
+                return 2;
             } else {
-                return false;
+                return -1;
             }
         }
         else if(diff == 4)
         {
             if(yDiff == 4) {
-                return false;
+                return -1;
             }
-            Coordinates between = new Coordinates((currLocation.X()+destination.X())/2,(currLocation.Y()+destination.Y())/2);
-            return board.getFieldOccupiedBy(between) != Checker.EMPTY;
+            Coordinates between = new Coordinates((currLocation.X() + destination.X())/2,(currLocation.Y()+destination.Y())/2);
+            logger.debug(between.X() + " " + between.Y());
+            if(board.getFieldOccupiedBy(between) != Checker.EMPTY) {
+                return 4;
+            } else {
+                return -1;
+            }
         }
-        return false;
+        return -1;
     }
 
 

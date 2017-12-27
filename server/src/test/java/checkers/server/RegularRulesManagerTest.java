@@ -39,7 +39,7 @@ public class RegularRulesManagerTest {
         System.out.print(board.getFieldType(new Coordinates(11,3)));
         regularGame.addPlayer(new DefaultPlayer(gamesManager, "Janusz"));
         regularGame.startGame();
-        assertEquals(true , regularRulesManager.checkMove(regularGame,new Coordinates(11, 3), new Coordinates(12,4), Checker.GREEN));
+        assertEquals(2 , regularRulesManager.checkMove(regularGame,new Coordinates(11, 3), new Coordinates(12,4), Checker.GREEN));
 }
 
     @Test
@@ -51,7 +51,7 @@ public class RegularRulesManagerTest {
         DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
         regularGame.addPlayer(player);
         regularGame.startGame();
-        assertEquals(true, regularRulesManager.checkMove(regularGame ,new Coordinates(4,4), new Coordinates(8,4), Checker.YELLOW));
+        assertEquals(4, regularRulesManager.checkMove(regularGame ,new Coordinates(4,4), new Coordinates(8,4), Checker.YELLOW));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class RegularRulesManagerTest {
         DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
         regularGame.addPlayer(player);
         regularGame.startGame();
-        assertEquals(false, regularRulesManager.checkMove(regularGame, new Coordinates(9,13), new Coordinates(11,14), Checker.RED));
+        assertEquals(-1, regularRulesManager.checkMove(regularGame, new Coordinates(9,13), new Coordinates(11,14), Checker.RED));
     }
 
     @Test
