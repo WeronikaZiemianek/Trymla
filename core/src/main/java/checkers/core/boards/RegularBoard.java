@@ -10,7 +10,7 @@ public class RegularBoard implements Board {
     private Field[][] board;
     private int numOfPlayers;
 
-    RegularBoard(Field[][] board, int numOfPlayers) {
+    public RegularBoard(Field[][] board, int numOfPlayers) {
         this.board = board;
         this.numOfPlayers = numOfPlayers;
         NUM_OF_COLUMNS =board.length;
