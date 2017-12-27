@@ -1,8 +1,9 @@
 package checkers.server.game;
 
 import checkers.core.Coordinates;
-import checkers.server.Player;
 import checkers.core.boards.Board;
+import checkers.server.Player;
+import checkers.server.rules.RulesManager;
 
 public interface Game { ;
 
@@ -13,6 +14,7 @@ public interface Game { ;
     void addPlayer(Player player);
     GameState getState();
     void disconnectPlayer(Player player);
+    RulesManager GetRulesManager();
     boolean makeMove(Coordinates currLocation, Coordinates destination, Player player);
     Board getBoard();
 

@@ -70,6 +70,11 @@ public class RegularGame implements Game {
     }
 
     @Override
+    public RulesManager GetRulesManager() {
+        return rulesManager;
+    }
+
+    @Override
     public void startGame() {
         turn = new Turn(players.get(turnPlayer));
         updatePlayers();
