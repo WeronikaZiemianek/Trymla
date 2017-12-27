@@ -2,7 +2,7 @@ package checkers.server.game;
 
 import checkers.core.Coordinates;
 import checkers.server.Player;
-import checkers.core.boards.Board;
+import checkers.server.rules.RulesManager;
 
 public interface Game { ;
 
@@ -14,6 +14,7 @@ public interface Game { ;
     GameState getState();
     void disconnectPlayer(Player player);
     void makeMove(Coordinates destination, Coordinates currLocation, Player player);
+    RulesManager GetRulesManager();
 
 }
 
