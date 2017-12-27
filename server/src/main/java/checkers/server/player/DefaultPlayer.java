@@ -60,7 +60,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
                 logger.error("cant do gameOver on clientPlayer");
             }
         } else {
-            logger.warn("clienPlayer = null");
+            logger.warn("clientPlayer = null");
         }
     }
 

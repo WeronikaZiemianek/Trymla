@@ -31,6 +31,11 @@ public class RegularGame implements Game {
         this.rulesManager = rulesManager;
     }
 
+    @Override
+    public int getNumOfPlayers() {
+        return numOfPlayers;
+    }
+
     private void countHome(Coordinates currLocation, Coordinates destination, Player player) {
         if((board.getFieldType(currLocation) != player.getColor() && board.getFieldType(destination) == player.getColor())) {
             int index = players.indexOf(player);

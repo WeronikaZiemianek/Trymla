@@ -7,6 +7,7 @@ import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.core.boards.BoardFactory;
 import checkers.core.boards.RegularBoardFactory;
+import checkers.server.player.DefaultBot;
 import checkers.server.player.DefaultPlayerFactory;
 import checkers.server.Connection;
 import checkers.server.rules.RegularRulesManager;
@@ -68,12 +69,9 @@ public class DefaultGamesManager implements GamesManager {
 
     @Override
     public synchronized void addBot() {
-        //TODO: create bot and add to open game
+        Player bot = new DefaultBot(this, "bot" + openGame.getNumOfPlayers());
+        openGame.addPlayer(bot);
     }
 
-    Player addBot(Game game) {
-        //TODO: create bot and return it
-        return null;
-    }
 
 }

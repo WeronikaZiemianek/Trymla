@@ -17,6 +17,7 @@ public interface Game { ;
     RulesManager GetRulesManager();
     boolean makeMove(Coordinates currLocation, Coordinates destination, Player player);
     Board getBoard();
+    public int getNumOfPlayers();
 
 }
 
