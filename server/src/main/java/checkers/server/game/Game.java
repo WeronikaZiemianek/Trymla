@@ -13,7 +13,8 @@ public interface Game { ;
     void addPlayer(Player player);
     GameState getState();
     void disconnectPlayer(Player player);
-    void makeMove(Coordinates destination, Coordinates currLocation, Player player);
+    boolean makeMove(Coordinates currLocation, Coordinates destination, Player player);
+    Board getBoard();
 
 }
 

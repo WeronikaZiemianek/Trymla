@@ -66,9 +66,8 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public void makeMove(Coordinates location, Coordinates destination) throws RemoteException {
-        game.makeMove(destination, location, this);
-
+    public boolean makeMove(Coordinates location, Coordinates destination) throws RemoteException {
+        return game.makeMove(location, destination, this);
     }
 
     @Override

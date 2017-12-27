@@ -16,18 +16,18 @@ public class RegularRulesManager implements RulesManager {
         Checker color = board.getFieldOccupiedBy(currLocation);
         return (color.equals(checker));
     }
-    private Boolean checkIfEscapesFromTriangle(Coordinates destination, Coordinates currLocation, Checker checker) {
+    private Boolean checkIfEscapesFromTriangle(Coordinates currLocation, Coordinates destination, Checker checker) {
         return (board.getFieldType(currLocation) == checker && board.getFieldType(destination) != checker);
     }
 
     @Override
-    public boolean checkMove(Game game,Coordinates destination, Coordinates currLocation, Checker checker){
+    public boolean checkMove(Game game, Coordinates currLocation, Coordinates destination, Checker checker){
 
         if(!checkChecker(checker, currLocation)) {
             return  false;
         }
 
-        if(checkIfEscapesFromTriangle(destination, currLocation, checker)) {
+        if(checkIfEscapesFromTriangle(currLocation, destination, checker)) {
             return false;
         }
 
