@@ -36,7 +36,7 @@ public class RegularGameTest
         regularGame.addPlayer(Janusz);
         System.out.println(Janusz.getColor());
         regularGame.startGame();
-        regularGame.makeMove(new Coordinates(10,12),new Coordinates(9,13), Janusz);
+        regularGame.makeMove(new Coordinates(9, 13), new Coordinates(10,12), Janusz);
         assertEquals(Checker.EMPTY, board.getFieldOccupiedBy(new Coordinates(9,13)));
         assertEquals(Checker.RED, board.getFieldOccupiedBy(new Coordinates(10,12)));
     }

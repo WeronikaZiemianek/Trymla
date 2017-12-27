@@ -22,7 +22,7 @@ public class RegularBoard implements Board {
 
     }
     @Override
-    public void makeMove(Coordinates destination, Coordinates currLocation) throws WrongMoveException {
+    public void makeMove(Coordinates currLocation, Coordinates destination) throws WrongMoveException {
         if(board[currLocation.X()][currLocation.Y()] == null || board[destination.X()][destination.Y()] == null) {
             throw new WrongMoveException();
         }

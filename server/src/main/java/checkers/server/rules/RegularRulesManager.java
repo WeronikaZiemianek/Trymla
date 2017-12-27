@@ -16,18 +16,18 @@ public class RegularRulesManager implements RulesManager {
         Checker color = board.getFieldOccupiedBy(currLocation);
         return (color.equals(checker));
     }
-    private Boolean checkIfEscapesFromTriangle(Coordinates destination, Coordinates currLocation, Checker checker) {
+    private Boolean checkIfEscapesFromTriangle(Coordinates currLocation, Coordinates destination, Checker checker) {
         return (board.getFieldType(currLocation) == checker && board.getFieldType(destination) != checker);
     }
 
     @Override
-    public boolean checkMove(Game game,Coordinates destination, Coordinates currLocation, Checker checker){
+    public boolean checkMove(Game game, Coordinates currLocation, Coordinates destination, Checker checker){
 
         if(!checkChecker(checker, currLocation)) {
             return  false;
         }
 
-        if(checkIfEscapesFromTriangle(destination, currLocation, checker)) {
+        if(checkIfEscapesFromTriangle(currLocation, destination, checker)) {
             return false;
         }
 
@@ -37,10 +37,14 @@ public class RegularRulesManager implements RulesManager {
             }
         }
 
-        int diff = Math.abs(currLocation.Y()-destination.Y()) + Math.abs(currLocation.X()-destination.X());
+        int yDiff = Math.abs(currLocation.Y()-destination.Y());
+        int diff = yDiff + Math.abs(currLocation.X()-destination.X());
 
         if(diff == 2) {
             if(game.getCurrMov() == null) {
+                if(yDiff == 2) {
+                    return false;
+                }
                 game.endMove();
                 return true;
             } else {
@@ -49,7 +53,11 @@ public class RegularRulesManager implements RulesManager {
         }
         else if(diff == 4)
         {
-            return true;
+            if(yDiff == 4) {
+                return false;
+            }
+            Coordinates between = new Coordinates((currLocation.X()+destination.X())/2,(currLocation.Y()+destination.Y())/2);
+            return board.getFieldOccupiedBy(between) != Checker.EMPTY;
         }
         return false;
     }

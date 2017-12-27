@@ -31,7 +31,7 @@ public class RegularGame implements Game {
         this.rulesManager = rulesManager;
     }
 
-    private void countHome(Coordinates destination, Coordinates currLocation, Player player) {
+    private void countHome(Coordinates currLocation, Coordinates destination, Player player) {
         if((board.getFieldType(currLocation) != player.getColor() && board.getFieldType(destination) == player.getColor())) {
             int index = players.indexOf(player);
             int buf = playersInHome.get(index);
@@ -44,18 +44,25 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void makeMove(Coordinates destination, Coordinates currLocation, Player player) {
+    public boolean makeMove(Coordinates currLocation, Coordinates destination, Player player) {
         if(state != GameState.RUNNING) {
-            return;
+            return false;
         }
         if(player == turn.getPlayer()) {
-            boolean validationOfMove = rulesManager.checkMove(this,destination, currLocation, player.getColor());
+            boolean validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
             if(validationOfMove) {
                 turn.setCurrMov(destination);
-                board.makeMove(destination, currLocation);
-                countHome(destination, currLocation, player);
+                board.makeMove(currLocation, destination);
+                countHome(currLocation, destination, player);
+                return true;
             }
         }
+        return false;
+    }
+
+    @Override
+    public Board getBoard() {
+        return board;
     }
 
     @Override
