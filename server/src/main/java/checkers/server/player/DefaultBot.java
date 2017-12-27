@@ -66,8 +66,7 @@ public class DefaultBot extends UnicastRemoteObject implements RemotePlayer, Pla
     }
 
     @Override
-    public void makeMove(Coordinates location, Coordinates destination) throws RemoteException {
-        boolean moved = false;
+    public boolean makeMove(Coordinates location, Coordinates destination) throws RemoteException {
         for(int x = 0; x<25; x++)
         {
             for(int y = 0; y<17; y++)
@@ -76,15 +75,13 @@ public class DefaultBot extends UnicastRemoteObject implements RemotePlayer, Pla
                 {
                     switch (color){
                         case RED:
-                            if(moved == false && game.GetRulesManager().checkMove(game, new Coordinates(x+2,y-2),new Coordinates(x,y),color)) {
-                                game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
-                                moved = true;
-                                break;
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y-2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
+
                             }
-                            if(moved == false && game.GetRulesManager().checkMove(game, new Coordinates(x-2,y-2),new Coordinates(x,y),color)) {
-                                game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
-                                moved = true;
-                                break;
+                            if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y-2),new Coordinates(x,y),color)) {
+                                return game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
+
                             }
                             break;
                         case BLUE:
@@ -99,8 +96,6 @@ public class DefaultBot extends UnicastRemoteObject implements RemotePlayer, Pla
                 }
             }
         }
-        if(moved == false)
-        {
             for(int x = 0; x<25; x++)
             {
                 for(int y = 0; y<17; y++)
@@ -110,12 +105,10 @@ public class DefaultBot extends UnicastRemoteObject implements RemotePlayer, Pla
                         switch (color){
                             case RED:
                                 if(game.GetRulesManager().checkMove(game, new Coordinates(x-1,y-1),new Coordinates(x,y),color)) {
-                                    game.makeMove(new Coordinates(x-1,y-1),new Coordinates(x,y), this);
-                                    break;
+                                    return game.makeMove(new Coordinates(x-1,y-1),new Coordinates(x,y), this);
                                 }
                                 if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y-1),new Coordinates(x,y),color)) {
-                                    game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
-                                    break;
+                                    return game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
                                 }
                                 break;
                             case BLUE:
@@ -130,7 +123,7 @@ public class DefaultBot extends UnicastRemoteObject implements RemotePlayer, Pla
                     }
                 }
             }
-        }
+        return false;
     }
 
     @Override
