@@ -26,7 +26,7 @@ public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerF
                 return false;
             }
         }
-        DefaultPlayer player = new DefaultPlayer(manager, login, Checker.RED);
+        DefaultPlayer player = new DefaultPlayer(manager, login);
         players.add(player);
         manager.addPlayer(player);
         return true;

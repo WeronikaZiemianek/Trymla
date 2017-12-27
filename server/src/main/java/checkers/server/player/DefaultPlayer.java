@@ -8,6 +8,8 @@ import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
 import checkers.server.game.GamesManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -20,11 +22,12 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     private GamesManager gamesManager;
     private String login;
     private ClientPlayer clientPlayer;
+    private Logger logger;
 
-    public DefaultPlayer(GamesManager gamesManager, String login, Checker color) throws RemoteException {
+    public DefaultPlayer(GamesManager gamesManager, String login) throws RemoteException {
         this.gamesManager = gamesManager;
         this.login = login;
-        this.color = color;
+        logger = LoggerFactory.getLogger(DefaultPlayer.class);
     }
 
     @Override
@@ -35,20 +38,21 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void update (Boolean isMyTurn) {
         this.isMyTurn = isMyTurn;
-        try {
-            clientPlayer.update(isMyTurn);
-        } catch(RemoteException e) {
-        }
+//        try {
+//            clientPlayer.update(isMyTurn);
+//        } catch(RemoteException e) {
+//        }
 
     }
 
     @Override
     public void endGame(String login) {
-        try {
-            clientPlayer.gameOver(login);
-        } catch(RemoteException e) {
-            e.printStackTrace();
-        }
+        logger.info("game finished winner is: " + login);
+//        try {
+//            clientPlayer.gameOver(login);
+//        } catch(RemoteException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
@@ -63,6 +67,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     @Override
     public void makeMove(Coordinates location, Coordinates destination) throws RemoteException {
+        game.makeMove(destination, location, this);
 
     }
 
@@ -91,11 +96,16 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public void setGame(Game game) {
+    public void setGameAndColor(Game game, Checker color, Board board) {
         this.game = game;
-        board = game.getBoard();
+        this.board = board;
+        this.color = color;
     }
 
+    @Override
+    public String getPlayerName() {
+        return login;
+    }
 
     @Override
     public String getLogin() throws RemoteException {

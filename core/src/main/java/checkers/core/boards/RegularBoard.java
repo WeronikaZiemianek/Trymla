@@ -43,6 +43,23 @@ public class RegularBoard implements Board {
     }
 
     @Override
+    public Checker colorForPlayer(int num) {
+        int number = num;
+        if(num != 0) {
+            number = num + (6 / getExNumOfPlayers());
+        }
+        switch(number) {
+            case 0: return Checker.RED;
+            case 1: return Checker.WHITE;
+            case 2: return Checker.YELLOW;
+            case 3: return Checker.GREEN;
+            case 4: return Checker.BLACK;
+            case 5: return Checker.BLUE;
+        }
+        return Checker.EMPTY;
+    }
+
+    @Override
     public Checker getFieldType(Coordinates location) {
         return board[location.X()][location.Y()].getType();
     }

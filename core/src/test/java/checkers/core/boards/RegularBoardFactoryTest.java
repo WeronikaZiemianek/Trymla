@@ -17,8 +17,8 @@ public class RegularBoardFactoryTest {
         Board board = factory.createNewBoard(3);
         String boardString = board.toString();
         long count = boardString.chars().filter(ch -> ch == 'r').count();
-        assertEquals(10, count);
         System.out.print(boardString);
+        assertEquals(10, count);
     }
 
     @Test
@@ -26,8 +26,8 @@ public class RegularBoardFactoryTest {
         Board board = factory.createNewBoard(6);
         String boardString = board.toString();
         long count = boardString.chars().filter(ch -> ch == '.').count();
-        assertEquals(61, count);
         System.out.print(boardString);
+        assertEquals(61, count);
     }
 
     @Test(expected = WrongNumberOfSetsException.class)

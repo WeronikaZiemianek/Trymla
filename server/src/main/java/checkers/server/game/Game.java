@@ -12,8 +12,8 @@ public interface Game { ;
     void endMove();
     void addPlayer(Player player);
     GameState getState();
-    Board getBoard();
     void disconnectPlayer(Player player);
+    void makeMove(Coordinates destination, Coordinates currLocation, Player player);
 
 }
 

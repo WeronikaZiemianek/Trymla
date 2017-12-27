@@ -16,10 +16,21 @@ public class Field {
         } else {
             occupiedBy = values[6];
         }
+    }
+
+
+    public Field(Checker type, Checker occupied) {
+        this.type = type;
+        if(occupied == null) {
+            initField(type);
+        } else {
+            this.type = type;
+            this.occupiedBy = occupied;
+        }
 
     }
 
-    public Field(Checker type) {
+    private void initField(Checker type) {
         Checker values[] = Checker.values();
         int t = 0;
         this.type = type;
@@ -34,7 +45,6 @@ public class Field {
         } else {
             occupiedBy = values[6];
         }
-
     }
 
     public Checker getOccupiedBy() {

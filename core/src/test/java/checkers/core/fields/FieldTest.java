@@ -17,7 +17,7 @@ public class FieldTest {
 
     @Test
     public void createFieldWithChecker() {
-        Field field = new Field(Checker.RED);
+        Field field = new Field(Checker.RED, null);
         assertEquals(Checker.GREEN, field.getOccupiedBy());
     }
 

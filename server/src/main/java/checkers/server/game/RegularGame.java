@@ -20,11 +20,6 @@ public class RegularGame implements Game {
     private Logger logger;
     private Turn turn;
 
-    @Override
-    public GameState getState() {
-        return state;
-    }
-
     public RegularGame(Board board, RulesManager rulesManager) {
         players = new ArrayList<>();
         playersInHome = new ArrayList<>();
@@ -43,17 +38,18 @@ public class RegularGame implements Game {
             buf++;
             playersInHome.set(index,buf);
             if(playersInHome.get(index) == 10) {
-                state = GameState.CLOSED;
+                endGame(players.get(index));
             }
         }
     }
 
+    @Override
     public void makeMove(Coordinates destination, Coordinates currLocation, Player player) {
         if(state != GameState.RUNNING) {
             return;
         }
         if(player == turn.getPlayer()) {
-            boolean validationOfMove = rulesManager.checkMove(this ,destination, currLocation, player.getColor());
+            boolean validationOfMove = rulesManager.checkMove(this,destination, currLocation, player.getColor());
             if(validationOfMove) {
                 turn.setCurrMov(destination);
                 board.makeMove(destination, currLocation);
@@ -69,8 +65,13 @@ public class RegularGame implements Game {
         state = GameState.RUNNING;
     }
 
-    private void endGame(String login) {
-
+    private void endGame(Player player) {
+        String login = player.getPlayerName();
+        for(Player p : players) {
+            p.endGame(login);
+        }
+        state = GameState.CLOSED;
+        //TODO: inform manager
     }
 
     @Override
@@ -84,9 +85,10 @@ public class RegularGame implements Game {
 
     @Override
     public void addPlayer(Player player) {
-        numOfPlayers++;
         players.add(player);
-        player.setGame(this);
+        player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
+        logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
+        numOfPlayers++;
         if(numOfPlayers == board.getExNumOfPlayers()) {
             startGame();
         }
@@ -101,7 +103,7 @@ public class RegularGame implements Game {
 
     @Override
     public Coordinates getCurrMov() {
-        logger.debug("value of currMov " + turn.getCurrMov());
+        logger.info("value of currMov " + turn.getCurrMov());
         return turn.getCurrMov();
     }
 
@@ -111,12 +113,13 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public Board getBoard() {
-        return board;
+    public void disconnectPlayer(Player player) {
+        //TODO: disconnect player, erase from registry and factory memory, put a bot instead
     }
 
     @Override
-    public void disconnectPlayer(Player player) {
+    public GameState getState() {
+        return state;
     }
 
 

@@ -22,8 +22,12 @@ public class RegularBoardFactory implements BoardFactory {
             case 2: createUprightTriangle(TRIANGLE_INFO[0],Checker.RED);
                 createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.GREEN);
                 break;
-            case 3: createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.WHITE);
+            case 3:
+                createUprightTriangle(TRIANGLE_INFO[0],Checker.RED, Checker.EMPTY);
+                createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.WHITE);
+                createUprightTriangle(TRIANGLE_INFO[2],Checker.YELLOW, Checker.EMPTY);
                 createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.GREEN);
+                createUprightTriangle(TRIANGLE_INFO[4], Checker.BLACK, Checker.EMPTY);
                 createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.BLUE);
                 break;
             default: throw new WrongNumberOfSetsException();
@@ -48,13 +52,17 @@ public class RegularBoardFactory implements BoardFactory {
         for(int column=4;column<21;column++) {
             for (int row = 4; row < 13; row++){
                 if((row+column)%2==0){
-                    board[column][row] = new Field(Checker.EMPTY);
+                    board[column][row] = new Field(Checker.EMPTY, null);
                 }
             }
         }
     }
 
     private void createUprightTriangle(int[] triangleInfo, Checker type){
+        createUprightTriangle(triangleInfo, type, null);
+    }
+
+    private void createUprightTriangle(int[] triangleInfo, Checker type, Checker occupied){
         int column = triangleInfo[0];
         int row = triangleInfo[1];
         int limit = triangleInfo[2];
@@ -63,15 +71,19 @@ public class RegularBoardFactory implements BoardFactory {
 
         while(row<limit){
             for(numberOfJumps=0;numberOfJumps<counter;numberOfJumps++)
-                board[column+numberOfJumps*2][row] = new Field(type);
+                if(occupied == null)
+                    board[column + numberOfJumps * 2][row] = new Field(type, occupied);
 
             row++;
             column--;
             counter++;
         }
     }
+    private void createUpsideDownTriangle(int[] triangleInfo, Checker type) {
+        createUpsideDownTriangle(triangleInfo, type, null);
+    }
 
-    private void createUpsideDownTriangle(int[] triangleInfo, Checker type){
+    private void createUpsideDownTriangle(int[] triangleInfo, Checker type, Checker occupied){
         int column = triangleInfo[0];
         int row = triangleInfo[1];
         int limit = triangleInfo[2];
@@ -79,7 +91,7 @@ public class RegularBoardFactory implements BoardFactory {
 
         while(row>limit){
             for(numberOfJumps=0;numberOfJumps<counter;numberOfJumps++)
-                board[column+numberOfJumps*2][row] = new Field(type);
+                board[column+numberOfJumps*2][row] = new Field(type, occupied);
 
             row--;
             column--;

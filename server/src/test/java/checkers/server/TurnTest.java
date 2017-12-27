@@ -14,14 +14,14 @@ public class TurnTest {
 
     @Test
     public void testGetCurrentMove() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer(null, "login", Checker.EMPTY);
+        DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         assertEquals(null, turn.getCurrMov());
     }
 
     @Test
     public void testSetCurrentMove() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer(null, "login", Checker.EMPTY);
+        DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         turn.setCurrMov(new Coordinates(6,6));
         assertEquals((new Coordinates(6,6)).X(), turn.getCurrMov().X());
@@ -30,7 +30,7 @@ public class TurnTest {
 
     @Test
     public void testGetPlayer() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer(null, "login", Checker.EMPTY);
+        DefaultPlayer player = new DefaultPlayer(null, "login");
         Turn turn = new Turn(player);
         turn.setCurrMov(new Coordinates(12,0));
         assertEquals(new Coordinates(12,0).X(), turn.getCurrMov().X());

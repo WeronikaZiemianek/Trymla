@@ -31,15 +31,16 @@ public class RegularGameTest
 
     @Test
     public void testMakeMove() throws RemoteException {
-        Player Janusz = new DefaultPlayer(gamesManager,"Janusz",Checker.RED);
+        System.setProperty("java.rmi.server.hostname", "localhost");
+        Player Janusz = new DefaultPlayer(gamesManager,"Janusz");
         regularGame.addPlayer(Janusz);
+        System.out.println(Janusz.getColor());
         regularGame.startGame();
-        regularGame.endMove();
-        regularGame.makeMove(new Coordinates(10,12),new Coordinates(9,13),Janusz);
-
+        regularGame.makeMove(new Coordinates(10,12),new Coordinates(9,13), Janusz);
         assertEquals(Checker.EMPTY, board.getFieldOccupiedBy(new Coordinates(9,13)));
         assertEquals(Checker.RED, board.getFieldOccupiedBy(new Coordinates(10,12)));
     }
+
 
 
     @Test

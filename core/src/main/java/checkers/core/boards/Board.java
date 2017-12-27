@@ -8,5 +8,6 @@ public interface Board {
     Checker getFieldType(Coordinates location);
     void makeMove(Coordinates currLocation, Coordinates destination) throws WrongMoveException;
     int getExNumOfPlayers();
+    Checker colorForPlayer(int num);
 
 }

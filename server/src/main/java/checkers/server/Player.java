@@ -1,6 +1,7 @@
 package checkers.server;
 
 import checkers.core.Checker;
+import checkers.core.boards.Board;
 import checkers.server.game.Game;
 
 public interface Player {
@@ -8,5 +9,6 @@ public interface Player {
     void update(Boolean isMyTurn);
     void endGame(String login);
     void addNewPlayer(String login, Checker color);
-    void setGame(Game game);
+    void setGameAndColor(Game game, Checker color, Board board);
+    String getPlayerName();
 }
