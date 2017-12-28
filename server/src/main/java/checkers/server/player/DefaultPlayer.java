@@ -146,6 +146,15 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
+    public void replaceWithBot(String login, int index) {
+        try {
+            clientPlayer.replaceWithBot(login, index);
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void getClientPlayer() throws RemoteException {
         clientPlayer = gamesManager.getClientPlayer(this);
         if(clientPlayer == null) {

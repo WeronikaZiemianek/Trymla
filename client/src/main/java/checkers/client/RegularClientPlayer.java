@@ -29,4 +29,9 @@ public class RegularClientPlayer extends UnicastRemoteObject implements ClientPl
         client.newPlayer(login, color);
 
     }
+
+    @Override
+    public void replaceWithBot(String login, int index) throws RemoteException {
+        client.renamePlayer(login, index);
+    }
 }

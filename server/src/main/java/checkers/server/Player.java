@@ -11,4 +11,5 @@ public interface Player {
     void addNewPlayer(String login, Checker color);
     void setGameAndColor(Game game, Checker color, Board board);
     String getPlayerName();
+    void replaceWithBot(String login, int index);
 }

@@ -172,4 +172,7 @@ public class DefaultBot implements Player {
         return login;
     }
 
+    @Override
+    public void replaceWithBot(String login, int index) {}
+
 }

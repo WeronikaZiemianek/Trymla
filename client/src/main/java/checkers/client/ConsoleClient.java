@@ -26,6 +26,12 @@ public class ConsoleClient {
         joinGame();
     }
 
+    public void renamePlayer(String login, int index) {
+        players.get(index).setLogin(login);
+        System.out.println(login + " " + players.get(index).getColor());
+
+    }
+
     boolean createNewPlayer(String login) {
         if(login.matches("bot[0-9]+")) {
             return false;
@@ -89,6 +95,7 @@ public class ConsoleClient {
     }
 
     private void makeMove() throws RemoteException {
+        String in;
         String location[];
         String destination[];
         int lx;
@@ -98,17 +105,18 @@ public class ConsoleClient {
         int move = 0;
         do {
             System.out.println("Enter location coordinates separated by ' ' ");
-            location = input.nextLine().split(" ");
-            if(location[0].equals("end") && location[1].equals("move")) {
+            in = input.nextLine();
+            if(in.equals("end move")) {
                 move = 2;
                 break;
             }
+            if(in.equals("exit")) {
+                player.disconnect();
+                return;
+            }
+            location = in.split(" ");
             System.out.println("Enter destination coordinates separated by ' ' ");
             destination = input.nextLine().split(" ");
-            if(destination[0].equals("end") && destination[1].equals("move")) {
-                move = 2;
-                break;
-            }
             lx = Integer.parseInt(location[0]);
             ly = Integer.parseInt(location[1]);
             logger.info("location coordinates " + lx + "x" + ly);

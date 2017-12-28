@@ -50,7 +50,7 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public int makeMove(Coordinates currLocation, Coordinates destination, Player player) {
+    synchronized public int makeMove(Coordinates currLocation, Coordinates destination, Player player) {
         logger.info("making move i game");
         if(state != GameState.RUNNING) {
             logger.warn("game not running");
@@ -160,7 +160,13 @@ public class RegularGame implements Game {
     @Override
     public void disconnectPlayer(Player player) {
         int index = players.indexOf(player);
-        players.add(index, new DefaultBot("bot"+index));
+        String login = "bot".concat(String.valueOf(index));
+        players.add(index, new DefaultBot(login));
+        for(Player p : players) {
+            p.replaceWithBot(login, index);
+        }
+
+        updatePlayers();
     }
 
     @Override
