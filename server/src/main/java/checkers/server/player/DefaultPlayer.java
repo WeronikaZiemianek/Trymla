@@ -36,12 +36,16 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
+    public Board getBoard() { return board; }
+
+    @Override
     public void update (Boolean isMyTurn) {
         this.isMyTurn = isMyTurn;
         if(clientPlayer != null) {
             try {
                 clientPlayer.update(isMyTurn);
             } catch(RemoteException e) {
+                e.printStackTrace();
                 logger.error("cant update client player");
             }
         } else {
@@ -80,8 +84,14 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public boolean makeMove(Coordinates location, Coordinates destination) throws RemoteException {
-        return game.makeMove(location, destination, this);
+    public int makeMove(Coordinates location, Coordinates destination) throws RemoteException {
+        if(isMyTurn) {
+            logger.info("Making move player " + login);
+            return game.makeMove(location, destination, this);
+        } else {
+            logger.warn("it's not my turn");
+            return -1;
+        }
     }
 
     @Override
@@ -92,9 +102,10 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public void createGame(int numOfPlayers) throws RemoteException {
-        gamesManager.createNewGame(numOfPlayers);
+    public boolean createGame(int numOfPlayers) throws RemoteException {
+        boolean create = gamesManager.createNewGame(numOfPlayers);
         gamesManager.joinGame(this);
+        return create;
 
     }
 

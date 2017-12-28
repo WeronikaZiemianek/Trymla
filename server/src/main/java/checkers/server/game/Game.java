@@ -15,7 +15,7 @@ public interface Game { ;
     GameState getState();
     void disconnectPlayer(Player player);
     RulesManager GetRulesManager();
-    boolean makeMove(Coordinates currLocation, Coordinates destination, Player player);
+    int makeMove(Coordinates currLocation, Coordinates destination, Player player);
     Board getBoard();
     public int getNumOfPlayers();
 

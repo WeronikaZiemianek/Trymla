@@ -1,8 +1,11 @@
 package checkers.client;
+import checkers.core.Checker;
+import checkers.core.Coordinates;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleClient {
@@ -10,10 +13,12 @@ public class ConsoleClient {
     RemotePlayer player;
     ClientConnection connection;
     ClientPlayer clientPlayer;
+    ArrayList<LoginAndColor> players;
 
     ConsoleClient() throws RemoteException {
         connection = new ClientConnection();
         input = new Scanner(System.in);
+        players = new ArrayList<>();
         startGame();
         joinGame();
     }
@@ -56,8 +61,59 @@ public class ConsoleClient {
                 num = input.nextLine();
                 n = Integer.parseInt(num);
             }
-            player.createGame(n);
+            if(!player.createGame(n)) {
+                System.out.println("Somebody else already created game");
+            }
         }
+    }
+
+    void newPlayer(String login, Checker color) {
+        players.add(new LoginAndColor(login, color));
+        System.out.println(login + " " + color);
+    }
+
+    void drawBoard(boolean isMyTurn) throws RemoteException {
+        System.out.print(player.getBoard().toString());
+        if(isMyTurn) {
+            System.out.println("Its your turn make a move");
+            makeMove();
+        }
+    }
+
+    private void makeMove() throws RemoteException {
+        String location[];
+        String destination[];
+        int lx;
+        int ly;
+        int dx;
+        int dy;
+        int move = 0;
+        do {
+            System.out.println("Enter location coordinates separated by ' ' ");
+            location = input.nextLine().split(" ");
+            if(location.equals("end move")) {
+                player.endMove();
+                break;
+            }
+            System.out.println("Enter destination coordinates separated by ' ' ");
+            destination = input.nextLine().split(" ");
+            if(destination.equals("end move")) {
+                player.endMove();
+                break;
+            }
+            lx = Integer.parseInt(location[0]);
+            ly = Integer.parseInt(location[1]);
+            dx = Integer.parseInt(destination[0]);
+            dy = Integer.parseInt(destination[1]);
+            move = player.makeMove( new Coordinates(lx, ly), new Coordinates(dx, dy));
+        } while(move == -1);
+        if(move == 2) {
+            player.endMove();
+        }
+    }
+
+    void endOfGame(String login) {
+        System.out.println("The winner is :" + login);
     }
 
 

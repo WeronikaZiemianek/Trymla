@@ -15,16 +15,18 @@ public class RegularClientPlayer extends UnicastRemoteObject implements ClientPl
 
     @Override
     public void update(boolean isMyTurn) throws RemoteException {
+        client.drawBoard(isMyTurn);
 
     }
 
     @Override
     public void gameOver(String winnerLogin) throws RemoteException {
-
+        client.endOfGame(winnerLogin);
     }
 
     @Override
     public void newPlayerAdded(String login, Checker color) throws RemoteException {
+        client.newPlayer(login, color);
 
     }
 }

@@ -3,7 +3,9 @@ import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.Field;
 
-public class RegularBoard implements Board {
+import java.io.Serializable;
+
+public class RegularBoard implements Board, Serializable {
     private final int NUM_OF_COLUMNS;
     private final int NUM_OF_ROWS;
 

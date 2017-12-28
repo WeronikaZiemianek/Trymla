@@ -59,7 +59,7 @@ public class DefaultBot implements Player {
 
     }
 
-    public boolean makeMove() {
+    public int makeMove() {
         for(int x = 0; x<25; x++)
         {
             for(int y = 0; y<17; y++)
@@ -166,7 +166,7 @@ public class DefaultBot implements Player {
                 }
             }
         }
-        return false;
+        return -1;
     }
 
 

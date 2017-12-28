@@ -45,7 +45,7 @@ public class GameTest {
     @Test
     public void testMakingMoves() throws RemoteException {
         startGame();
-        assertEquals(true, player0.makeMove(new Coordinates(9,13), new Coordinates(10,12)));
+        assertEquals(2, player0.makeMove(new Coordinates(9,13), new Coordinates(10,12)));
         System.out.println(game.getBoard());
     }
 
@@ -53,13 +53,13 @@ public class GameTest {
     public void testMakingTwoMovesInRow() throws RemoteException {
         startGame();
         player0.makeMove(new Coordinates(9,13), new Coordinates(10,12));
-        assertEquals(false, player0.makeMove(new Coordinates(10,12), new Coordinates(12, 12)));
+        assertEquals(-1, player0.makeMove(new Coordinates(10,12), new Coordinates(12, 12)));
     }
 
     @Test
     public void testMakingJump() throws RemoteException {
         startGame();
-        assertEquals(true, player0.makeMove(new Coordinates(10,14), new Coordinates(12,12)));
+        assertEquals(4, player0.makeMove(new Coordinates(10,14), new Coordinates(12,12)));
         System.out.println(game.getBoard());
     }
 
@@ -74,7 +74,7 @@ public class GameTest {
         startGame();
         player0Moves();
         System.out.println(player1.getColor());
-        assertEquals(true, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
+        assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
     }
 
     private void player23Move() throws RemoteException {
@@ -88,8 +88,8 @@ public class GameTest {
         startGame();
         player0Moves();
         player23Move();
-        assertEquals(true, player0.makeMove(new Coordinates(13, 15), new Coordinates(11, 13)));
-        assertEquals(true, player0.makeMove(new Coordinates(11, 13), new Coordinates(9, 11)));
+        assertEquals(4, player0.makeMove(new Coordinates(13, 15), new Coordinates(11, 13)));
+        assertEquals(4, player0.makeMove(new Coordinates(11, 13), new Coordinates(9, 11)));
     }
 
 }

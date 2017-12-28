@@ -7,7 +7,7 @@ import checkers.core.clientServerInterfaces.RemotePlayer;
 public interface GamesManager {
     void addPlayer(RemotePlayer player);
     boolean joinGame(Player player);
-    void createNewGame(int numOfPlayers);
+    boolean createNewGame(int numOfPlayers);
     void addBot();
     ClientPlayer getClientPlayer(Player player);
 }

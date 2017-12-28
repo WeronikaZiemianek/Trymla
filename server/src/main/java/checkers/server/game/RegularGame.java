@@ -49,24 +49,20 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public boolean makeMove(Coordinates currLocation, Coordinates destination, Player player) {
+    public int makeMove(Coordinates currLocation, Coordinates destination, Player player) {
         if(state != GameState.RUNNING) {
-            return false;
+            return -1;
         }
         if(player == turn.getPlayer()) {
             int validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
             if(validationOfMove != -1) {
-                if(validationOfMove == 4) {
-                    turn.setCurrMov(destination);
-                } else {
-                    endMove();
-                }
+                turn.setCurrMov(destination);
                 board.makeMove(currLocation, destination);
                 countHome(currLocation, destination, player);
-                return true;
+                return validationOfMove;
             }
         }
-        return false;
+        return -1;
     }
 
     @Override

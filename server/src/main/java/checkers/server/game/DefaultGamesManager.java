@@ -36,13 +36,19 @@ public class DefaultGamesManager implements GamesManager {
         logger.debug("Connecting to factory");
         connection = new Connection(playerFactory);
         boardFactory = new RegularBoardFactory();
+        runningGames = new ArrayList<>();
     }
 
     @Override
-    synchronized public void createNewGame(int numOfPlayers) {
-        Board board = boardFactory.createNewBoard(numOfPlayers);
-        openGame = new RegularGame(board, new RegularRulesManager(board));
-        logger.info("created new game for " + numOfPlayers);
+    synchronized public boolean createNewGame(int numOfPlayers) {
+        if(openGame == null) {
+            Board board = boardFactory.createNewBoard(numOfPlayers);
+            openGame = new RegularGame(board, new RegularRulesManager(board));
+            logger.info("created new game for " + numOfPlayers);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

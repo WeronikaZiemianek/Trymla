@@ -3,7 +3,9 @@ package checkers.core;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Field {
+import java.io.Serializable;
+
+public class Field implements Serializable {
     static Logger logger = LoggerFactory.getLogger(Field.class);
     private Checker occupiedBy;
     private Checker type;
