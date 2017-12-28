@@ -6,7 +6,7 @@ public class LoginAndColor {
     String login;
     Checker color;
 
-    LoginAndColor(String login, Checker color) {
+    public LoginAndColor(String login, Checker color) {
         this.color = color;
         this.login = login;
     }

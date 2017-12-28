@@ -165,8 +165,9 @@ public class RegularGame implements Game {
         for(Player p : players) {
             p.replaceWithBot(login, index);
         }
-
-        updatePlayers();
+        if(state == GameState.RUNNING) {
+            updatePlayers();
+        }
     }
 
     @Override

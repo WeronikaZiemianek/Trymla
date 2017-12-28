@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane fx:id="mainPage" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startOnClick" prefHeight="54.0" prefWidth="120.0" text="START" StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets top="100.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" cycleMethod="REFLECT" focusAngle="52.43" focusDistance="0.023255813953488413" radius="0.7209302325581395">
+                     <stops>
+                        <Stop color="#6816ffed" />
+                        <Stop color="#d03333" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+         </children></StackPane>
+      <StackPane fx:id="loginPage" disable="true" prefHeight="150.0" prefWidth="200.0" visible="false">
+         <children>
+            <Label fx:id="loginOutputLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="400.0" textAlignment="CENTER" StackPane.alignment="TOP_CENTER">
+               <StackPane.margin>
+                  <Insets top="100.0" />
+               </StackPane.margin>
+            </Label>
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginOnClick" prefHeight="59.0" prefWidth="140.0" text="Login" textAlignment="CENTER" StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets top="100.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="Agency FB Bold" size="27.0" />
+               </font>
+            </Button>
+            <TextField fx:id="nameTextArea" alignment="CENTER" prefHeight="100.0" prefWidth="300.0" promptText="Enter your name...." StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets left="200.0" right="200.0" top="-200.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextField>
+         </children>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin></StackPane>
+      <StackPane fx:id="createPage" disable="true" prefHeight="150.0" prefWidth="200.0" visible="false">
+         <children>
+            <Button fx:id="twoPlayerButtton" mnemonicParsing="false" onAction="#twoPlayerOnClick" text="2 players" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="100.0" top="200.0" />
+               </StackPane.margin>
+            </Button>
+            <Button fx:id="threePlayerButtton" mnemonicParsing="false" onAction="#threePlayerOnClick" text="3 players" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="250.0" />
+               </StackPane.margin>
+            </Button>
+            <Button fx:id="fourPlayerButtton" mnemonicParsing="false" onAction="#fourPlayerOnClick" text="4 players" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="200.0" top="300.0" />
+               </StackPane.margin>
+            </Button>
+            <Button fx:id="sixPlayerButtton" mnemonicParsing="false" onAction="#sixPlayerOnClick" text="6 players" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="250.0" top="350.0" />
+               </StackPane.margin>
+            </Button>
+            <Label fx:id="numberOfPlayerLabel" alignment="CENTER" prefHeight="50.0" prefWidth="100.0" text=" " StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets right="250.0" top="150.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Button fx:id="createGameButton" mnemonicParsing="false" onAction="#createGameOnClick" prefHeight="47.0" prefWidth="200.0" text="CREATE GAME" StackPane.alignment="TOP_CENTER">
+               <StackPane.margin>
+                  <Insets top="500.0" />
+               </StackPane.margin>
+            </Button>
+         </children></StackPane>
+      <StackPane fx:id="lobbyPage" disable="true" prefHeight="150.0" prefWidth="200.0" visible="false">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <children>
+            <Label fx:id="player1OnLobby" prefHeight="30.0" prefWidth="150.0" text=" " StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="200.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player2OnLobby" prefHeight="30.0" prefWidth="150.0" text=" " StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="240.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player3OnLobby" prefHeight="30.0" prefWidth="150.0" text=" " StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="280.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player4OnLobby" prefHeight="30.0" prefWidth="150.0" text=" " StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="320.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player5OnLobby" prefHeight="30.0" prefWidth="150.0" text=" " StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="360.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player6OnLobby" prefHeight="30.0" prefWidth="150.0" text=" " StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="150.0" top="400.0" />
+               </StackPane.margin>
+            </Label>
+            <GridPane fx:id="playerColorsOnLobby" prefHeight="633.0" prefWidth="75.0" StackPane.alignment="TOP_LEFT">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2" />
+                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
+                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
+                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="5" />
+                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="6" />
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="400.0" left="300.0" right="720.0" top="200.0" />
+               </StackPane.margin>
+            </GridPane>
+            <Button fx:id="addBotButton" mnemonicParsing="false" onAction="#addBotOnClick" prefHeight="42.0" prefWidth="120.0" text="Add bot" StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets right="200.0" top="350.0" />
+               </StackPane.margin>
+            </Button>
+            <Label fx:id="createInfoLabel" alignment="CENTER" prefHeight="50.0" prefWidth="600.0" textFill="RED" StackPane.alignment="TOP_CENTER">
+               <StackPane.margin>
+                  <Insets top="700.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="gamePage" disable="true" prefHeight="150.0" prefWidth="200.0" visible="false">
+         <children>
+            <Label fx:id="player1OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 1" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="105.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player2OnGame" nodeOrientation="LEFT_TO_RIGHT" prefHeight="15.0" prefWidth="150.0" text="Player 2" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="125.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player3OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 3" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="145.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player4OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 4" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="165.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player5OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 5" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="185.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="player6OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 6" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="205.0" />
+               </StackPane.margin>
+            </Label>
+            <GridPane fx:id="playerColorsOngame" prefHeight="633.0" prefWidth="75.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2" />
+                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
+                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="5" />
+                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="600.0" left="200.0" right="850.0" top="100.0" />
+               </StackPane.margin>
+            </GridPane>
+            <GridPane fx:id="board" StackPane.alignment="TOP_CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <StackPane.margin>
+                  <Insets bottom="50.0" left="300.0" right="100.0" top="50.0" />
+               </StackPane.margin>
+               <children>
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="16" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="24" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="17" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="15" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="16" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="18" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="15" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="17" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="19" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="16" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="8" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="16" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="24" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="20" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="6" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="8" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="16" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="18" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="17" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="16" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="18" GridPane.rowIndex="8" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="19" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="15" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="17" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="15" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="1" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="2" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="2" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="3" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="3" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="15" GridPane.rowIndex="3" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="6" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="15" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="15" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="14" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="12" GridPane.rowIndex="14" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="13" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="11" GridPane.rowIndex="13" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="13" GridPane.rowIndex="13" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="15" GridPane.rowIndex="13" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="14" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="23" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="22" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="22" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="20" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="18" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="19" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="20" GridPane.rowIndex="10" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="21" GridPane.rowIndex="9" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="21" GridPane.rowIndex="11" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="22" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="20" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="18" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="19" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="21" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="23" GridPane.rowIndex="5" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="20" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="22" GridPane.rowIndex="6" />
+                  <Circle fill="#ffffffed" onMouseClicked="#fieldOnClick" radius="21.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="21" GridPane.rowIndex="7" />
+               </children>
+            </GridPane>
+            <Button fx:id="endMoveButton" mnemonicParsing="false" onAction="#endMoveOnClick" text="END MOVE" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="100.0" top="400.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </StackPane>
+      <StackPane fx:id="winnerPage" disable="true" prefHeight="150.0" prefWidth="200.0" visible="false">
+         <children>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitOnClick" text="EXIT" StackPane.alignment="TOP_CENTER">
+               <StackPane.margin>
+                  <Insets top="550.0" />
+               </StackPane.margin>
+            </Button>
+            <Button fx:id="playAgainButton" mnemonicParsing="false" onAction="#playAgainOnClick" text="PLAY AGAIN" StackPane.alignment="TOP_CENTER">
+               <StackPane.margin>
+                  <Insets top="500.0" />
+               </StackPane.margin>
+            </Button>
+            <Label fx:id="winnerNameLabel" alignment="CENTER" prefHeight="75.0" prefWidth="300.0" text="name" StackPane.alignment="TOP_CENTER">
+               <StackPane.margin>
+                  <Insets top="400.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>

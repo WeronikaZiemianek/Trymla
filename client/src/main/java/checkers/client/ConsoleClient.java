@@ -74,10 +74,6 @@ public class ConsoleClient {
             if(!player.createGame(n)) {
                 System.out.println("Somebody else already created game");
             }
-//            String addBot = input.nextLine();
-//            if(addBot.equals("add bot")) {
-//                player.addBot();
-//            }
         }
     }
 
