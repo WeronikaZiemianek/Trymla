@@ -64,6 +64,7 @@ public class DefaultBot implements Player {
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y-2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x - 2, y - 2), new Coordinates(x, y), this);
                             }
+                            break;
                         case BLUE:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+4,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x + 4, y), new Coordinates(x, y), this);
@@ -71,6 +72,7 @@ public class DefaultBot implements Player {
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y+2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x + 2, y + 2), new Coordinates(x, y), this);
                             }
+                            break;
                         case GREEN:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y+2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x + 2, y + 2), new Coordinates(x, y), this);
@@ -78,6 +80,7 @@ public class DefaultBot implements Player {
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y+2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x - 2, y + 2), new Coordinates(x, y), this);
                             }
+                            break;
                         case WHITE:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-4,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x - 4, y), new Coordinates(x, y), this);
@@ -85,6 +88,7 @@ public class DefaultBot implements Player {
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y-2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x - 2, y - 2), new Coordinates(x, y), this);
                             }
+                            break;
                         case YELLOW:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-4,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x - 4, y), new Coordinates(x, y), this);
@@ -92,6 +96,7 @@ public class DefaultBot implements Player {
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y+2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x - 2, y + 2), new Coordinates(x, y), this);
                             }
+                            break;
                         case BLACK:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+4,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x + 4, y), new Coordinates(x, y), this);
@@ -99,6 +104,7 @@ public class DefaultBot implements Player {
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y-2),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x + 2, y - 2), new Coordinates(x, y), this);
                             }
+                            break;
                     }
                 }
             }
@@ -117,6 +123,7 @@ public class DefaultBot implements Player {
                             if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y-1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
                             }
+                            break;
                         case BLUE:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x+2,y),new Coordinates(x,y), this);
@@ -124,6 +131,7 @@ public class DefaultBot implements Player {
                             if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y+1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x+1,y+1),new Coordinates(x,y), this);
                             }
+                            break;
                         case GREEN:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-1,y+1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x-1,y+1),new Coordinates(x,y), this);
@@ -131,6 +139,7 @@ public class DefaultBot implements Player {
                             if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y+1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x+1,y+1),new Coordinates(x,y), this);
                             }
+                            break;
                         case WHITE:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x-2,y),new Coordinates(x,y), this);
@@ -138,6 +147,7 @@ public class DefaultBot implements Player {
                             if( game.GetRulesManager().checkMove(game, new Coordinates(x-1,y-1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x-1,y-1),new Coordinates(x,y), this);
                             }
+                            break;
                         case YELLOW:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x-2,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x-2,y),new Coordinates(x,y), this);
@@ -145,6 +155,7 @@ public class DefaultBot implements Player {
                             if( game.GetRulesManager().checkMove(game, new Coordinates(x-1,y+1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x-1,y+1),new Coordinates(x,y), this);
                             }
+                            break;
                         case BLACK:
                             if(game.GetRulesManager().checkMove(game, new Coordinates(x+2,y),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x+2,y),new Coordinates(x,y), this);
@@ -152,6 +163,7 @@ public class DefaultBot implements Player {
                             if( game.GetRulesManager().checkMove(game, new Coordinates(x+1,y-1),new Coordinates(x,y),color) != -1) {
                                 return game.makeMove(new Coordinates(x+1,y-1),new Coordinates(x,y), this);
                             }
+                            break;
                     }
                 }
             }

@@ -45,6 +45,13 @@ public class RegularRulesManager implements RulesManager {
             return -1;
         }
 
+
+        Checker curr = board.getFieldOccupiedBy(currLocation);
+        Checker dest = board.getFieldOccupiedBy(destination);
+
+        if(curr.equals(Checker.EMPTY) || !(dest.equals(Checker.EMPTY)))
+            return -1;
+
         int yDiff = Math.abs(currLocation.Y()-destination.Y());
         int diff = yDiff + Math.abs(currLocation.X()-destination.X());
 
