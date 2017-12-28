@@ -18,6 +18,7 @@ public interface Game { ;
     int makeMove(Coordinates currLocation, Coordinates destination, Player player);
     Board getBoard();
     public int getNumOfPlayers();
+    void updatePlayers();
 
 }
 

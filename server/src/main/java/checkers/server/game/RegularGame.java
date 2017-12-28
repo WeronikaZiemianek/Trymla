@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegularGame implements Game {
-    private List<Player> players;
-    private List<Integer> playersInHome;
+    volatile private List<Player> players;
+    volatile private List<Integer> playersInHome;
     private int numOfPlayers;
-    private int turnPlayer;
+    volatile private int turnPlayer;
     private RulesManager rulesManager;
     private Board board;
     private GameState state;
@@ -50,15 +50,19 @@ public class RegularGame implements Game {
 
     @Override
     public int makeMove(Coordinates currLocation, Coordinates destination, Player player) {
+        logger.info("making move i game");
         if(state != GameState.RUNNING) {
+            logger.warn("game not running");
             return -1;
         }
-        if(player == turn.getPlayer()) {
+        if(player.equals(turn.getPlayer())) {
+            logger.info("player == turnPlayer");
             int validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
             if(validationOfMove != -1) {
                 turn.setCurrMov(destination);
                 board.makeMove(currLocation, destination);
                 countHome(currLocation, destination, player);
+                logger.info(board.toString());
                 return validationOfMove;
             }
         }
@@ -78,8 +82,8 @@ public class RegularGame implements Game {
     @Override
     public void startGame() {
         turn = new Turn(players.get(turnPlayer));
-        updatePlayers();
         state = GameState.RUNNING;
+        updatePlayers();
     }
 
     private void endGame(Player player) {
@@ -93,9 +97,11 @@ public class RegularGame implements Game {
 
     @Override
     public void endMove() {
+        logger.debug("Player ends move");
         turnPlayer++;
-        if(numOfPlayers <= turnPlayer)
+        if(numOfPlayers <= turnPlayer) {
             turnPlayer = 0;
+        }
         turn = new Turn(players.get(turnPlayer));
         updatePlayers();
     }
@@ -117,9 +123,11 @@ public class RegularGame implements Game {
         }
     }
 
-    private void updatePlayers() {
-        for(Player player : players) {
-            player.update(false);
+    @Override
+    public void updatePlayers() {
+        logger.debug("updating players");
+        for(Player p: players) {
+            p.update(false);
         }
         players.get(turnPlayer).update(true);
     }

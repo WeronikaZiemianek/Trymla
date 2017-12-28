@@ -66,7 +66,7 @@ public class GameTest {
     private void player0Moves() throws RemoteException {
         System.out.print(game.getBoard().toString());
         player0.makeMove(new Coordinates(11,13), new Coordinates(10,12));
-       // player0.endMove();
+        player0.endMove();
     }
 
     @Test
@@ -81,6 +81,7 @@ public class GameTest {
         player1.makeMove(new Coordinates(4,4), new Coordinates(8,4));
         player1.endMove();
         player2.makeMove(new Coordinates(18, 4), new Coordinates(17, 5));
+        player2.endMove();
     }
 
     @Test

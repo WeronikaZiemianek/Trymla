@@ -39,6 +39,11 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     public Board getBoard() { return board; }
 
     @Override
+    public void endJump() throws RemoteException {
+        game.updatePlayers();
+    }
+
+    @Override
     public void update (Boolean isMyTurn) {
         this.isMyTurn = isMyTurn;
         if(clientPlayer != null) {

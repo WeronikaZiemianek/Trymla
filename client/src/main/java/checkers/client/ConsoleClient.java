@@ -3,6 +3,8 @@ import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class ConsoleClient {
     ClientConnection connection;
     ClientPlayer clientPlayer;
     ArrayList<LoginAndColor> players;
+    static Logger logger = LoggerFactory.getLogger(ClientConnection.class);
 
     ConsoleClient() throws RemoteException {
         connection = new ClientConnection();
@@ -91,24 +94,29 @@ public class ConsoleClient {
         do {
             System.out.println("Enter location coordinates separated by ' ' ");
             location = input.nextLine().split(" ");
-            if(location.equals("end move")) {
-                player.endMove();
+            if(location[0].equals("end") && location[1].equals("move")) {
+                move = 2;
                 break;
             }
             System.out.println("Enter destination coordinates separated by ' ' ");
             destination = input.nextLine().split(" ");
-            if(destination.equals("end move")) {
-                player.endMove();
+            if(destination[0].equals("end") && destination[1].equals("move")) {
+                move = 2;
                 break;
             }
             lx = Integer.parseInt(location[0]);
             ly = Integer.parseInt(location[1]);
+            logger.info("location coordinates " + lx + "x" + ly);
             dx = Integer.parseInt(destination[0]);
             dy = Integer.parseInt(destination[1]);
+            logger.info("location coordinates " + dx + "x" + dy);
             move = player.makeMove( new Coordinates(lx, ly), new Coordinates(dx, dy));
         } while(move == -1);
         if(move == 2) {
             player.endMove();
+            logger.info("ending move");
+        } else {
+            player.endJump();
         }
     }
 
