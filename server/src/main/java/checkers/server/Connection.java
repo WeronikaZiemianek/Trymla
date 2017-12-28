@@ -44,7 +44,7 @@ public class Connection {
 
     public ClientPlayer getClientPlayer(Player player) {
         try {
-            return (ClientPlayer) registry.lookup("//localhost:1099/" + "CLIENT" + player.getPlayerName());
+            return (ClientPlayer) registry.lookup("CLIENT".concat(player.getPlayerName()));
         } catch(RemoteException e) {
             e.printStackTrace();
         } catch(NotBoundException e) {

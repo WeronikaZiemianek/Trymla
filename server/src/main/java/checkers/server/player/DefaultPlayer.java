@@ -123,6 +123,11 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void getClientPlayer() throws RemoteException {
         clientPlayer = gamesManager.getClientPlayer(this);
+        if(clientPlayer == null) {
+            logger.error("client player is null");
+        } else {
+            logger.info("client player added to player");
+        }
     }
 
     @Override

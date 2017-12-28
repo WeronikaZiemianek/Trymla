@@ -7,10 +7,10 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class RegularClientPlayer extends UnicastRemoteObject implements ClientPlayer {
-    Logic logic;
+    ConsoleClient client;
 
-    RegularClientPlayer(Logic logic) throws RemoteException {
-        this.logic = logic;
+    RegularClientPlayer(ConsoleClient client) throws RemoteException {
+        this.client = client;
     }
 
     @Override

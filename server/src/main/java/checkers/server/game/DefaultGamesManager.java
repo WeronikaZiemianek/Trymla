@@ -42,6 +42,7 @@ public class DefaultGamesManager implements GamesManager {
     synchronized public void createNewGame(int numOfPlayers) {
         Board board = boardFactory.createNewBoard(numOfPlayers);
         openGame = new RegularGame(board, new RegularRulesManager(board));
+        logger.info("created new game for " + numOfPlayers);
     }
 
     @Override

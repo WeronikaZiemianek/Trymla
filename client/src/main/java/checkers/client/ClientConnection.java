@@ -52,7 +52,8 @@ public class ClientConnection {
     void addClientPlayer(ClientPlayer clientPlayer) {
         try {
             Registry registry =  LocateRegistry.getRegistry(1099);
-            registry.bind("CLIENT" + login, clientPlayer);
+            registry.bind("CLIENT".concat(login), clientPlayer);
+            logger.info("CLIENT" + login, clientPlayer + "  bound");
         } catch(Exception e) {
             logger.error("cant find registry and create there a client player");
         }
