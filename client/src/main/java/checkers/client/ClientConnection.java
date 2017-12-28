@@ -15,6 +15,7 @@ public class ClientConnection {
     static String login;
     static PlayerFactory playerFactory;
     static Logger logger = LoggerFactory.getLogger(ClientConnection.class);
+    Registry registry;
 
     ClientConnection() throws RemoteException {
         System.setProperty("java.rmi.server.hostname", "localhost");
@@ -51,11 +52,19 @@ public class ClientConnection {
 
     void addClientPlayer(ClientPlayer clientPlayer) {
         try {
-            Registry registry =  LocateRegistry.getRegistry(1099);
+            registry =  LocateRegistry.getRegistry(1099);
             registry.bind("CLIENT".concat(login), clientPlayer);
             logger.info("CLIENT" + login, clientPlayer + "  bound");
         } catch(Exception e) {
             logger.error("cant find registry and create there a client player");
+        }
+    }
+
+    void deleteClientPlayerFromRegistry() {
+        try {
+            registry.unbind("CLIENT".concat(login));
+        } catch(Exception e) {
+            logger.error("cant unbind client player");
         }
     }
 }

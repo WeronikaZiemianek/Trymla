@@ -3,6 +3,7 @@ package checkers.server.player;
 import checkers.core.Checker;
 import checkers.core.clientServerInterfaces.PlayerFactory;
 import checkers.core.clientServerInterfaces.RemotePlayer;
+import checkers.server.Player;
 import checkers.server.game.GamesManager;
 
 import java.rmi.RemoteException;
@@ -30,5 +31,9 @@ public class DefaultPlayerFactory extends UnicastRemoteObject implements PlayerF
         players.add(player);
         manager.addPlayer(player);
         return true;
+    }
+
+    public void removePlayer(Player player) {
+        players.remove(player);
     }
 }

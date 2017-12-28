@@ -18,4 +18,5 @@ public interface RemotePlayer extends java.rmi.Remote {
     void getClientPlayer() throws RemoteException;
     Board getBoard() throws  RemoteException;
     void endJump() throws RemoteException;
+    void disconnect() throws RemoteException;
 }

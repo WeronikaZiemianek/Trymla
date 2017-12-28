@@ -7,6 +7,7 @@ import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
+import checkers.server.game.GameState;
 import checkers.server.game.GamesManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,14 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void endJump() throws RemoteException {
         game.updatePlayers();
+    }
+
+    @Override
+    public void disconnect() throws RemoteException {
+        if(game.getState() != GameState.CLOSED) {
+            game.disconnectPlayer(this);
+        }
+        gamesManager.removePlayer(this);
     }
 
     @Override

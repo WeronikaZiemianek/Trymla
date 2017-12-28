@@ -41,6 +41,10 @@ public class RegularRulesManager implements RulesManager {
             }
         }
 
+        if(!game.canMove()) {
+            return -1;
+        }
+
         int yDiff = Math.abs(currLocation.Y()-destination.Y());
         int diff = yDiff + Math.abs(currLocation.X()-destination.X());
 

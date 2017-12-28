@@ -19,6 +19,6 @@ public interface Game { ;
     Board getBoard();
     int getNumOfPlayers();
     void updatePlayers();
-
+    boolean canMove();
 }
 

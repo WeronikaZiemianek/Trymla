@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class DefaultGamesManager implements GamesManager {
     static Logger logger = LoggerFactory.getLogger(DefaultGamesManager.class);
 
-    private PlayerFactory playerFactory;
+    private DefaultPlayerFactory playerFactory;
     private Connection connection;
     private BoardFactory boardFactory;
     private ArrayList<Game> runningGames;
@@ -82,6 +82,12 @@ public class DefaultGamesManager implements GamesManager {
             Player bot = new DefaultBot(this, "bot" + openGame.getNumOfPlayers());
             openGame.addPlayer(bot);
         }
+    }
+
+    @Override
+    public void removePlayer(Player player) {
+        playerFactory.removePlayer(player);
+        connection.unbindPlayer(player.getPlayerName());
     }
 
 

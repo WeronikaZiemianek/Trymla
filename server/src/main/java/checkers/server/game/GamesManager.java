@@ -10,4 +10,5 @@ public interface GamesManager {
     boolean createNewGame(int numOfPlayers);
     void addBot();
     ClientPlayer getClientPlayer(Player player);
+    public void removePlayer(Player player);
 }

@@ -125,8 +125,15 @@ public class ConsoleClient {
         }
     }
 
-    void endOfGame(String login) {
+    void endOfGame(String login) throws RemoteException {
         System.out.println("The winner is :" + login);
+        String action = input.nextLine();
+        if(action.equals("play again")) {
+            joinGame();
+        } else {
+            connection.deleteClientPlayerFromRegistry();
+            player.disconnect();
+        }
     }
 
 

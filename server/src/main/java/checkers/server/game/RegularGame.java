@@ -3,6 +3,7 @@ package checkers.server.game;
 import checkers.core.Coordinates;
 import checkers.server.Player;
 import checkers.core.boards.Board;
+import checkers.server.player.DefaultBot;
 import checkers.server.rules.RulesManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +60,9 @@ public class RegularGame implements Game {
             logger.info("player == turnPlayer");
             int validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
             if(validationOfMove != -1) {
+                if(validationOfMove == 2) {
+                    turn.setCanMove(false);
+                }
                 turn.setCurrMov(destination);
                 board.makeMove(currLocation, destination);
                 countHome(currLocation, destination, player);
@@ -86,12 +90,11 @@ public class RegularGame implements Game {
     }
 
     private void endGame(Player player) {
+        state = GameState.CLOSED;
         String login = player.getPlayerName();
         for(Player p : players) {
             p.endGame(login);
         }
-        state = GameState.CLOSED;
-        //TODO: inform manager
     }
 
     @Override
@@ -139,6 +142,11 @@ public class RegularGame implements Game {
     }
 
     @Override
+    public boolean canMove() {
+        return turn.getCanMove();
+    }
+
+    @Override
     public Coordinates getCurrMov() {
         logger.info("value of currMov " + turn.getCurrMov());
         return turn.getCurrMov();
@@ -151,7 +159,8 @@ public class RegularGame implements Game {
 
     @Override
     public void disconnectPlayer(Player player) {
-        //TODO: disconnect player, erase from registry and factory memory, put a bot instead
+        int index = players.indexOf(player);
+        players.add(index, new DefaultBot("bot"+index));
     }
 
     @Override

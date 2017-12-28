@@ -34,6 +34,7 @@ public class GameTest {
         game.addPlayer(player0);
         game.addPlayer(player1);
         game.addPlayer(player2);
+        game.updatePlayers();
     }
 
     @Test

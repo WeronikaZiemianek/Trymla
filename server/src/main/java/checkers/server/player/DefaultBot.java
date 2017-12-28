@@ -19,13 +19,10 @@ public class DefaultBot implements Player {
     private Board board;
     private Checker color;
     private Game game;
-    private GamesManager gamesManager;
     private String login;
-    private ClientPlayer clientPlayer;
     private Logger logger;
 
-    public DefaultBot(GamesManager gamesManager, String login) {
-        this.gamesManager = gamesManager;
+    public DefaultBot(String login) {
         this.login = login;
         logger = LoggerFactory.getLogger(DefaultPlayer.class);
     }

@@ -45,12 +45,18 @@ public class Connection {
     public ClientPlayer getClientPlayer(Player player) {
         try {
             return (ClientPlayer) registry.lookup("CLIENT".concat(player.getPlayerName()));
-        } catch(RemoteException e) {
-            e.printStackTrace();
-        } catch(NotBoundException e) {
+        } catch(RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void unbindPlayer(String login) {
+        try {
+            registry.unbind("//localhost:1099/".concat(login));
+        } catch(RemoteException | NotBoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

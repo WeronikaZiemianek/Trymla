@@ -6,7 +6,20 @@ import checkers.server.Player;
 public class Turn {
     private Player player;
     private Coordinates currMov;
+
+    public boolean isCanMove() {
+        return canMove;
+    }
+
+    public void setCanMove(boolean canMove) {
+        this.canMove = canMove;
+    }
+
     private boolean canMove;
+
+    public boolean getCanMove() {
+        return canMove;
+    }
 
     public Turn(Player player) {
         this.player = player;
