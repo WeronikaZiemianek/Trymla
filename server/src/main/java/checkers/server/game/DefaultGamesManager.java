@@ -66,7 +66,6 @@ public class DefaultGamesManager implements GamesManager {
         if(openGame != null) {
             boolean res = openGame.addPlayer(player);
             if(openGame.getState() == GameState.RUNNING) {
-                openGame.updatePlayers();
                 runningGames.add(openGame);
                 openGame = null;
                 runningGames.get(runningGames.size()-1).updatePlayers();
@@ -79,7 +78,7 @@ public class DefaultGamesManager implements GamesManager {
     @Override
     public synchronized void addBot() {
         if(openGame != null) {
-            Player bot = new DefaultBot(this, "bot" + openGame.getNumOfPlayers());
+            Player bot = new DefaultBot( "bot" + openGame.getNumOfPlayers());
             openGame.addPlayer(bot);
         }
     }
