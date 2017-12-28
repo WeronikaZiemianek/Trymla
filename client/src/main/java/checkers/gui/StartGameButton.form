@@ -30,7 +30,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <text value="Start Game"/>
         </properties>
       </component>
     </children>
