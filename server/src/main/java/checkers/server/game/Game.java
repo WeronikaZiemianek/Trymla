@@ -11,13 +11,13 @@ public interface Game { ;
     Coordinates getCurrMov();
     void setCurrMov(Coordinates player);
     void endMove();
-    void addPlayer(Player player);
+    boolean addPlayer(Player player);
     GameState getState();
     void disconnectPlayer(Player player);
     RulesManager GetRulesManager();
     int makeMove(Coordinates currLocation, Coordinates destination, Player player);
     Board getBoard();
-    public int getNumOfPlayers();
+    int getNumOfPlayers();
     void updatePlayers();
 
 }

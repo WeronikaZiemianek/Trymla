@@ -6,10 +6,12 @@ import checkers.server.Player;
 public class Turn {
     private Player player;
     private Coordinates currMov;
+    private boolean canMove;
 
     public Turn(Player player) {
         this.player = player;
         currMov = null;
+        canMove = true;
     }
     public Coordinates getCurrMov() {
         return currMov;

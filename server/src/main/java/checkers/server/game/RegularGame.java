@@ -83,7 +83,6 @@ public class RegularGame implements Game {
     public void startGame() {
         turn = new Turn(players.get(turnPlayer));
         state = GameState.RUNNING;
-        updatePlayers();
     }
 
     private void endGame(Player player) {
@@ -107,20 +106,27 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void addPlayer(Player player) {
-        players.add(player);
-        player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
-        logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
-        numOfPlayers++;
-        for(Player p: players) {
-            player.addNewPlayer(p.getPlayerName(), p.getColor());
-            if(player != p) {
-                p.addNewPlayer(player.getPlayerName(), player.getColor());
+    public boolean addPlayer(Player player) {
+        boolean res = false;
+        synchronized(this) {
+            if(numOfPlayers != board.getExNumOfPlayers()) {
+                players.add(player);
+                player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
+                logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
+                numOfPlayers++;
+                res = true;
+                for(Player p : players) {
+                    player.addNewPlayer(p.getPlayerName(), p.getColor());
+                    if(player != p) {
+                        p.addNewPlayer(player.getPlayerName(), player.getColor());
+                    }
+                }
             }
         }
         if(numOfPlayers == board.getExNumOfPlayers()) {
             startGame();
         }
+        return res;
     }
 
     @Override

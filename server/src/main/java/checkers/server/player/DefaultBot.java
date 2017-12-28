@@ -50,14 +50,7 @@ public class DefaultBot implements Player {
     }
 
     @Override
-    public void addNewPlayer(String login, Checker color) {
-        try {
-            clientPlayer.newPlayerAdded(login, color);
-        } catch(RemoteException e) {
-            e.printStackTrace();
-        }
-
-    }
+    public void addNewPlayer(String login, Checker color) {}
 
     public int makeMove() {
         for(int x = 0; x<25; x++)

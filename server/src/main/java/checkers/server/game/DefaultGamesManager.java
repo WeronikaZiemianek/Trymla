@@ -62,22 +62,26 @@ public class DefaultGamesManager implements GamesManager {
     }
 
     @Override
-    synchronized public boolean joinGame(Player player) {
+    public boolean joinGame(Player player) {
         if(openGame != null) {
-            openGame.addPlayer(player);
+            boolean res = openGame.addPlayer(player);
             if(openGame.getState() == GameState.RUNNING) {
+                openGame.updatePlayers();
                 runningGames.add(openGame);
                 openGame = null;
+                runningGames.get(runningGames.size()-1).updatePlayers();
             }
-            return true;
+            return res;
         }
         return false;
     }
 
     @Override
     public synchronized void addBot() {
-        Player bot = new DefaultBot(this, "bot" + openGame.getNumOfPlayers());
-        openGame.addPlayer(bot);
+        if(openGame != null) {
+            Player bot = new DefaultBot(this, "bot" + openGame.getNumOfPlayers());
+            openGame.addPlayer(bot);
+        }
     }
 
 

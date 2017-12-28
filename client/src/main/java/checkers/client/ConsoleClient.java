@@ -51,6 +51,7 @@ public class ConsoleClient {
         String login = input.nextLine();
         while(!createNewPlayer(login)) {
             System.out.println("Wrong login, please reenter your login: ");
+            login = input.nextLine();
         }
     }
 
@@ -67,6 +68,10 @@ public class ConsoleClient {
             if(!player.createGame(n)) {
                 System.out.println("Somebody else already created game");
             }
+//            String addBot = input.nextLine();
+//            if(addBot.equals("add bot")) {
+//                player.addBot();
+//            }
         }
     }
 
