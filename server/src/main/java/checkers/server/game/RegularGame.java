@@ -62,11 +62,13 @@ public class RegularGame implements Game {
         }
         if(player.equals(turn.getPlayer())) {
             logger.info("player == turnPlayer");
+            if(player.getClass() != DefaultBot.class){
             int validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
             if(validationOfMove != -1) {
-                if(validationOfMove == 2) {
+                if (validationOfMove == 2) {
                     turn.setCanMove(false);
                 }
+            }
                 turn.setCurrMov(destination);
                 lastMove = new Move(currLocation, destination, player.getColor());
                 board.makeMove(currLocation, destination);
@@ -74,6 +76,16 @@ public class RegularGame implements Game {
                 logger.info(board.toString());
                 countHome(currLocation, destination, player);
                 return validationOfMove;
+            }
+            else
+            {
+                turn.setCurrMov(destination);
+                lastMove = new Move(currLocation, destination, player.getColor());
+                board.makeMove(currLocation, destination);
+                passesInRow = 0;
+                logger.info(board.toString());
+                countHome(currLocation, destination, player);
+                return 4;
             }
         }
         return -1;
