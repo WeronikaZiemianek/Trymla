@@ -284,7 +284,7 @@ public class Controller {
                 for(int c=0; c < columns; c++) {
                     ObservableList<Node> boardChildren = board.getChildren();
                     for(Node node : boardChildren) {
-                        if(GridPane.getRowIndex(node) == r && GridPane.getColumnIndex(node) == c) {
+                        if(GridPane.getRowIndex(node) == c && GridPane.getColumnIndex(node) == r) {
                             ((Circle)node).setFill(chooseColor(playerBoard.getFieldOccupiedBy(new Coordinates(r,c))));
                         }
                     }
@@ -334,8 +334,8 @@ public class Controller {
 
     public void fieldOnClick(MouseEvent event) {
         logger.debug("You have clicked");
-        int x = GridPane.getRowIndex((Node) event.getTarget());
-        int y = GridPane.getColumnIndex((Node) event.getTarget());
+        int y = GridPane.getRowIndex((Node) event.getTarget());
+        int x = GridPane.getColumnIndex((Node) event.getTarget());
         if(isLocationChosen) {
             destination = new Coordinates(x,y);
             logger.debug("destination is chosen");
