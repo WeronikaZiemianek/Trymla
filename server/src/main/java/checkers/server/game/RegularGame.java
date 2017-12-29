@@ -67,6 +67,7 @@ public class RegularGame implements Game {
                     turn.setCanMove(false);
                 }
                 turn.setCurrMov(destination);
+                lastMove = new Coordinates[2];
                 lastMove[0] = currLocation;
                 lastMove[1] = destination;
                 board.makeMove(currLocation, destination);
