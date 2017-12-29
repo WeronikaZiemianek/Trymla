@@ -19,7 +19,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 import org.slf4j.Logger;
@@ -27,7 +26,6 @@ import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Observable;
 
 public class Controller {
     RemotePlayer player;
@@ -94,6 +92,8 @@ public class Controller {
     private Label player6OnGame;
     @FXML
     private GridPane board;
+    @FXML
+    private GridPane playerColorsOnGame;
     //winnerPage ------------------------------
     @FXML
     private StackPane winnerPage;
@@ -238,13 +238,18 @@ public class Controller {
 
     private void setPlayer(String login, Checker color, int index) {
         Color fxcolor = chooseColor(color);
-        playerColorsOnLobby.getChildren().remove(index-1);
-        Circle c = new Circle();
-        c.setFill(fxcolor);
-        c.setRadius(17.0);
-        c.setStroke(Color.BLACK);
-        c.setStrokeType(StrokeType.INSIDE);
-        playerColorsOnLobby.add(c, 0,index-1);
+        for(Node node: playerColorsOnLobby.getChildren()) {
+            if(GridPane.getRowIndex(node) == index-1) {
+                ((Circle)node).setFill(fxcolor);
+                ((Circle)node).setStroke(Color.BLACK);
+            }
+        }
+        for(Node node: playerColorsOnGame.getChildren()) {
+            if(GridPane.getRowIndex(node) == index-1) {
+                ((Circle)node).setFill(fxcolor);
+                ((Circle)node).setStroke(Color.BLACK);
+            }
+        }
         switch(index) {
             case 1: player1OnLobby.setText(login); player1OnGame.setText(login); break;
             case 2: player2OnLobby.setText(login); player2OnGame.setText(login); break;
@@ -287,8 +292,8 @@ public class Controller {
                 for(int c=0; c < columns; c++) {
                     ObservableList<Node> boardChildren = board.getChildren();
                     for(Node node : boardChildren) {
-                        if(GridPane.getRowIndex(node) == c && GridPane.getColumnIndex(node) == r) {
-                            ((Circle)node).setFill(chooseColor(playerBoard.getFieldOccupiedBy(new Coordinates(r,c))));
+                        if(GridPane.getRowIndex(node) == r && GridPane.getColumnIndex(node) == c) {
+                            ((Circle)node).setFill(chooseColor(playerBoard.getFieldOccupiedBy(new Coordinates(c,r))));
                         }
                     }
                 }
@@ -367,13 +372,8 @@ public class Controller {
 
     public void exitOnClick(ActionEvent event) {
         logger.info("exit");
-        try {
-            player.disconnect();
-            Platform.exit();
-        } catch(RemoteException e) {
-            e.printStackTrace();
-        }
-
+        stop();
+        Platform.exit();
     }
 
     public void playAgainOnClick(ActionEvent event) {
@@ -403,6 +403,7 @@ public class Controller {
     public void stop() {
         if(player != null) {
             try {
+                connection.deleteClientPlayerFromRegistry();
                 player.disconnect();
             } catch(RemoteException e) {
                 e.printStackTrace();

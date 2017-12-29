@@ -138,6 +138,7 @@ public class RegularGame implements Game {
                     p.addNewPlayer(player.getPlayerName(), player.getColor());
                 }
             }
+            logger.debug(String.valueOf(players.size()));
         }
         if(numOfPlayers == board.getExNumOfPlayers()) {
             startGame();
@@ -168,11 +169,17 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void disconnectPlayer(Player player) {
+    public synchronized void disconnectPlayer(Player player) {
         int index = players.indexOf(player);
+//        if(turnPlayer == index) {
+//            endMove(null);
+//        }
         String login = "bot".concat(String.valueOf(index));
-        players.add(index, new DefaultBot(login));
-        logger.debug(players.toString());
+        Player bot = new DefaultBot(login);
+        players.remove(index);
+        players.add(index, bot);
+        bot.setGameAndColor(this, board.colorForPlayer(index), board);
+        logger.debug(String.valueOf(players.size()));
         for(Player p : players) {
             p.replaceWithBot(login, index);
         }

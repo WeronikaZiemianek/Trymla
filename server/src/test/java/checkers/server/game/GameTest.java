@@ -38,7 +38,7 @@ public class GameTest {
         game.addPlayer(player0);
         game.addPlayer(player1);
         game.addPlayer(player2);
-        game.updatePlayers();
+        game.updatePlayers(null);
     }
 
     private void startGame3() throws RemoteException {
@@ -49,7 +49,7 @@ public class GameTest {
         game.addPlayer(bot1);
         game.addPlayer(player1);
         game.addPlayer(bot3);
-        game.updatePlayers();
+        game.updatePlayers(null);
     }
 
     @Test
@@ -69,7 +69,7 @@ public class GameTest {
     public void testMakingMovesByBots() throws RemoteException {
         startGame3();
         assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
-        player1.endMove();
+        player1.endMove(null);
         System.out.println(game.getBoard());
     }
 
@@ -77,13 +77,13 @@ public class GameTest {
     public void testMakingMoreMovesByBots() throws RemoteException {
         startGame3();
         assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
-        player1.endMove();
+        player1.endMove(null);
         assertEquals(4, player1.makeMove(new Coordinates(8,4), new Coordinates(4,4)));
-        player1.endMove();
+        player1.endMove(null);
         assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
-        player1.endMove();
+        player1.endMove(null);
         assertEquals(4, player1.makeMove(new Coordinates(8,4), new Coordinates(4,4)));
-        player1.endMove();
+        player1.endMove(null);
 
         System.out.println(game.getBoard());
     }
@@ -107,7 +107,7 @@ public class GameTest {
     private void player0Moves() throws RemoteException {
         System.out.print(game.getBoard().toString());
         player0.makeMove(new Coordinates(11,13), new Coordinates(10,12));
-        player0.endMove();
+        player0.endMove(null);
     }
 
     @Test
@@ -120,9 +120,9 @@ public class GameTest {
 
     private void player23Move() throws RemoteException {
         player1.makeMove(new Coordinates(4,4), new Coordinates(8,4));
-        player1.endMove();
+        player1.endMove(null);
         player2.makeMove(new Coordinates(18, 4), new Coordinates(17, 5));
-        player2.endMove();
+        player2.endMove(null);
     }
 
     @Test
