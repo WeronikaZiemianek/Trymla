@@ -297,6 +297,7 @@ public class Controller {
 
     public void update(boolean isMyTurn) {
         run(() -> {
+            logger.info("updating players");
             if(!didGameStart) {
                 this.lobbyPage.setVisible(false);
                 this.lobbyPage.setDisable(true);
@@ -339,9 +340,15 @@ public class Controller {
         if(isLocationChosen) {
             destination = new Coordinates(x,y);
             logger.debug("destination is chosen");
+            isLocationChosen = false;
             try {
-                if(player.makeMove(location, destination) == 2) {
+                int move = player.makeMove(location, destination);
+                if(move == 2) {
                     player.endMove();
+                    this.gamePage.setDisable(true);
+                }
+                if(move == 4) {
+                    player.endJump();
                 }
             } catch(RemoteException e) {
                 e.printStackTrace();
