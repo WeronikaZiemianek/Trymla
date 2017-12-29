@@ -1,11 +1,13 @@
 package checkers.gui;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
+    FXMLLoader loader;
 
     public static void main(String[] args) {
         launch(args);
@@ -13,7 +15,7 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/jfxView.fxml"));
 
         Controller controller = new Controller();
@@ -30,5 +32,11 @@ public class Launcher extends Application {
 
     @Override
     public void init() {
+    }
+
+    @Override
+    public void stop() {
+        ((Controller)loader.getController()).stop();
+        Platform.exit();
     }
 }

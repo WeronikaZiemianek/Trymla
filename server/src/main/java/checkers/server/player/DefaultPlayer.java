@@ -46,7 +46,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     @Override
     public void disconnect() throws RemoteException {
-        if(game.getState() != GameState.CLOSED) {
+        if(game != null && game.getState() != GameState.CLOSED) {
             game.disconnectPlayer(this);
         }
         gamesManager.removePlayer(this);

@@ -60,7 +60,7 @@ public class ClientConnection {
         }
     }
 
-    public void deleteClientPlayerFromRegistry() {
+    void deleteClientPlayerFromRegistry() {
         try {
             registry.unbind("CLIENT".concat(login));
         } catch(Exception e) {

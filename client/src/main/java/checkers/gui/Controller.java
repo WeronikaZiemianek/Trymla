@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -202,19 +203,28 @@ public class Controller {
         else Platform.runLater(treatment);
     }
 
+    private void setPlayer(String login, Checker color, int index) {
+        switch(index) {
+            case 1: player1OnLobby.setText(login); player1OnGame.setText(login); break;
+            case 2: player2OnLobby.setText(login); player2OnGame.setText(login); break;
+            case 3: player3OnLobby.setText(login); player3OnGame.setText(login); break;
+            case 4: player4OnLobby.setText(login); player4OnGame.setText(login); break;
+            case 5: player5OnLobby.setText(login); player5OnGame.setText(login); break;
+            case 6: player6OnLobby.setText(login); player6OnGame.setText(login); break;
+        }
+    }
+
     public void newPlayer(String login, Checker color) {
         run(() -> {
             players.add(new LoginAndColor(login, color));
-            System.out.print(players.size());
-            switch(players.size()) {
-                case 1: player1OnLobby.setText(login); player1OnGame.setText(login); break;
-                case 2: player2OnLobby.setText(login); player2OnGame.setText(login); break;
-                case 3: player3OnLobby.setText(login); player3OnGame.setText(login); break;
-                case 4: player4OnLobby.setText(login); player4OnGame.setText(login); break;
-                case 5: player5OnLobby.setText(login); player5OnGame.setText(login); break;
-                case 6: player6OnLobby.setText(login); player6OnGame.setText(login); break;
-            }
-            System.out.print(login);
+            setPlayer(login, color, players.size());
+        });
+    }
+
+    public void renamePlayer(String login, int index) {
+        run(() -> {
+            players.get(index).setLogin(login);
+            setPlayer(login, players.get(index).getColor(), index);
         });
     }
 
@@ -256,6 +266,7 @@ public class Controller {
     public void fieldOnClick(MouseEvent event) {
         int x = GridPane.getRowIndex((Node) event.getTarget());
         int y = GridPane.getColumnIndex((Node) event.getTarget());
+
         if(isLocationChosen) {
             destination = new Coordinates(x,y);
             try {
@@ -265,6 +276,16 @@ public class Controller {
             }
         } else {
             location = new Coordinates(x,y);
+        }
+    }
+
+    public void stop() {
+        if(player != null) {
+            try {
+                player.disconnect();
+            } catch(RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -33,6 +33,6 @@ public class GUIClientPlayer extends UnicastRemoteObject implements ClientPlayer
 
     @Override
     public void replaceWithBot(String login, int index) throws RemoteException {
-        //  client.renamePlayer(login, index);
+          client.renamePlayer(login, index);
     }
 }
