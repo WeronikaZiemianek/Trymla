@@ -8,5 +8,6 @@ public enum Checker {
     GREEN,
     BLACK,
     BLUE,
-    EMPTY
+    EMPTY,
+    OTHER
 }
