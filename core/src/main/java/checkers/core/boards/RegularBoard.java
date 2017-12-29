@@ -28,6 +28,7 @@ public class RegularBoard implements Board, Serializable {
         if(board[currLocation.X()][currLocation.Y()] == null || board[destination.X()][destination.Y()] == null) {
             throw new WrongMoveException();
         }
+
         Checker curr = board[currLocation.X()][currLocation.Y()].getOccupiedBy();
         Checker dest = board[destination.X()][destination.Y()].getOccupiedBy();
 
@@ -71,7 +72,7 @@ public class RegularBoard implements Board, Serializable {
         }
         catch (Exception e)
         {
-            return Checker.EMPTY;
+            return Checker.OTHER;
         }
     }
 
