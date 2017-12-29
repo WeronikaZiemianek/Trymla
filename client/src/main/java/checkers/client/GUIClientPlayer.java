@@ -16,13 +16,13 @@ public class GUIClientPlayer extends UnicastRemoteObject implements ClientPlayer
 
     @Override
     public void update(boolean isMyTurn) throws RemoteException {
-        // client.drawBoard(isMyTurn);
+        client.update(isMyTurn);
 
     }
 
     @Override
     public void gameOver(String winnerLogin) throws RemoteException {
-        // client.endOfGame(winnerLogin);
+         client.endOfGame(winnerLogin);
     }
 
     @Override
@@ -33,6 +33,6 @@ public class GUIClientPlayer extends UnicastRemoteObject implements ClientPlayer
 
     @Override
     public void replaceWithBot(String login, int index) throws RemoteException {
-          client.renamePlayer(login, index);
+        client.renamePlayer(login, index);
     }
 }

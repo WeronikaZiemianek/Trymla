@@ -30,6 +30,8 @@ public class Controller {
     static Logger logger = LoggerFactory.getLogger(Controller.class);
     int n = 0;
     boolean isLocationChosen;
+    boolean isMyTurn;
+    boolean didGameStart;
     Coordinates location;
     Coordinates destination;
 
@@ -81,8 +83,11 @@ public class Controller {
     private Label player5OnGame;
     @FXML
     private Label player6OnGame;
+    //winnerPage ------------------------------
     @FXML
     private StackPane winnerPage;
+    @FXML
+    private Label winnerNameLabel;
 
 
     @FXML
@@ -99,6 +104,7 @@ public class Controller {
     }
 
     public void startOnClick(ActionEvent event) {
+        didGameStart = false;
         isLocationChosen = false;
         try {
             connection = new ClientConnection();
@@ -237,13 +243,28 @@ public class Controller {
 
     }
 
+    public void update(boolean isMyTurn) {
+        run(() -> {
+            if(!didGameStart) {
+                this.lobbyPage.setVisible(false);
+                this.lobbyPage.setDisable(true);
+                this.gamePage.setVisible(true);
+                didGameStart = true;
+            }
+            this.isMyTurn = isMyTurn;
+            if(isMyTurn) {
+                this.gamePage.setDisable(false);
+            }
+        });
+    }
+
     public void endMoveOnClick(ActionEvent event) {
         try {
             player.endMove();
         } catch(RemoteException e) {
             e.printStackTrace();
         }
-
+        this.gamePage.setDisable(true);
     }
 
     public void exitOnClick(ActionEvent event) {
@@ -276,6 +297,18 @@ public class Controller {
             }
         } else {
             location = new Coordinates(x,y);
+        }
+    }
+
+    public void endOfGame(String winnerLogin) {
+        this.gamePage.setVisible(false);
+        this.gamePage.setDisable(true);
+        this.winnerPage.setVisible(true);
+        this.winnerPage.setDisable(false);
+        if(winnerLogin == null) {
+            winnerNameLabel.setText("It's a tie");
+        } else {
+            winnerNameLabel.setText("The winner is: ".concat(winnerLogin));
         }
     }
 

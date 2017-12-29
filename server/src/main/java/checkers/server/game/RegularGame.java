@@ -20,8 +20,11 @@ public class RegularGame implements Game {
     private GameState state;
     private Logger logger;
     private Turn turn;
+    private Coordinates[] lastMove;
+    int passesInRow;
 
     public RegularGame(Board board, RulesManager rulesManager) {
+        passesInRow = 0;
         players = new ArrayList<>();
         playersInHome = new ArrayList<>();
         this.numOfPlayers = 0;
@@ -64,8 +67,10 @@ public class RegularGame implements Game {
                     turn.setCanMove(false);
                 }
                 turn.setCurrMov(destination);
+                lastMove[0] = currLocation;
+                lastMove[1] = destination;
                 board.makeMove(currLocation, destination);
-                countHome(currLocation, destination, player);
+                passesInRow = 0;
                 logger.info(board.toString());
                 return validationOfMove;
             }
@@ -99,6 +104,10 @@ public class RegularGame implements Game {
 
     @Override
     public void endMove() {
+        passesInRow++;
+        if(passesInRow == board.getExNumOfPlayers()) {
+            endGame(null);
+        }
         logger.debug("Player ends move");
         turnPlayer++;
         if(numOfPlayers <= turnPlayer) {
@@ -175,5 +184,12 @@ public class RegularGame implements Game {
         return state;
     }
 
+    @Override
+    public Coordinates[] getLastMove() {
+        return lastMove;
+    }
 
+    public void setLastMove(Coordinates[] lastMove) {
+        this.lastMove = lastMove;
+    }
 }

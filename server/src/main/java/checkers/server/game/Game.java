@@ -20,5 +20,6 @@ public interface Game { ;
     int getNumOfPlayers();
     void updatePlayers();
     boolean canMove();
+    Coordinates[] getLastMove();
 }
 

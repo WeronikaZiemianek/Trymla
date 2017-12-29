@@ -24,6 +24,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     private String login;
     private ClientPlayer clientPlayer;
     private Logger logger;
+    private Coordinates[] lastMove;
 
     public DefaultPlayer(GamesManager gamesManager, String login) throws RemoteException {
         this.gamesManager = gamesManager;
@@ -138,6 +139,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
         this.game = game;
         this.board = board;
         this.color = color;
+        this.lastMove = game.getLastMove();
     }
 
     @Override
@@ -167,5 +169,10 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public String getLogin() throws RemoteException {
         return login;
+    }
+
+    @Override
+    public Coordinates[] getLastMove() throws RemoteException {
+        return lastMove;
     }
 }
