@@ -80,7 +80,7 @@ public class DefaultGamesManager implements GamesManager {
     public synchronized void addBot() {
         if(openGame != null) {
             Player bot = new DefaultBot( "bot" + openGame.getNumOfPlayers());
-            openGame.addPlayer(bot);
+            joinGame(bot);
         }
     }
 

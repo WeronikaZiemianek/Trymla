@@ -111,7 +111,7 @@ public class RegularGame implements Game {
     @Override
     public void endMove() {
         passesInRow++;
-        if(passesInRow == board.getExNumOfPlayers()) {
+        if(passesInRow == board.getExNumOfPlayers()+1) {
             endGame(null);
         }
         logger.debug("Player ends move");
