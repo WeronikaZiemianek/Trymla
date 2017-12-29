@@ -11,7 +11,7 @@ public class Server {
     static Logger logger = LoggerFactory.getLogger(Server.class);
 
     private Server() throws RemoteException {
-        GamesManager gamesMenager = new DefaultGamesManager();
+        DefaultGamesManager.makeInstance();
         logger.info("GamesManager set up");
     }
 

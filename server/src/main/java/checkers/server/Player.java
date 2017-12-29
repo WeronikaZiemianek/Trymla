@@ -10,7 +10,7 @@ public interface Player {
     void update(Boolean isMyTurn, Move lastMove);
     void endGame(String login);
     void addNewPlayer(String login, Checker color);
-    void setGameAndColor(Game game, Checker color, Board board);
+    void setGameAndColor(Game game, Checker color);
     String getPlayerName();
     void replaceWithBot(String login, int index);
 }

@@ -1,6 +1,6 @@
 package checkers.server.game;
 
-import checkers.core.clientServerInterfaces.ClientPlayer;
+import checkers.core.clientServerInterfaces.Client;
 import checkers.server.Player;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 
@@ -9,6 +9,6 @@ public interface GamesManager {
     boolean joinGame(Player player);
     boolean createNewGame(int numOfPlayers);
     void addBot();
-    ClientPlayer getClientPlayer(Player player);
-    public void removePlayer(Player player);
+    Client getClientPlayer(Player player);
+    void removePlayer(RemotePlayer player);
 }

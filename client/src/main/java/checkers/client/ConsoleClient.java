@@ -1,7 +1,7 @@
 package checkers.client;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.clientServerInterfaces.ClientPlayer;
+import checkers.core.clientServerInterfaces.Client;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,7 @@ public class ConsoleClient {
     Scanner input;
     RemotePlayer player;
     ClientConnection connection;
-    ClientPlayer clientPlayer;
+    Client client;
     ArrayList<LoginAndColor> players;
     static Logger logger = LoggerFactory.getLogger(ClientConnection.class);
 
@@ -39,13 +39,13 @@ public class ConsoleClient {
         if(connection.addPlayer(login)) {
             player = connection.getPlayer();
             try {
-                clientPlayer = new RegularClientPlayer(this);
-                connection.addClientPlayer(clientPlayer);
+                client = new RegularClient(this);
+                connection.addClientPlayer(client);
                 player.getClientPlayer();
             } catch(RemoteException e) {
                 e.printStackTrace();
             }
-            System.out.print(clientPlayer);
+            System.out.print(client);
             return true;
         } else {
             return false;

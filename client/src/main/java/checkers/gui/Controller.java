@@ -1,12 +1,12 @@
 package checkers.gui;
 import checkers.client.ClientConnection;
-import checkers.client.GUIClientPlayer;
+import checkers.client.GUIClient;
 import checkers.client.LoginAndColor;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.Move;
 import checkers.core.boards.Board;
-import checkers.core.clientServerInterfaces.ClientPlayer;
+import checkers.core.clientServerInterfaces.Client;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -20,7 +20,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.StrokeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 public class Controller {
     RemotePlayer player;
     ClientConnection connection;
-    ClientPlayer clientPlayer;
+    Client client;
     ArrayList<LoginAndColor> players;
     static Logger logger = LoggerFactory.getLogger(Controller.class);
     int n = 0;
@@ -153,8 +152,8 @@ public class Controller {
         if(connection.addPlayer(login)) {
             player = connection.getPlayer();
             try {
-                clientPlayer = new GUIClientPlayer(this);
-                connection.addClientPlayer(clientPlayer);
+                client = new GUIClient(this);
+                connection.addClientPlayer(client);
                 player.getClientPlayer();
             } catch(RemoteException e) {
                 e.printStackTrace();

@@ -4,16 +4,10 @@ import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.Move;
 import checkers.server.Player;
-import checkers.core.clientServerInterfaces.ClientPlayer;
-import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
-import checkers.server.game.GamesManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
 public class DefaultBot implements Player {
     private boolean isMyTurn;
@@ -175,9 +169,9 @@ public class DefaultBot implements Player {
 
 
     @Override
-    public void setGameAndColor(Game game, Checker color, Board board) {
+    public void setGameAndColor(Game game, Checker color) {
         this.game = game;
-        this.board = board;
+        this.board = game.getBoard();
         this.color = color;
     }
 

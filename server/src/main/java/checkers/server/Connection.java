@@ -1,5 +1,5 @@
 package checkers.server;
-import checkers.core.clientServerInterfaces.ClientPlayer;
+import checkers.core.clientServerInterfaces.Client;
 import checkers.core.clientServerInterfaces.PlayerFactory;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import org.slf4j.Logger;
@@ -10,6 +10,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 public class Connection {
     private Registry registry;
@@ -42,18 +43,19 @@ public class Connection {
         }
     }
 
-    public ClientPlayer getClientPlayer(Player player) {
+    public Client getClientPlayer(Player player) {
         try {
-            return (ClientPlayer) registry.lookup("CLIENT".concat(player.getPlayerName()));
+            return (Client) registry.lookup("CLIENT".concat(player.getPlayerName()));
         } catch(RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public void unbindPlayer(String login) {
+    public void unbindPlayer(RemotePlayer player) {
         try {
-            registry.unbind(login);
+            registry.unbind(player.getLogin());
+            UnicastRemoteObject.unexportObject(player, true);
             logger.info("client unbound");
         } catch(RemoteException | NotBoundException e) {
             e.printStackTrace();

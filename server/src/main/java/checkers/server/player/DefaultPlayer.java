@@ -4,7 +4,7 @@ import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.Move;
 import checkers.server.Player;
-import checkers.core.clientServerInterfaces.ClientPlayer;
+import checkers.core.clientServerInterfaces.Client;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
@@ -18,12 +18,11 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, Player {
     private boolean isMyTurn;
-    private Board board;
     private Checker color;
     private Game game;
     private GamesManager gamesManager;
     private String login;
-    private ClientPlayer clientPlayer;
+    private Client client;
     private Logger logger;
 
     public DefaultPlayer(GamesManager gamesManager, String login) throws RemoteException {
@@ -38,7 +37,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public Board getBoard() { return board; }
+    public Board getBoard() { return game.getBoard(); }
 
     @Override
     public void endJump(Move lastMove) throws RemoteException {
@@ -56,9 +55,9 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void update (Boolean isMyTurn, Move lastMove) {
         this.isMyTurn = isMyTurn;
-        if(clientPlayer != null) {
+        if(client != null) {
             try {
-                clientPlayer.update(isMyTurn, lastMove);
+                client.update(isMyTurn, lastMove);
             } catch(RemoteException e) {
                 e.printStackTrace();
                 logger.error("cant update client player");
@@ -72,9 +71,9 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void endGame(String login) {
         logger.info("game finished winner is: " + login);
-        if(clientPlayer != null) {
+        if(client != null) {
             try {
-                clientPlayer.gameOver(login);
+                client.gameOver(login);
             } catch(RemoteException e) {
                 logger.error("cant do gameOver on clientPlayer");
             }
@@ -86,9 +85,9 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void addNewPlayer(String login, Checker color) {
         logger.info("new player " + login + " " + color + " in player " + this.login);
-        if(clientPlayer != null) {
+        if(client != null) {
             try {
-                clientPlayer.newPlayerAdded(login, color);
+                client.newPlayerAdded(login, color);
             } catch(RemoteException e) {
                 e.printStackTrace();
             }
@@ -135,9 +134,8 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public void setGameAndColor(Game game, Checker color, Board board) {
+    public void setGameAndColor(Game game, Checker color) {
         this.game = game;
-        this.board = board;
         this.color = color;
     }
 
@@ -149,7 +147,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void replaceWithBot(String login, int index) {
         try {
-            clientPlayer.replaceWithBot(login, index);
+            client.replaceWithBot(login, index);
         } catch(RemoteException e) {
             e.printStackTrace();
         }
@@ -157,8 +155,8 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     @Override
     public void getClientPlayer() throws RemoteException {
-        clientPlayer = gamesManager.getClientPlayer(this);
-        if(clientPlayer == null) {
+        client = gamesManager.getClientPlayer(this);
+        if(client == null) {
             logger.error("client player is null");
         } else {
             logger.info("client player added to player");

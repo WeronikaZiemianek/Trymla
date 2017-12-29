@@ -128,7 +128,7 @@ public class RegularGame implements Game {
         boolean res = false;
         if(numOfPlayers != board.getExNumOfPlayers()) {
             players.add(player);
-            player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
+            player.setGameAndColor(this, board.colorForPlayer(numOfPlayers));
             logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
             numOfPlayers++;
             res = true;
@@ -178,7 +178,7 @@ public class RegularGame implements Game {
         Player bot = new DefaultBot(login);
         players.remove(index);
         players.add(index, bot);
-        bot.setGameAndColor(this, board.colorForPlayer(index), board);
+        bot.setGameAndColor(this, board.colorForPlayer(index));
         logger.debug(String.valueOf(players.size()));
         for(Player p : players) {
             p.replaceWithBot(login, index);

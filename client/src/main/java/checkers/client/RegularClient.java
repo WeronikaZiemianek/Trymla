@@ -2,28 +2,27 @@ package checkers.client;
 
 import checkers.core.Checker;
 import checkers.core.Move;
-import checkers.core.clientServerInterfaces.ClientPlayer;
-import checkers.gui.Controller;
+import checkers.core.clientServerInterfaces.Client;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class GUIClientPlayer extends UnicastRemoteObject implements ClientPlayer {
-    Controller client;
+public class RegularClient extends UnicastRemoteObject implements Client {
+    ConsoleClient client;
 
-    public GUIClientPlayer(Controller client) throws RemoteException {
+    public RegularClient(ConsoleClient client) throws RemoteException {
         this.client = client;
     }
 
     @Override
     public void update(boolean isMyTurn, Move lastMove) throws RemoteException {
-        client.update(isMyTurn, lastMove);
+        client.drawBoard(isMyTurn);
 
     }
 
     @Override
     public void gameOver(String winnerLogin) throws RemoteException {
-         client.endOfGame(winnerLogin);
+        client.endOfGame(winnerLogin);
     }
 
     @Override

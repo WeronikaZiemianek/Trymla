@@ -21,8 +21,6 @@ public class RegularRulesManagerTest {
     private RegularBoardFactory factory;
     private RegularRulesManager regularRulesManager;
     private RegularBoard board;
-    private Turn turn;
-    private DefaultGamesManager gamesManager;
 
     @Before
     public void createGame() throws RemoteException {
@@ -30,14 +28,13 @@ public class RegularRulesManagerTest {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
         regularRulesManager = new RegularRulesManager(board);
-        gamesManager = new DefaultGamesManager();
         regularGame = new RegularGame(board, regularRulesManager);
     }
 
     @Test
     public void testMoveCheckMove() throws RemoteException {
         System.out.print(board.getFieldType(new Coordinates(11,3)));
-        regularGame.addPlayer(new DefaultPlayer(gamesManager, "Janusz"));
+        regularGame.addPlayer(new DefaultPlayer(null, "Janusz"));
         regularGame.startGame();
         assertEquals(2 , regularRulesManager.checkMove(regularGame,new Coordinates(11, 3), new Coordinates(12,4), Checker.GREEN));
 }
@@ -48,7 +45,7 @@ public class RegularRulesManagerTest {
 
     @Test
     public void testJumpCheckMove() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
+        DefaultPlayer player = new DefaultPlayer( null, "player");
         regularGame.addPlayer(player);
         regularGame.startGame();
         assertEquals(4, regularRulesManager.checkMove(regularGame ,new Coordinates(4,4), new Coordinates(8,4), Checker.YELLOW));
@@ -56,7 +53,7 @@ public class RegularRulesManagerTest {
 
     @Test
     public void testWrongJumpCheckMove() throws RemoteException {
-        DefaultPlayer player = new DefaultPlayer( gamesManager, "player");
+        DefaultPlayer player = new DefaultPlayer( null, "player");
         regularGame.addPlayer(player);
         regularGame.startGame();
         assertEquals(-1, regularRulesManager.checkMove(regularGame, new Coordinates(9,13), new Coordinates(11,14), Checker.RED));

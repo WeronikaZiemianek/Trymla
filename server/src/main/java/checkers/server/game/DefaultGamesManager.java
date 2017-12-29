@@ -1,8 +1,7 @@
 package checkers.server.game;
 
-import checkers.core.clientServerInterfaces.ClientPlayer;
+import checkers.core.clientServerInterfaces.Client;
 import checkers.server.Player;
-import checkers.core.clientServerInterfaces.PlayerFactory;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.core.boards.BoardFactory;
@@ -25,8 +24,15 @@ public class DefaultGamesManager implements GamesManager {
     private BoardFactory boardFactory;
     private ArrayList<Game> runningGames;
     private Game openGame;
+    static private GamesManager instance;
 
-    public DefaultGamesManager(){
+    synchronized static public void makeInstance() {
+        if(instance == null) {
+            instance = new DefaultGamesManager();
+        }
+    }
+
+    private DefaultGamesManager(){
         logger.debug("Creating player factory");
         try {
             playerFactory = new DefaultPlayerFactory(this);
@@ -52,7 +58,7 @@ public class DefaultGamesManager implements GamesManager {
     }
 
     @Override
-    public ClientPlayer getClientPlayer(Player player) {
+    public Client getClientPlayer(Player player) {
         return connection.getClientPlayer(player);
     }
 
@@ -85,9 +91,9 @@ public class DefaultGamesManager implements GamesManager {
     }
 
     @Override
-    public void removePlayer(Player player) {
-        playerFactory.removePlayer(player);
-        connection.unbindPlayer(player.getPlayerName());
+    public void removePlayer(RemotePlayer player) {
+        playerFactory.removePlayer((Player) player);
+        connection.unbindPlayer(player);
     }
 
 
