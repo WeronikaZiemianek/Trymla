@@ -1,5 +1,6 @@
 .*
 !.gitignore
-build
-log
+/*/build/
+/*/out/
+log/
 *.iml

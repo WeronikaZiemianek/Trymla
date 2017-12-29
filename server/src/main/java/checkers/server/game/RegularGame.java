@@ -22,7 +22,7 @@ public class RegularGame implements Game {
     private Logger logger;
     private Turn turn;
     private Move lastMove;
-    int passesInRow;
+    private int passesInRow;
 
     public RegularGame(Board board, RulesManager rulesManager) {
         passesInRow = 0;
@@ -72,6 +72,7 @@ public class RegularGame implements Game {
                 board.makeMove(currLocation, destination);
                 passesInRow = 0;
                 logger.info(board.toString());
+                countHome(currLocation, destination, player);
                 return validationOfMove;
             }
         }
@@ -95,8 +96,13 @@ public class RegularGame implements Game {
     }
 
     private void endGame(Player player) {
+        String login;
         state = GameState.CLOSED;
-        String login = player.getPlayerName();
+        if(player == null) {
+            login = null;
+        } else {
+            login = player.getPlayerName();
+        }
         for(Player p : players) {
             p.endGame(login);
         }
@@ -118,20 +124,18 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public boolean addPlayer(Player player) {
+    public synchronized boolean addPlayer(Player player) {
         boolean res = false;
-        synchronized(this) {
-            if(numOfPlayers != board.getExNumOfPlayers()) {
-                players.add(player);
-                player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
-                logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
-                numOfPlayers++;
-                res = true;
-                for(Player p : players) {
-                    player.addNewPlayer(p.getPlayerName(), p.getColor());
-                    if(player != p) {
-                        p.addNewPlayer(player.getPlayerName(), player.getColor());
-                    }
+        if(numOfPlayers != board.getExNumOfPlayers()) {
+            players.add(player);
+            player.setGameAndColor(this, board.colorForPlayer(numOfPlayers), board);
+            logger.info("new player with login: " + player.getPlayerName() + " and color: " + player.getColor() + " added");
+            numOfPlayers++;
+            res = true;
+            for(Player p : players) {
+                player.addNewPlayer(p.getPlayerName(), p.getColor());
+                if(player != p) {
+                    p.addNewPlayer(player.getPlayerName(), player.getColor());
                 }
             }
         }

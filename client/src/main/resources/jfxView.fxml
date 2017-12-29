@@ -496,7 +496,7 @@
                   </RadialGradient>
                </textFill>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="WINNER IS" StackPane.alignment="TOP_CENTER">
+            <Label fx:id="winnerLabel" alignment="CENTER" contentDisplay="CENTER" text="WINNER IS" StackPane.alignment="TOP_CENTER">
                <StackPane.margin>
                   <Insets top="250.0" />
                </StackPane.margin>

@@ -63,16 +63,17 @@ public class DefaultGamesManager implements GamesManager {
 
     @Override
     public boolean joinGame(Player player) {
+        boolean res = false;
         if(openGame != null) {
-            boolean res = openGame.addPlayer(player);
+            res = openGame.addPlayer(player);
             if(openGame.getState() == GameState.RUNNING) {
+                Game runningGame = openGame;
                 runningGames.add(openGame);
                 openGame = null;
-                runningGames.get(runningGames.size()-1).updatePlayers();
+                runningGame.updatePlayers();
             }
-            return res;
         }
-        return false;
+        return res;
     }
 
     @Override

@@ -98,6 +98,8 @@ public class Controller {
     private StackPane winnerPage;
     @FXML
     private Label winnerNameLabel;
+    @FXML
+    private Label winnerLabel;
 
 
     @FXML
@@ -368,8 +370,10 @@ public class Controller {
     }
 
     public void exitOnClick(ActionEvent event) {
+        logger.info("exit");
         try {
             player.disconnect();
+            Platform.exit();
         } catch(RemoteException e) {
             e.printStackTrace();
         }
@@ -378,6 +382,8 @@ public class Controller {
 
     public void playAgainOnClick(ActionEvent event) {
         try {
+            this.winnerPage.setVisible(false);
+            this.winnerPage.setDisable(true);
             joinGame();
         } catch(RemoteException e) {
             e.printStackTrace();
@@ -385,15 +391,17 @@ public class Controller {
     }
 
     public void endOfGame(String winnerLogin) {
-        this.gamePage.setVisible(false);
-        this.gamePage.setDisable(true);
-        this.winnerPage.setVisible(true);
-        this.winnerPage.setDisable(false);
-        if(winnerLogin == null) {
-            winnerNameLabel.setText("It's a tie");
-        } else {
-            winnerNameLabel.setText("The winner is: ".concat(winnerLogin));
-        }
+        run(() -> {
+            this.gamePage.setVisible(false);
+            this.gamePage.setDisable(true);
+            this.winnerPage.setVisible(true);
+            this.winnerPage.setDisable(false);
+            if(winnerLogin == null) {
+                winnerLabel.setText("It's a tie");
+            } else {
+                winnerNameLabel.setText(winnerLogin);
+            }
+        });
     }
 
     public void stop() {

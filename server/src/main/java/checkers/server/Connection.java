@@ -53,7 +53,7 @@ public class Connection {
 
     public void unbindPlayer(String login) {
         try {
-            registry.unbind("//localhost:1099/".concat(login));
+            registry.unbind(login);
             logger.info("client unbound");
         } catch(RemoteException | NotBoundException e) {
             e.printStackTrace();

@@ -4,4 +4,4 @@ dependencies {
     compile project(':core')
 }
 
-mainClassName = 'Server'
+mainClassName = 'checkers.server.Server'
