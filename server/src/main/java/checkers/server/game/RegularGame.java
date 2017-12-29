@@ -171,6 +171,7 @@ public class RegularGame implements Game {
         int index = players.indexOf(player);
         String login = "bot".concat(String.valueOf(index));
         players.add(index, new DefaultBot(login));
+        logger.debug(players.toString());
         for(Player p : players) {
             p.replaceWithBot(login, index);
         }

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane fx:id="mainPage">
          <children>
@@ -118,7 +118,7 @@
             <Insets />
          </StackPane.margin>
          <children>
-            <Label fx:id="player1OnLobby" prefHeight="30.0" prefWidth="150.0" text="Player 1" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player1OnLobby" prefHeight="30.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="150.0" top="200.0" />
                </StackPane.margin>
@@ -126,7 +126,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player2OnLobby" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="150.0" text="Player 2" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player2OnLobby" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="150.0" top="240.0" />
                </StackPane.margin>
@@ -134,7 +134,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player3OnLobby" prefHeight="30.0" prefWidth="150.0" text="Player 3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player3OnLobby" prefHeight="30.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="150.0" top="280.0" />
                </StackPane.margin>
@@ -142,7 +142,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player4OnLobby" prefHeight="30.0" prefWidth="150.0" text="Player 4" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player4OnLobby" prefHeight="30.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="150.0" top="320.0" />
                </StackPane.margin>
@@ -150,7 +150,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player5OnLobby" prefHeight="30.0" prefWidth="150.0" text="Player 5" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player5OnLobby" prefHeight="30.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="150.0" top="360.0" />
                </StackPane.margin>
@@ -158,7 +158,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player6OnLobby" prefHeight="30.0" prefWidth="150.0" text="Player 6" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player6OnLobby" prefHeight="30.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="150.0" top="400.0" />
                </StackPane.margin>
@@ -177,14 +177,15 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints />
               </rowConstraints>
                <children>
-                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
-                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2"/>
-                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
-                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
-                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="5" />
-                  <Circle fill="WHITE" radius="17.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="6" />
+                  <Circle fill="TRANSPARENT" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Circle fill="TRANSPARENT" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="1" />
+                  <Circle fill="TRANSPARENT" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="2" />
+                  <Circle fill="TRANSPARENT" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="3" />
+                  <Circle fill="TRANSPARENT" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="4" />
+                  <Circle fill="TRANSPARENT" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="5" />
                </children>
                <StackPane.margin>
                   <Insets bottom="400.0" left="300.0" right="720.0" top="200.0" />
@@ -207,7 +208,7 @@
       </StackPane>
       <StackPane fx:id="gamePage" disable="true" prefHeight="150.0" prefWidth="200.0" visible="false">
          <children>
-            <Label fx:id="player1OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 1" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player1OnGame" prefHeight="15.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="30.0" top="105.0" />
                </StackPane.margin>
@@ -215,7 +216,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player2OnGame" nodeOrientation="LEFT_TO_RIGHT" prefHeight="15.0" prefWidth="150.0" text="Player 2" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player2OnGame" nodeOrientation="LEFT_TO_RIGHT" prefHeight="15.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="30.0" top="125.0" />
                </StackPane.margin>
@@ -223,7 +224,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player3OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player3OnGame" prefHeight="15.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="30.0" top="145.0" />
                </StackPane.margin>
@@ -231,7 +232,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player4OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 4" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player4OnGame" prefHeight="15.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="30.0" top="165.0" />
                </StackPane.margin>
@@ -239,7 +240,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player5OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 5" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player5OnGame" prefHeight="15.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="30.0" top="185.0" />
                </StackPane.margin>
@@ -247,7 +248,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="player6OnGame" prefHeight="15.0" prefWidth="150.0" text="Player 6" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <Label fx:id="player6OnGame" prefHeight="15.0" prefWidth="150.0" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="30.0" top="205.0" />
                </StackPane.margin>
@@ -266,14 +267,15 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints />
                </rowConstraints>
                <children>
-                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
-                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2"/>
-                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
-                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
-                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="5" />
-                  <Circle fill="WHITE" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="6" />
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="1" />
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="2" />
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="3" />
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="4" />
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="5" />
                </children>
                <StackPane.margin>
                   <Insets bottom="600.0" left="200.0" right="850.0" top="100.0" />

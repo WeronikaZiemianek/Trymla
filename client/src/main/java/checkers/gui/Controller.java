@@ -15,7 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.StrokeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,7 +69,8 @@ public class Controller {
     private Label player5OnLobby;
     @FXML
     private Label player6OnLobby;
-
+    @FXML
+    private GridPane playerColorsOnLobby;
     //gamePage --------------------------------
     @FXML
     private StackPane gamePage;
@@ -209,7 +212,29 @@ public class Controller {
         else Platform.runLater(treatment);
     }
 
+    private Color chooseColor(Checker color) {
+        Color fxcolor;
+        switch(color) {
+            case RED: fxcolor = Color.RED; break;
+            case BLUE: fxcolor = Color.BLUE; break;
+            case GREEN: fxcolor = Color.GREEN; break;
+            case YELLOW: fxcolor = Color.YELLOW; break;
+            case WHITE: fxcolor = Color.WHITE; break;
+            case BLACK: fxcolor = Color.BLACK; break;
+            default: fxcolor = Color.TRANSPARENT; break;
+        }
+        return fxcolor;
+    }
+
     private void setPlayer(String login, Checker color, int index) {
+        Color fxcolor = chooseColor(color);
+        playerColorsOnLobby.getChildren().remove(index-1);
+        Circle c = new Circle();
+        c.setFill(fxcolor);
+        c.setRadius(17.0);
+        c.setStroke(Color.BLACK);
+        c.setStrokeType(StrokeType.INSIDE);
+        playerColorsOnLobby.add(c, 0,index-1);
         switch(index) {
             case 1: player1OnLobby.setText(login); player1OnGame.setText(login); break;
             case 2: player2OnLobby.setText(login); player2OnGame.setText(login); break;
@@ -230,7 +255,7 @@ public class Controller {
     public void renamePlayer(String login, int index) {
         run(() -> {
             players.get(index).setLogin(login);
-            setPlayer(login, players.get(index).getColor(), index);
+            setPlayer(login, players.get(index).getColor(), index+1);
         });
     }
 
