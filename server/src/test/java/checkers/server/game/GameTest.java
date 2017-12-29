@@ -65,7 +65,7 @@ public class GameTest {
 
     @Test
     public void testIfGameStartsProperly() throws RemoteException {
-        startGame();
+        startGame3();
         assertEquals(GameState.RUNNING, game.getState());
     }
 

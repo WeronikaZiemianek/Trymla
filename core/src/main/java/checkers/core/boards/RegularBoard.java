@@ -65,9 +65,17 @@ public class RegularBoard implements Board, Serializable {
 
     @Override
     public Checker getFieldOccupiedBy(Coordinates location) {
-        if(board[location.X()][location.Y()] == null)
+        try{
+            if(board[location.X()][location.Y()].getOccupiedBy() == null)
+                return Checker.EMPTY;
+
+            Checker result = board[location.X()][location.Y()].getOccupiedBy();
+            return result;
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
             return Checker.EMPTY;
-        return board[location.X()][location.Y()].getOccupiedBy();
+        }
     }
 
     @Override
