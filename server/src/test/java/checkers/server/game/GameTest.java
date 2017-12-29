@@ -4,6 +4,7 @@ import checkers.core.Coordinates;
 import checkers.core.boards.Board;
 import checkers.core.boards.BoardFactory;
 import checkers.core.boards.RegularBoardFactory;
+import checkers.server.player.DefaultBot;
 import checkers.server.player.DefaultPlayer;
 import checkers.server.rules.RegularRulesManager;
 import org.junit.Before;
@@ -18,6 +19,9 @@ public class GameTest {
     DefaultPlayer player0;
     DefaultPlayer player1;
     DefaultPlayer player2;
+    DefaultBot bot1;
+    DefaultBot bot2;
+    DefaultBot bot3;
 
     @Before
     public void createGame(){
@@ -37,9 +41,31 @@ public class GameTest {
         game.updatePlayers();
     }
 
+    private void startGame2() throws RemoteException {
+        System.setProperty("java.rmi.server.hostname", "localhost");
+        bot1 = new DefaultBot("bot1");
+        bot2 = new DefaultBot("bot2");
+        bot3 = new DefaultBot("bot3");
+        game.addPlayer(bot1);
+        game.addPlayer(bot2);
+        game.addPlayer(bot3);
+        game.updatePlayers();
+    }
+
+    private void startGame3() throws RemoteException {
+        System.setProperty("java.rmi.server.hostname", "localhost");
+        player0 = new DefaultPlayer(null, "play0");
+        bot2 = new DefaultBot("bot2");
+        bot3 = new DefaultBot("bot3");
+        game.addPlayer(player0);
+        game.addPlayer(bot2);
+        game.addPlayer(bot3);
+        game.updatePlayers();
+    }
+
     @Test
     public void testIfGameStartsProperly() throws RemoteException {
-        startGame();
+        startGame3();
         assertEquals(GameState.RUNNING, game.getState());
     }
 
@@ -47,6 +73,14 @@ public class GameTest {
     public void testMakingMoves() throws RemoteException {
         startGame();
         assertEquals(2, player0.makeMove(new Coordinates(9,13), new Coordinates(10,12)));
+        System.out.println(game.getBoard());
+    }
+
+    @Test
+    public void testMakingMovesByBots() throws RemoteException {
+        startGame3();
+        assertEquals(2, player0.makeMove(new Coordinates(9,13), new Coordinates(10,12)));
+        player0.endMove();
         System.out.println(game.getBoard());
     }
 
