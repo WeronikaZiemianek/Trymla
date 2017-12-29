@@ -27,7 +27,7 @@ public class GUIClientPlayer extends UnicastRemoteObject implements ClientPlayer
 
     @Override
     public void newPlayerAdded(String login, Checker color) throws RemoteException {
-      //    client.newPlayer(login, color);
+        client.newPlayer(login, color);
 
     }
 

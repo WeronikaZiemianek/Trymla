@@ -3,12 +3,17 @@ import checkers.client.ClientConnection;
 import checkers.client.GUIClientPlayer;
 import checkers.client.LoginAndColor;
 import checkers.core.Checker;
+import checkers.core.Coordinates;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +28,9 @@ public class Controller {
     ArrayList<LoginAndColor> players;
     static Logger logger = LoggerFactory.getLogger(Controller.class);
     int n = 0;
+    boolean isLocationChosen;
+    Coordinates location;
+    Coordinates destination;
 
     //mainPage -------------------------------
     @FXML
@@ -45,6 +53,22 @@ public class Controller {
     @FXML
     private StackPane lobbyPage;
     @FXML
+    private Label player1OnLobby;
+    @FXML
+    private Label player2OnLobby;
+    @FXML
+    private Label player3OnLobby;
+    @FXML
+    private Label player4OnLobby;
+    @FXML
+    private Label player5OnLobby;
+    @FXML
+    private Label player6OnLobby;
+
+    //gamePage --------------------------------
+    @FXML
+    private StackPane gamePage;
+    @FXML
     private Label player1OnGame;
     @FXML
     private Label player2OnGame;
@@ -56,18 +80,25 @@ public class Controller {
     private Label player5OnGame;
     @FXML
     private Label player6OnGame;
-    //gamePage --------------------------------
-    @FXML
-    private StackPane gamePage;
     @FXML
     private StackPane winnerPage;
 
 
+    @FXML
+    void initialize() {
+        this.mainPage.setStyle("-fx-background-image: url('mainWP.jpg');");
+        this.loginPage.setStyle("-fx-background-image: url('loginWP.jpg');");
+        this.createPage.setStyle("-fx-background-image: url('createWP.jpg');");
+        this.lobbyPage.setStyle("-fx-background-image: url('lobbyWP.jpg');");
+        this.gamePage.setStyle("-fx-background-image: url('gameWP.jpg');");
+        this.winnerPage.setStyle("-fx-background-image: url('winnerWP.jpg');");
+    }
 
     public Controller() {
     }
 
     public void startOnClick(ActionEvent event) {
+        isLocationChosen = false;
         try {
             connection = new ClientConnection();
         } catch(RemoteException e) {
@@ -164,35 +195,76 @@ public class Controller {
         }
     }
 
-//    public void newPlayer(String login, Checker color) {
-//        players.add(new LoginAndColor(login, color));
-//        switch(players.size()) {
-//            case 1: player1OnGame.setText(login); break;
-//            case 2: player2OnGame.setText(login); break;
-//            case 3: player3OnGame.setText(login); break;
-//            case 4: player4OnGame.setText(login); break;
-//            case 5: player5OnGame.setText(login); break;
-//            case 6: player6OnGame.setText(login); break;
-//        }
-//    }
+    public static void run(Runnable treatment) {
+        if(treatment == null) throw new IllegalArgumentException("The treatment to perform can not be null");
+
+        if(Platform.isFxApplicationThread()) treatment.run();
+        else Platform.runLater(treatment);
+    }
+
+    public void newPlayer(String login, Checker color) {
+        run(() -> {
+            players.add(new LoginAndColor(login, color));
+            System.out.print(players.size());
+            switch(players.size()) {
+                case 1: player1OnLobby.setText(login); player1OnGame.setText(login); break;
+                case 2: player2OnLobby.setText(login); player2OnGame.setText(login); break;
+                case 3: player3OnLobby.setText(login); player3OnGame.setText(login); break;
+                case 4: player4OnLobby.setText(login); player4OnGame.setText(login); break;
+                case 5: player5OnLobby.setText(login); player5OnGame.setText(login); break;
+                case 6: player6OnLobby.setText(login); player6OnGame.setText(login); break;
+            }
+            System.out.print(login);
+        });
+    }
 
     public void addBotOnClick(ActionEvent event) {
+        try {
+            player.addBot();
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void endMoveOnClick(ActionEvent event) {
+        try {
+            player.endMove();
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void exitOnClick(ActionEvent event) {
+        try {
+            player.disconnect();
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void playAgainOnClick(ActionEvent event) {
-
+        try {
+            joinGame();
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void fieldOnClick(ActionEvent event) {
-
+    public void fieldOnClick(MouseEvent event) {
+        int x = GridPane.getRowIndex((Node) event.getTarget());
+        int y = GridPane.getColumnIndex((Node) event.getTarget());
+        if(isLocationChosen) {
+            destination = new Coordinates(x,y);
+            try {
+                player.makeMove(location, destination);
+            } catch(RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            location = new Coordinates(x,y);
+        }
     }
 }
