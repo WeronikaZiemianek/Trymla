@@ -1,6 +1,7 @@
 package checkers.server.game;
 
 import checkers.core.Coordinates;
+import checkers.core.Move;
 import checkers.core.boards.Board;
 import checkers.server.Player;
 import checkers.server.rules.RulesManager;
@@ -9,7 +10,6 @@ public interface Game { ;
 
     void startGame();
     Coordinates getCurrMov();
-    void setCurrMov(Coordinates player);
     void endMove();
     boolean addPlayer(Player player);
     GameState getState();
@@ -20,6 +20,6 @@ public interface Game { ;
     int getNumOfPlayers();
     void updatePlayers();
     boolean canMove();
-    Coordinates[] getLastMove();
+    Move getLastMove();
 }
 

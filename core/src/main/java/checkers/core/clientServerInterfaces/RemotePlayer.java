@@ -2,6 +2,7 @@ package checkers.core.clientServerInterfaces;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
+import checkers.core.Move;
 import checkers.core.boards.Board;
 
 import java.rmi.RemoteException;
@@ -19,5 +20,5 @@ public interface RemotePlayer extends java.rmi.Remote {
     Board getBoard() throws  RemoteException;
     void endJump() throws RemoteException;
     void disconnect() throws RemoteException;
-    Coordinates[] getLastMove() throws RemoteException;
+    Move getLastMove() throws RemoteException;
 }

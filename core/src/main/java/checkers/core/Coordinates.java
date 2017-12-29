@@ -18,4 +18,9 @@ public class Coordinates implements Serializable {
     public int Y() {
         return y;
     }
+
+    public boolean equals(Coordinates c) {
+        return x == c.X() && y == c.Y();
+    }
+
 }

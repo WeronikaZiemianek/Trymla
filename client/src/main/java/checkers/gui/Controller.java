@@ -4,7 +4,7 @@ import checkers.client.GUIClientPlayer;
 import checkers.client.LoginAndColor;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
-import checkers.core.Field;
+import checkers.core.Move;
 import checkers.core.boards.Board;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
@@ -306,21 +306,19 @@ public class Controller {
                 didGameStart = true;
             } else {
                 try {
-                    Coordinates[] lastMove = player.getLastMove();
+                    Move lastMove = player.getLastMove();
                     if(!(lastMove == null)) {
-                        Node loc = null;
-                        Node des = null;
+                        logger.info("lastMoveIsNotNull");
                         for(Node node : board.getChildren()) {
-                            if(GridPane.getRowIndex(node) == lastMove[0].X() && GridPane.getColumnIndex(node) == lastMove[0].Y()) {
-                                loc = node;
+                            if(GridPane.getRowIndex(node) == lastMove.getLocation().Y() &&
+                                    GridPane.getColumnIndex(node) == lastMove.getLocation().X()) {
+                                ((Circle)node).setFill(Color.TRANSPARENT);
                             }
-                            if(GridPane.getRowIndex(node) == lastMove[1].X() && GridPane.getColumnIndex(node) == lastMove[1].Y()) {
-                                des = node;
+                            if(GridPane.getRowIndex(node) == lastMove.getDestination().Y() &&
+                                    GridPane.getColumnIndex(node) == lastMove.getDestination().X()) {
+                                ((Circle)node).setFill(chooseColor(lastMove.getColor()));
                             }
                         }
-                        Paint color = ((Circle) loc).getFill();
-                        ((Circle) loc).setFill(Color.TRANSPARENT);
-                        ((Circle) des).setFill(color);
                     }
                 } catch(RemoteException e) {
                         e.printStackTrace();

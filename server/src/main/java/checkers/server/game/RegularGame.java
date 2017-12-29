@@ -1,6 +1,7 @@
 package checkers.server.game;
 
 import checkers.core.Coordinates;
+import checkers.core.Move;
 import checkers.server.Player;
 import checkers.core.boards.Board;
 import checkers.server.player.DefaultBot;
@@ -20,7 +21,7 @@ public class RegularGame implements Game {
     private GameState state;
     private Logger logger;
     private Turn turn;
-    private Coordinates[] lastMove;
+    private Move lastMove;
     int passesInRow;
 
     public RegularGame(Board board, RulesManager rulesManager) {
@@ -67,9 +68,7 @@ public class RegularGame implements Game {
                     turn.setCanMove(false);
                 }
                 turn.setCurrMov(destination);
-                lastMove = new Coordinates[2];
-                lastMove[0] = currLocation;
-                lastMove[1] = destination;
+                lastMove = new Move(currLocation, destination, player.getColor());
                 board.makeMove(currLocation, destination);
                 passesInRow = 0;
                 logger.info(board.toString());
@@ -165,11 +164,6 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void setCurrMov(Coordinates player) {
-         turn.setCurrMov(player);
-    }
-
-    @Override
     public void disconnectPlayer(Player player) {
         int index = players.indexOf(player);
         String login = "bot".concat(String.valueOf(index));
@@ -189,11 +183,7 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public Coordinates[] getLastMove() {
+    public Move getLastMove() {
         return lastMove;
-    }
-
-    public void setLastMove(Coordinates[] lastMove) {
-        this.lastMove = lastMove;
     }
 }

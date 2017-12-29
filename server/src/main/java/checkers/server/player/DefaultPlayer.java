@@ -2,6 +2,7 @@ package checkers.server.player;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
+import checkers.core.Move;
 import checkers.server.Player;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
@@ -24,7 +25,6 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     private String login;
     private ClientPlayer clientPlayer;
     private Logger logger;
-    private Coordinates[] lastMove;
 
     public DefaultPlayer(GamesManager gamesManager, String login) throws RemoteException {
         this.gamesManager = gamesManager;
@@ -139,7 +139,6 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
         this.game = game;
         this.board = board;
         this.color = color;
-        this.lastMove = game.getLastMove();
     }
 
     @Override
@@ -172,7 +171,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public Coordinates[] getLastMove() throws RemoteException {
-        return lastMove;
+    public Move getLastMove() throws RemoteException {
+        return game.getLastMove();
     }
 }

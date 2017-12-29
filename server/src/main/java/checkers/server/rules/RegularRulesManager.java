@@ -36,7 +36,7 @@ public class RegularRulesManager implements RulesManager {
         }
 
         if(game.getCurrMov() != null) {
-            if(game.getCurrMov().equals(currLocation)) {
+            if(!(game.getCurrMov().equals(currLocation))) {
                 return -1;
             }
         }
