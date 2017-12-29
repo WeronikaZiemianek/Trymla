@@ -122,10 +122,10 @@ public class ConsoleClient {
             move = player.makeMove( new Coordinates(lx, ly), new Coordinates(dx, dy));
         } while(move == -1);
         if(move == 2) {
-            player.endMove();
+            player.endMove(null);
             logger.info("ending move");
         } else {
-            player.endJump();
+            player.endJump(null);
         }
     }
 

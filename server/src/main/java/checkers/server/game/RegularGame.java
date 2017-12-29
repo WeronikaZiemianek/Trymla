@@ -109,7 +109,7 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void endMove() {
+    public synchronized void endMove(Move lastMove) {
         passesInRow++;
         if(passesInRow == board.getExNumOfPlayers()+1) {
             endGame(null);
@@ -120,7 +120,7 @@ public class RegularGame implements Game {
             turnPlayer = 0;
         }
         turn = new Turn(players.get(turnPlayer));
-        updatePlayers();
+        updatePlayers(lastMove);
     }
 
     @Override
@@ -146,14 +146,14 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void updatePlayers() {
+    public synchronized void updatePlayers(Move lastMove) {
         logger.debug("updating players");
         for(Player p: players) {
             if(p != players.get(turnPlayer)) {
-                p.update(false);
+                p.update(false, lastMove);
             }
         }
-        players.get(turnPlayer).update(true);
+        players.get(turnPlayer).update(true, lastMove);
     }
 
     @Override
@@ -177,7 +177,7 @@ public class RegularGame implements Game {
             p.replaceWithBot(login, index);
         }
         if(state == GameState.RUNNING) {
-            updatePlayers();
+            updatePlayers(null);
         }
     }
 

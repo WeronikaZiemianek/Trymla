@@ -1,6 +1,7 @@
 package checkers.client;
 
 import checkers.core.Checker;
+import checkers.core.Move;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 
 import java.rmi.RemoteException;
@@ -14,7 +15,7 @@ public class RegularClientPlayer extends UnicastRemoteObject implements ClientPl
     }
 
     @Override
-    public void update(boolean isMyTurn) throws RemoteException {
+    public void update(boolean isMyTurn, Move lastMove) throws RemoteException {
         client.drawBoard(isMyTurn);
 
     }

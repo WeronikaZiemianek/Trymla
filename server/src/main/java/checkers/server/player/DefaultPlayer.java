@@ -41,8 +41,8 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     public Board getBoard() { return board; }
 
     @Override
-    public void endJump() throws RemoteException {
-        game.updatePlayers();
+    public void endJump(Move lastMove) throws RemoteException {
+        game.updatePlayers(lastMove);
     }
 
     @Override
@@ -54,11 +54,11 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public void update (Boolean isMyTurn) {
+    public void update (Boolean isMyTurn, Move lastMove) {
         this.isMyTurn = isMyTurn;
         if(clientPlayer != null) {
             try {
-                clientPlayer.update(isMyTurn);
+                clientPlayer.update(isMyTurn, lastMove);
             } catch(RemoteException e) {
                 e.printStackTrace();
                 logger.error("cant update client player");
@@ -110,9 +110,9 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     }
 
     @Override
-    public void endMove() throws RemoteException {
+    public void endMove(Move lastMove) throws RemoteException {
         if(isMyTurn) {
-            game.endMove();
+            game.endMove(lastMove);
         }
     }
 
@@ -170,8 +170,4 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
         return login;
     }
 
-    @Override
-    public Move getLastMove() throws RemoteException {
-        return game.getLastMove();
-    }
 }

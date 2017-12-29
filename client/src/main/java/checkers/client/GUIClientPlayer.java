@@ -1,6 +1,7 @@
 package checkers.client;
 
 import checkers.core.Checker;
+import checkers.core.Move;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.gui.Controller;
 
@@ -15,8 +16,8 @@ public class GUIClientPlayer extends UnicastRemoteObject implements ClientPlayer
     }
 
     @Override
-    public void update(boolean isMyTurn) throws RemoteException {
-        client.update(isMyTurn);
+    public void update(boolean isMyTurn, Move lastMove) throws RemoteException {
+        client.update(isMyTurn, lastMove);
 
     }
 

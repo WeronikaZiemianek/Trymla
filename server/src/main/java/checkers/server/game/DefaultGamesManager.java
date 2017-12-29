@@ -62,7 +62,7 @@ public class DefaultGamesManager implements GamesManager {
     }
 
     @Override
-    public boolean joinGame(Player player) {
+    public synchronized boolean joinGame(Player player) {
         boolean res = false;
         if(openGame != null) {
             res = openGame.addPlayer(player);
@@ -70,7 +70,7 @@ public class DefaultGamesManager implements GamesManager {
                 Game runningGame = openGame;
                 runningGames.add(openGame);
                 openGame = null;
-                runningGame.updatePlayers();
+                runningGame.updatePlayers(null);
             }
         }
         return res;

@@ -2,6 +2,7 @@ package checkers.server.player;
 
 import checkers.core.Checker;
 import checkers.core.Coordinates;
+import checkers.core.Move;
 import checkers.server.Player;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
@@ -33,11 +34,11 @@ public class DefaultBot implements Player {
     }
 
     @Override
-    public void update (Boolean isMyTurn) {
+    public void update (Boolean isMyTurn, Move lastMove) {
         this.isMyTurn = isMyTurn;
         if(isMyTurn) {
             makeMove();
-            game.endMove();
+            game.endMove(null);
         }
 
     }

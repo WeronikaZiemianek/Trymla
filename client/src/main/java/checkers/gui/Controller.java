@@ -41,6 +41,7 @@ public class Controller {
     boolean didGameStart;
     Coordinates location;
     Coordinates destination;
+    Move lastMove;
 
     //mainPage -------------------------------
     @FXML
@@ -297,7 +298,7 @@ public class Controller {
         }
     }
 
-    public void update(boolean isMyTurn) {
+    public void update(boolean isMyTurn, Move lastMove) {
         run(() -> {
             logger.info("updating players");
             if(!didGameStart) {
@@ -307,23 +308,18 @@ public class Controller {
                 initBoard();
                 didGameStart = true;
             } else {
-                try {
-                    Move lastMove = player.getLastMove();
-                    if(!(lastMove == null)) {
-                        logger.info("lastMoveIsNotNull");
-                        for(Node node : board.getChildren()) {
-                            if(GridPane.getRowIndex(node) == lastMove.getLocation().Y() &&
-                                    GridPane.getColumnIndex(node) == lastMove.getLocation().X()) {
-                                ((Circle)node).setFill(Color.TRANSPARENT);
-                            }
-                            if(GridPane.getRowIndex(node) == lastMove.getDestination().Y() &&
-                                    GridPane.getColumnIndex(node) == lastMove.getDestination().X()) {
-                                ((Circle)node).setFill(chooseColor(lastMove.getColor()));
-                            }
+                if(!(lastMove == null)) {
+                    logger.info("lastMoveIsNotNull");
+                    for(Node node : board.getChildren()) {
+                        if(GridPane.getRowIndex(node) == lastMove.getLocation().Y() &&
+                                GridPane.getColumnIndex(node) == lastMove.getLocation().X()) {
+                            ((Circle)node).setFill(Color.TRANSPARENT);
+                        }
+                        if(GridPane.getRowIndex(node) == lastMove.getDestination().Y() &&
+                                GridPane.getColumnIndex(node) == lastMove.getDestination().X()) {
+                            ((Circle)node).setFill(chooseColor(lastMove.getColor()));
                         }
                     }
-                } catch(RemoteException e) {
-                        e.printStackTrace();
                 }
             }
             this.isMyTurn = isMyTurn;
@@ -344,11 +340,11 @@ public class Controller {
             try {
                 int move = player.makeMove(location, destination);
                 if(move == 2) {
-                    player.endMove();
+                    player.endMove(new Move(location, destination, player.getColor()));
                     this.gamePage.setDisable(true);
                 }
                 if(move == 4) {
-                    player.endJump();
+                    player.endJump(new Move(location, destination, player.getColor()));
                 }
             } catch(RemoteException e) {
                 e.printStackTrace();
@@ -362,7 +358,7 @@ public class Controller {
 
     public void endMoveOnClick(ActionEvent event) {
         try {
-            player.endMove();
+            player.endMove(null);
         } catch(RemoteException e) {
             e.printStackTrace();
         }
