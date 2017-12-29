@@ -4,9 +4,12 @@ import checkers.client.GUIClientPlayer;
 import checkers.client.LoginAndColor;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
+import checkers.core.Field;
+import checkers.core.boards.Board;
 import checkers.core.clientServerInterfaces.ClientPlayer;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 import org.slf4j.Logger;
@@ -23,6 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class Controller {
     RemotePlayer player;
@@ -86,6 +91,8 @@ public class Controller {
     private Label player5OnGame;
     @FXML
     private Label player6OnGame;
+    @FXML
+    private GridPane board;
     //winnerPage ------------------------------
     @FXML
     private StackPane winnerPage;
@@ -268,19 +275,82 @@ public class Controller {
 
     }
 
+    private void initBoard() {
+        try {
+            Board playerBoard = player.getBoard();
+            int columns = playerBoard.getNumOfCol();
+            int rows = playerBoard.getNumOfRows();
+            for(int r=0; r < rows; r++) {
+                for(int c=0; c < columns; c++) {
+                    ObservableList<Node> boardChildren = board.getChildren();
+                    for(Node node : boardChildren) {
+                        if(GridPane.getRowIndex(node) == r && GridPane.getColumnIndex(node) == c) {
+                            ((Circle)node).setFill(chooseColor(playerBoard.getFieldOccupiedBy(new Coordinates(r,c))));
+                        }
+                    }
+                }
+            }
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void update(boolean isMyTurn) {
         run(() -> {
             if(!didGameStart) {
                 this.lobbyPage.setVisible(false);
                 this.lobbyPage.setDisable(true);
                 this.gamePage.setVisible(true);
+                initBoard();
                 didGameStart = true;
+            } else {
+                try {
+                    Coordinates[] lastMove = player.getLastMove();
+                    if(!(lastMove == null)) {
+                        Node loc = null;
+                        Node des = null;
+                        for(Node node : board.getChildren()) {
+                            if(GridPane.getRowIndex(node) == lastMove[0].X() && GridPane.getColumnIndex(node) == lastMove[0].Y()) {
+                                loc = node;
+                            }
+                            if(GridPane.getRowIndex(node) == lastMove[1].X() && GridPane.getColumnIndex(node) == lastMove[1].Y()) {
+                                des = node;
+                            }
+                        }
+                        Paint color = ((Circle) loc).getFill();
+                        ((Circle) loc).setFill(Color.TRANSPARENT);
+                        ((Circle) des).setFill(color);
+                    }
+                } catch(RemoteException e) {
+                        e.printStackTrace();
+                }
             }
             this.isMyTurn = isMyTurn;
             if(isMyTurn) {
                 this.gamePage.setDisable(false);
             }
         });
+    }
+
+    public void fieldOnClick(MouseEvent event) {
+        logger.debug("You have clicked");
+        int x = GridPane.getRowIndex((Node) event.getTarget());
+        int y = GridPane.getColumnIndex((Node) event.getTarget());
+        if(isLocationChosen) {
+            destination = new Coordinates(x,y);
+            logger.debug("destination is chosen");
+            try {
+                if(player.makeMove(location, destination) == 2) {
+                    player.endMove();
+                }
+            } catch(RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            location = new Coordinates(x,y);
+            isLocationChosen = true;
+            logger.debug("location is chosen");
+        }
     }
 
     public void endMoveOnClick(ActionEvent event) {
@@ -306,22 +376,6 @@ public class Controller {
             joinGame();
         } catch(RemoteException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void fieldOnClick(MouseEvent event) {
-        int x = GridPane.getRowIndex((Node) event.getTarget());
-        int y = GridPane.getColumnIndex((Node) event.getTarget());
-
-        if(isLocationChosen) {
-            destination = new Coordinates(x,y);
-            try {
-                player.makeMove(location, destination);
-            } catch(RemoteException e) {
-                e.printStackTrace();
-            }
-        } else {
-            location = new Coordinates(x,y);
         }
     }
 

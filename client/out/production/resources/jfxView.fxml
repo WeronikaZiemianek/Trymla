@@ -332,8 +332,8 @@
                   <Insets bottom="50.0" left="300.0" right="100.0" top="50.0" />
                </StackPane.margin>
                <children>
-                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="12" />
-                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="4" />
+                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="12" GridPane.rowIndex="0" />
+                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
@@ -420,7 +420,7 @@
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="4" GridPane.rowIndex="10" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="12" />
+                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="12" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="2" GridPane.rowIndex="12" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="3" GridPane.rowIndex="11" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="5" GridPane.rowIndex="11" />

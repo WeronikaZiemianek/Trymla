@@ -6,8 +6,8 @@ import checkers.core.Field;
 import java.io.Serializable;
 
 public class RegularBoard implements Board, Serializable {
-    private final int NUM_OF_COLUMNS;
-    private final int NUM_OF_ROWS;
+    final int NUM_OF_COLUMNS;
+    final int NUM_OF_ROWS;
 
     private Field[][] board;
     private int numOfPlayers;
@@ -61,6 +61,16 @@ public class RegularBoard implements Board, Serializable {
     @Override
     public Checker getFieldType(Coordinates location) {
         return board[location.X()][location.Y()].getType();
+    }
+
+    @Override
+    public int getNumOfCol() {
+        return NUM_OF_COLUMNS;
+    }
+
+    @Override
+    public int getNumOfRows() {
+        return NUM_OF_ROWS;
     }
 
     @Override

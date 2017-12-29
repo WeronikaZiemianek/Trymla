@@ -145,7 +145,9 @@ public class RegularGame implements Game {
     public void updatePlayers() {
         logger.debug("updating players");
         for(Player p: players) {
-            p.update(false);
+            if(p != players.get(turnPlayer)) {
+                p.update(false);
+            }
         }
         players.get(turnPlayer).update(true);
     }
