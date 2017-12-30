@@ -251,7 +251,7 @@ public class DefaultBot implements Player {
 
                     if(board.getFieldType(new Coordinates(x - 2, y)) == Checker.EMPTY ||
                             board.getFieldType(new Coordinates(x - 2, y)) == Checker.BLUE ||
-                            board.getFieldType(new Coordinates(x - 2, y)) == Checker.GREEN) {
+                            board.getFieldType(new Coordinates(x - 2, y)) == Checker.YELLOW) {
                         tempX-=2;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
                     }
@@ -260,7 +260,7 @@ public class DefaultBot implements Player {
 
                     if(board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.EMPTY ||
                             board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.BLUE ||
-                            board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.GREEN) {
+                            board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.YELLOW) {
                         tempX-=1; tempY-=1;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
                     }
@@ -312,7 +312,7 @@ public class DefaultBot implements Player {
 
                     if(board.getFieldType(new Coordinates(x + 2, y)) == Checker.EMPTY ||
                             board.getFieldType(new Coordinates(x + 2, y)) == Checker.BLUE ||
-                            board.getFieldType(new Coordinates(x + 2, y)) == Checker.GREEN) {
+                            board.getFieldType(new Coordinates(x + 2, y)) == Checker.YELLOW) {
                         tempX+=2;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
                     }
@@ -321,7 +321,7 @@ public class DefaultBot implements Player {
 
                     if(board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.EMPTY ||
                             board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.BLUE ||
-                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.GREEN) {
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.YELLOW) {
                         tempX+=1; tempY-=1;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
                     }
