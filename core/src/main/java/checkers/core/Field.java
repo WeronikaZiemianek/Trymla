@@ -22,14 +22,12 @@ public class Field implements Serializable {
 
 
     public Field(Checker type, Checker occupied) {
-        this.type = type;
         if(occupied == null) {
             initField(type);
         } else {
             this.type = type;
             this.occupiedBy = occupied;
         }
-
     }
 
     private void initField(Checker type) {

@@ -38,12 +38,12 @@ public class RegularBoardFactory implements BoardFactory {
 
     private void makeEmptyBoard() {
         createCentralFields();
-        createUprightTriangle(TRIANGLE_INFO[0], Checker.EMPTY);
-        createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.EMPTY);
-        createUprightTriangle(TRIANGLE_INFO[2], Checker.EMPTY);
-        createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.EMPTY);
-        createUprightTriangle(TRIANGLE_INFO[4], Checker.EMPTY);
-        createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[0], Checker.OTHER, Checker.EMPTY);
+        createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.OTHER, Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[2], Checker.OTHER, Checker.EMPTY);
+        createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.OTHER, Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[4], Checker.OTHER, Checker.EMPTY);
+        createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.OTHER, Checker.EMPTY);
 
     }
 
@@ -66,14 +66,12 @@ public class RegularBoardFactory implements BoardFactory {
         int column = triangleInfo[0];
         int row = triangleInfo[1];
         int limit = triangleInfo[2];
-
         int counter=1,numberOfJumps;
 
         while(row<limit){
-            for(numberOfJumps=0;numberOfJumps<counter;numberOfJumps++)
-                if(occupied == null)
-                    board[column + numberOfJumps * 2][row] = new Field(type, occupied);
-
+            for(numberOfJumps=0;numberOfJumps<counter;numberOfJumps++) {
+                board[column + numberOfJumps * 2][row] = new Field(type, occupied);
+            }
             row++;
             column--;
             counter++;
@@ -90,9 +88,9 @@ public class RegularBoardFactory implements BoardFactory {
         int counter=1,numberOfJumps;
 
         while(row>limit){
-            for(numberOfJumps=0;numberOfJumps<counter;numberOfJumps++)
-                board[column+numberOfJumps*2][row] = new Field(type, occupied);
-
+            for(numberOfJumps=0;numberOfJumps<counter;numberOfJumps++) {
+                board[column + numberOfJumps * 2][row] = new Field(type, occupied);
+            }
             row--;
             column--;
             counter++;
