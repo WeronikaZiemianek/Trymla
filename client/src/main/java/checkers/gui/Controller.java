@@ -27,18 +27,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class Controller {
-    RemotePlayer player;
-    ClientConnection connection;
-    Client client;
-    ArrayList<LoginAndColor> players;
-    static Logger logger = LoggerFactory.getLogger(Controller.class);
-    int n = 0;
-    boolean isLocationChosen;
-    boolean isMyTurn;
-    boolean didGameStart;
-    Coordinates location;
-    Coordinates destination;
-    Move lastMove;
+    private RemotePlayer player;
+    private ClientConnection connection;
+    private ArrayList<LoginAndColor> players;
+    private static Logger logger = LoggerFactory.getLogger(Controller.class);
+    private int n = 0;
+    private boolean isLocationChosen;
+    private boolean isMyTurn;
+    private boolean didGameStart;
+    private Coordinates location;
+    private Coordinates destination;
 
     //mainPage -------------------------------
     @FXML
@@ -145,14 +143,14 @@ public class Controller {
         }
     }
 
-    boolean createNewPlayer(String login) {
-        if(login.matches("bot[0-9]+")) {
+    private boolean createNewPlayer(String login) {
+        if(login.equals("") || login.matches("bot[0-9]+") || login.matches("CLIENT.*")) {
             return false;
         }
         if(connection.addPlayer(login)) {
             player = connection.getPlayer();
             try {
-                client = new GUIClient(this);
+                Client client = new GUIClient(this);
                 connection.addClientPlayer(client);
                 player.getClientPlayer();
             } catch(RemoteException e) {
@@ -214,7 +212,7 @@ public class Controller {
         }
     }
 
-    public static void run(Runnable treatment) {
+    private static void run(Runnable treatment) {
         if(treatment == null) throw new IllegalArgumentException("The treatment to perform can not be null");
 
         if(Platform.isFxApplicationThread()) treatment.run();
@@ -375,10 +373,29 @@ public class Controller {
         Platform.exit();
     }
 
+    private void initPlayersList() {
+        player1OnLobby.setText(""); player1OnGame.setText("");
+        player2OnLobby.setText(""); player2OnGame.setText("");
+        player3OnLobby.setText(""); player3OnGame.setText("");
+        player4OnLobby.setText(""); player4OnGame.setText("");
+        player5OnLobby.setText(""); player5OnGame.setText("");
+        player6OnLobby.setText(""); player6OnGame.setText("");
+        for(Node node: playerColorsOnGame.getChildren()) {
+            ((Circle)node).setFill(Color.TRANSPARENT);
+            ((Circle)node).setStroke(Color.TRANSPARENT);
+        }
+        for(Node node: playerColorsOnLobby.getChildren()) {
+            ((Circle)node).setFill(Color.TRANSPARENT);
+            ((Circle)node).setStroke(Color.TRANSPARENT);
+        }
+        players = new ArrayList<>();
+    }
+
     public void playAgainOnClick(ActionEvent event) {
         try {
             this.winnerPage.setVisible(false);
             this.winnerPage.setDisable(true);
+            initPlayersList();
             joinGame();
         } catch(RemoteException e) {
             e.printStackTrace();
