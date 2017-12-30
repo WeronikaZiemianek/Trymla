@@ -28,7 +28,7 @@ public class RegularRulesManagerTest {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
         regularRulesManager = new RegularRulesManager(board);
-        regularGame = new RegularGame(board, regularRulesManager);
+        regularGame = new RegularGame(board, regularRulesManager, 0);
     }
 
     @Test

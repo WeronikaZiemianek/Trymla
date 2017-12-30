@@ -24,7 +24,7 @@ public class RegularGame implements Game {
     private Move lastMove;
     private int passesInRow;
 
-    public RegularGame(Board board, RulesManager rulesManager) {
+    public RegularGame(Board board, RulesManager rulesManager, int turnPlayer) {
         passesInRow = 0;
         players = new ArrayList<>();
         playersInHome = new ArrayList<>();
@@ -32,7 +32,7 @@ public class RegularGame implements Game {
         this.board = board;
         state = GameState.OPEN;
         logger = LoggerFactory.getLogger(RegularGame.class);
-        turnPlayer = 0;
+        this.turnPlayer = turnPlayer;
         this.rulesManager = rulesManager;
     }
 
@@ -89,9 +89,17 @@ public class RegularGame implements Game {
         return rulesManager;
     }
 
+    private void initInHome() {
+        int numberOfPlayers = board.getExNumOfPlayers();
+        for(int i = 0; i < numberOfPlayers; i ++) {
+            playersInHome.add(0);
+        }
+    }
+
     @Override
     public void startGame() {
         turn = new Turn(players.get(turnPlayer));
+        initInHome();
         state = GameState.RUNNING;
     }
 

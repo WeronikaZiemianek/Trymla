@@ -47,6 +47,14 @@ public class RegularBoard implements Board, Serializable {
 
     @Override
     public Checker colorForPlayer(int num) {
+        if(numOfPlayers == 4) {
+            switch(num) {
+                case 0: return Checker.RED;
+                case 1: return Checker.WHITE;
+                case 2: return Checker.GREEN;
+                case 3: return Checker.BLACK;
+            }
+        }
         int number = num*(6 / getExNumOfPlayers());
         switch(number) {
             case 0: return Checker.RED;
