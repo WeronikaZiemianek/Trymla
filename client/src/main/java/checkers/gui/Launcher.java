@@ -37,6 +37,6 @@ public class Launcher extends Application {
     @Override
     public void stop() {
         ((Controller)loader.getController()).stop();
-        Platform.exit();
+     //   Platform.exit();
     }
 }

@@ -369,7 +369,6 @@ public class Controller {
 
     public void exitOnClick(ActionEvent event) {
         logger.info("exit");
-        stop();
         Platform.exit();
     }
 
@@ -389,6 +388,7 @@ public class Controller {
             ((Circle)node).setStroke(Color.TRANSPARENT);
         }
         players = new ArrayList<>();
+        didGameStart = false;
     }
 
     public void playAgainOnClick(ActionEvent event) {
