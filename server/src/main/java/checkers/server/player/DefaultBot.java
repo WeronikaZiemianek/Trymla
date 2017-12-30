@@ -36,6 +36,8 @@ public class DefaultBot implements Player {
     public void update(Boolean isMyTurn, Move lastMove) {
         this.isMyTurn = isMyTurn;
         if (isMyTurn) {
+            x = 0; y = 0;
+            tempX = 0; tempY = 0;
             makeMove(0, 0);
 
             while (jumped) {
@@ -109,13 +111,14 @@ public class DefaultBot implements Player {
             case BLUE:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-4,y),color) != -1) {
                     tempX-=4;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-4, y), this);
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-4,y), this);
                 }
-                if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y+2),color) != -1) {
-                    tempX-=2; tempY+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2, y+2), this);
+                if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y-2),color) != -1) {
+                    tempX-=2; tempY-=2;
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2,y-2), this);
                 }
                 break;
+
             case GREEN:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x+2,y+2),color) != -1) {
                     tempX+=2; tempY+=2;
@@ -149,13 +152,14 @@ public class DefaultBot implements Player {
             case BLACK:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-4,y),color) != -1) {
                     tempX-=4;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-4,y), this);
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-4, y), this);
                 }
-                if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y-2),color) != -1) {
-                    tempX-=2; tempY-=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2,y-2), this);
+                if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y+2),color) != -1) {
+                    tempX-=2; tempY+=2;
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2, y+2), this);
                 }
                 break;
+
         }
      return -2;
     }
@@ -163,7 +167,6 @@ public class DefaultBot implements Player {
         switch (color) {
             case RED:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
-                    tempX-=1; tempY-=1;
                     return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
@@ -176,11 +179,12 @@ public class DefaultBot implements Player {
                     tempX-=2;
                     return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
                 }
-                if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
-                    tempX-=1; tempY+=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
+                if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
+                    tempX-=1; tempY-=1;
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
                 }
                 break;
+
             case GREEN:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
                     tempX-=1; tempY+=1;
@@ -206,9 +210,9 @@ public class DefaultBot implements Player {
                     tempX+=2;
                     return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
                 }
-                if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y + 1), color) != -1) {
-                    tempX+=1; tempY+=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y + 1), this);
+                if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
+                    tempX+=1; tempY-=1;
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
                 }
                 break;
             case BLACK:
@@ -216,11 +220,12 @@ public class DefaultBot implements Player {
                     tempX-=2;
                     return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
                 }
-                if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
-                    tempX-=1; tempY-=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+                if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
+                    tempX-=1; tempY+=1;
+                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
                 }
                 break;
+
         }
         return -1;
     }

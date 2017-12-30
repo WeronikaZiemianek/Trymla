@@ -43,11 +43,11 @@ public class GameTest {
 
     private void startGame3() throws RemoteException {
         System.setProperty("java.rmi.server.hostname", "localhost");
-        bot1 = new DefaultBot("bot1");
-        player1 = new DefaultPlayer(null, "play1");
+        player0 = new DefaultPlayer(null, "play0");
+        bot2 = new DefaultBot("bot1");
         bot3 = new DefaultBot("bot3");
-        game.addPlayer(bot1);
-        game.addPlayer(player1);
+        game.addPlayer(player0);
+        game.addPlayer(bot2);
         game.addPlayer(bot3);
         game.updatePlayers(null);
     }
@@ -76,14 +76,12 @@ public class GameTest {
     @Test
     public void testMakingMoreMovesByBots() throws RemoteException {
         startGame3();
-        assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
-        player1.endMove(null);
-        assertEquals(4, player1.makeMove(new Coordinates(8,4), new Coordinates(4,4)));
-        player1.endMove(null);
-        assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
-        player1.endMove(null);
-        assertEquals(4, player1.makeMove(new Coordinates(8,4), new Coordinates(4,4)));
-        player1.endMove(null);
+        assertEquals(4, player0.makeMove(new Coordinates(10,14), new Coordinates(12,12)));
+        player0.endMove(null);
+        assertEquals(4, player0.makeMove(new Coordinates(12,12), new Coordinates(10,14)));
+        player0.endMove(null);
+        assertEquals(4, player0.makeMove(new Coordinates(10,14), new Coordinates(12,12)));
+        player0.endMove(null);
 
         System.out.println(game.getBoard());
     }
