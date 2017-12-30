@@ -100,20 +100,41 @@ public class DefaultBot implements Player {
         switch (color){
             case RED:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x+2,y-2),color) != -1) {
-                    tempX+=2; tempY-=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x+2, y-2), this);
+
+                    if(board.getFieldType(new Coordinates(x+2,y-2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x+2,y-2)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x+2,y-2)) == Checker.GREEN) {
+                        tempX+=2; tempY-=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y - 2), this);
+                    }
                 }
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y-2),color) != -1) {
-                    tempX-=2; tempY-=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2, y-2), this);
+
+                    if(board.getFieldType(new Coordinates(x-2,y-2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x-2,y-2)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x-2,y-2)) == Checker.GREEN) {
+                        tempX-=2; tempY-=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y - 2), this);
+                    }
                 }
                 break;
             case BLUE:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-4,y),color) != -1) {
-                    tempX-=4;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-4,y), this);
+
+                    if(board.getFieldType(new Coordinates(x-4,y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x-4,y)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x-4,y)) == Checker.GREEN) {
+                        tempX-=4;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x-4,y), this);
+                    }
                 }
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y-2),color) != -1) {
+
+                }
+
+                if(board.getFieldType(new Coordinates(x-2,y-2)) == Checker.EMPTY ||
+                        board.getFieldType(new Coordinates(x-2,y-2)) == Checker.BLUE ||
+                        board.getFieldType(new Coordinates(x-2,y-2)) == Checker.YELLOW) {
                     tempX-=2; tempY-=2;
                     return game.makeMove(new Coordinates(x, y), new Coordinates(x-2,y-2), this);
                 }
@@ -121,42 +142,82 @@ public class DefaultBot implements Player {
 
             case GREEN:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x+2,y+2),color) != -1) {
-                    tempX+=2; tempY+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x+ 2, y+2), this);
+
+                    if(board.getFieldType(new Coordinates(x+2,y+2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x+2,y+2)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x+2,y+2)) == Checker.GREEN) {
+                        tempX+=2; tempY+=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y + 2), this);
+                    }
                 }
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y+2),color) != -1) {
-                    tempX-=2; tempY+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2, y+2), this);
+
+                    if(board.getFieldType(new Coordinates(x-2,y+2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x-2,y+2)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x-2,y+2)) == Checker.GREEN) {
+                        tempX-=2; tempY+=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y + 2), this);
+                    }
                 }
                 break;
             case WHITE:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x+4,y),color) != -1) {
-                    tempX+=4;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x+4, y), this);
+
+                    if(board.getFieldType(new Coordinates(x+4, y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x+4, y)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x+4, y)) == Checker.BLACK) {
+                        tempX+=4;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x+4, y), this);
+                    }
                 }
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x+2,y-2),color) != -1) {
-                    tempX+=2; tempY-=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x+2, y-2), this);
+
+                    if(board.getFieldType(new Coordinates(x+2, y-2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x+2, y-2)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x+2, y-2)) == Checker.BLACK) {
+                        tempX+=2; tempY-=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x+2, y-2), this);
+                    }
                 }
                 break;
             case YELLOW:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x, y),new Coordinates(x+4,y),color) != -1) {
-                    tempX+=4;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x+4,y), this);
+
+                    if(board.getFieldType(new Coordinates(x+4,y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x+4,y)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x+4,y)) == Checker.YELLOW) {
+                        tempX+=4;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x+4,y), this);
+                    }
                 }
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x+2,y+2),color) != -1) {
-                    tempX+=2; tempY+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x+2,y+2), this);
+
+                    if(board.getFieldType(new Coordinates(x+2,y+2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x+2,y+2)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x+2,y+2)) == Checker.YELLOW) {
+                        tempX+=2; tempY+=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x+2,y+2), this);
+                    }
                 }
                 break;
             case BLACK:
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-4,y),color) != -1) {
-                    tempX-=4;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-4, y), this);
+
+                    if(board.getFieldType(new Coordinates(x-4, y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x-4, y)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x-4, y)) == Checker.BLACK) {
+                        tempX-=4;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x-4, y), this);
+                    }
                 }
                 if(game.GetRulesManager().checkMove(game, new Coordinates(x,y),new Coordinates(x-2,y+2),color) != -1) {
-                    tempX-=2; tempY+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x-2, y+2), this);
+
+                    if(board.getFieldType(new Coordinates(x-2, y+2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x-2, y+2)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x-2, y+2)) == Checker.BLACK) {
+                        tempX-=2; tempY+=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x-2, y+2), this);
+                    }
                 }
                 break;
 
@@ -167,62 +228,123 @@ public class DefaultBot implements Player {
         switch (color) {
             case RED:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+
+                    if(board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.GREEN) {
+                        tempX-=1; tempY-=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+                    }
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
-                    tempX+=1; tempY-=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+
+                    if(board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.GREEN) {
+                        tempX+=1; tempY-=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+                    }
                 }
                 break;
             case BLUE:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 2, y), color) != -1) {
-                    tempX-=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
+
+                    if(board.getFieldType(new Coordinates(x - 2, y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 2, y)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x - 2, y)) == Checker.GREEN) {
+                        tempX-=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
+                    }
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
-                    tempX-=1; tempY-=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+
+                    if(board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x - 1, y - 1)) == Checker.GREEN) {
+                        tempX-=1; tempY-=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+                    }
                 }
                 break;
 
             case GREEN:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
-                    tempX-=1; tempY+=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
+
+                    if(board.getFieldType(new Coordinates(x - 1, y + 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 1, y + 1)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x - 1, y + 1)) == Checker.GREEN) {
+                        tempX-=1; tempY+=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
+                    }
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y + 1), color) != -1) {
-                    tempX+=1; tempY+=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y + 1), this);
+
+                    if(board.getFieldType(new Coordinates(x + 1, y + 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x + 1, y + 1)) == Checker.RED ||
+                            board.getFieldType(new Coordinates(x + 1, y + 1)) == Checker.GREEN) {
+                        tempX+=1; tempY+=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y + 1), this);
+                    }
                 }
                 break;
             case WHITE:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 2, y), color) != -1) {
-                    tempX+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
+
+                    if(board.getFieldType(new Coordinates(x + 2, y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x + 2, y)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x + 2, y)) == Checker.BLACK) {
+                        tempX+=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
+                    }
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
-                    tempX+=1; tempY-=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+
+                    if(board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.BLACK) {
+                        tempX+=1; tempY-=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+                    }
                 }
                 break;
             case YELLOW:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 2, y), color) != -1) {
-                    tempX+=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
+
+                    if(board.getFieldType(new Coordinates(x + 2, y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x + 2, y)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x + 2, y)) == Checker.GREEN) {
+                        tempX+=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
+                    }
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
-                    tempX+=1; tempY-=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+
+                    if(board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x + 1, y - 1)) == Checker.GREEN) {
+                        tempX+=1; tempY-=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+                    }
                 }
                 break;
             case BLACK:
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 2, y), color) != -1) {
-                    tempX-=2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
+
+                    if(board.getFieldType(new Coordinates(x - 2, y)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 2, y)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x - 2, y)) == Checker.BLACK) {
+                        tempX-=2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
+                    }
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
-                    tempX-=1; tempY+=1;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
+
+                    if(board.getFieldType(new Coordinates(x - 1, y + 1)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 1, y + 1)) == Checker.WHITE ||
+                            board.getFieldType(new Coordinates(x - 1, y + 1)) == Checker.BLACK) {
+                        tempX-=1; tempY+=1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
+                    }
                 }
                 break;
 
