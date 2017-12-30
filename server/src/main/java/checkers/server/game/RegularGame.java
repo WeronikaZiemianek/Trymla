@@ -224,6 +224,7 @@ public class RegularGame implements Game {
         for(Player p : players) {
             p.replaceWithBot(login, index);
         }
+        turn = new Turn(players.get(turnPlayer));
         if(state == GameState.RUNNING) {
             updatePlayers(null);
         }

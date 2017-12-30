@@ -347,6 +347,14 @@ public class Controller {
         });
     }
 
+    private void resetlocationnode() {
+        if(((Circle)locationNode).getFill().equals(Color.TRANSPARENT)) {
+            ((Circle) locationNode).setStroke(Color.WHITE);
+        } else {
+            ((Circle) locationNode).setStroke(Color.BLACK);
+        }
+    }
+
     public void fieldOnClick(MouseEvent event) {
         logger.debug("You have clicked");
         Node node = (Node)event.getTarget();
@@ -366,11 +374,7 @@ public class Controller {
                     player.endJump(new Move(location, destination, player.getColor()));
                 }
                 if(move == -1) {
-                    if(((Circle)locationNode).getFill().equals(Color.TRANSPARENT)) {
-                        ((Circle) locationNode).setStroke(Color.WHITE);
-                    } else {
-                        ((Circle) locationNode).setStroke(Color.BLACK);
-                    }
+                    resetlocationnode();
                 }
                 isLocationChosen = false;
             } catch(RemoteException e) {
@@ -386,6 +390,8 @@ public class Controller {
     }
 
     public void endMoveOnClick(ActionEvent event) {
+        resetlocationnode();
+        isLocationChosen = false;
         try {
             player.endMove(null);
         } catch(RemoteException e) {
