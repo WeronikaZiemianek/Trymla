@@ -38,12 +38,12 @@ public class RegularBoardFactory implements BoardFactory {
 
     private void makeEmptyBoard() {
         createCentralFields();
-        createUprightTriangle(TRIANGLE_INFO[0], Checker.EMPTY);
-        createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.EMPTY);
-        createUprightTriangle(TRIANGLE_INFO[2], Checker.EMPTY);
-        createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.EMPTY);
-        createUprightTriangle(TRIANGLE_INFO[4], Checker.EMPTY);
-        createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.EMPTY);
+        createUprightTriangle(TRIANGLE_INFO[0], Checker.OTHER);
+        createUpsideDownTriangle(TRIANGLE_INFO[1], Checker.OTHER);
+        createUprightTriangle(TRIANGLE_INFO[2], Checker.OTHER);
+        createUpsideDownTriangle(TRIANGLE_INFO[3], Checker.OTHER);
+        createUprightTriangle(TRIANGLE_INFO[4], Checker.OTHER);
+        createUpsideDownTriangle(TRIANGLE_INFO[5], Checker.OTHER);
 
     }
 
