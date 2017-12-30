@@ -247,6 +247,13 @@ public class Controller {
                 ((Circle)node).setStroke(Color.BLACK);
             }
         }
+        try {
+            if(player.getLogin().equals(login)) {
+                login = login.concat(" (you)");
+            }
+        } catch(RemoteException e) {
+            e.printStackTrace();
+        }
         switch(index) {
             case 1: player1OnLobby.setText(login); player1OnGame.setText(login); break;
             case 2: player2OnLobby.setText(login); player2OnGame.setText(login); break;
@@ -300,7 +307,7 @@ public class Controller {
         }
     }
 
-    public void update(boolean isMyTurn, Move lastMove) {
+    public synchronized void update(boolean isMyTurn, Move lastMove) {
         run(() -> {
             logger.info("updating players");
             if(!didGameStart) {

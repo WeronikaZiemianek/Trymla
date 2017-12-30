@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DefaultGamesManager implements GamesManager {
     static Logger logger = LoggerFactory.getLogger(DefaultGamesManager.class);
@@ -24,6 +25,7 @@ public class DefaultGamesManager implements GamesManager {
     private BoardFactory boardFactory;
     private ArrayList<Game> runningGames;
     private Game openGame;
+    private Random random;
     static private GamesManager instance;
 
     synchronized static public void makeInstance() {
@@ -33,6 +35,7 @@ public class DefaultGamesManager implements GamesManager {
     }
 
     private DefaultGamesManager(){
+        random = new Random();
         logger.debug("Creating player factory");
         try {
             playerFactory = new DefaultPlayerFactory(this);
@@ -49,7 +52,8 @@ public class DefaultGamesManager implements GamesManager {
     synchronized public boolean createNewGame(int numOfPlayers) {
         if(openGame == null) {
             Board board = boardFactory.createNewBoard(numOfPlayers);
-            openGame = new RegularGame(board, new RegularRulesManager(board));
+            int rand = random.nextInt(board.getExNumOfPlayers());
+            openGame = new RegularGame(board, new RegularRulesManager(board), rand);
             logger.info("created new game for " + numOfPlayers);
             return true;
         } else {

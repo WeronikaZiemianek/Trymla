@@ -26,7 +26,7 @@ public class RegularGameTest
     public void createGame() throws RemoteException {
         factory = new RegularBoardFactory();
         board = factory.createNewBoard(6);
-        regularGame = new RegularGame(board, new RegularRulesManager(board));
+        regularGame = new RegularGame(board, new RegularRulesManager(board), 0);
     }
 
     @Test

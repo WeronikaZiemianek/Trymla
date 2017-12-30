@@ -270,7 +270,7 @@
                   <RowConstraints />
                </rowConstraints>
                <children>
-                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="0"/>
+                  <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="0" />
                   <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="1" />
                   <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="2" />
                   <Circle fill="TRANSPARENT" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.rowIndex="3" />
@@ -333,7 +333,7 @@
                </StackPane.margin>
                <children>
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="12" GridPane.rowIndex="0" />
-                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                  <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
                   <Circle fill="#ffffff00" onMouseClicked="#fieldOnClick" radius="21.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
@@ -480,21 +480,13 @@
                   <Insets top="500.0" />
                </StackPane.margin>
             </Button>
-            <Label fx:id="winnerNameLabel" alignment="CENTER" prefHeight="75.0" prefWidth="300.0" text="name" StackPane.alignment="TOP_CENTER">
+            <Label fx:id="winnerNameLabel" alignment="CENTER" prefHeight="75.0" prefWidth="300.0" text="cos" StackPane.alignment="TOP_CENTER">
                <StackPane.margin>
                   <Insets top="400.0" />
                </StackPane.margin>
                <font>
                   <Font size="35.0" />
                </font>
-               <textFill>
-                  <RadialGradient centerX="0.7833333333333332" centerY="0.3619047619047619" cycleMethod="REFLECT" focusAngle="-72.18" focusDistance="-0.5116279069767442" radius="0.2325581395348837">
-                     <stops>
-                        <Stop color="#c6e400" />
-                        <Stop color="#ffc100" offset="1.0" />
-                     </stops>
-                  </RadialGradient>
-               </textFill>
             </Label>
             <Label fx:id="winnerLabel" alignment="CENTER" contentDisplay="CENTER" text="WINNER IS" StackPane.alignment="TOP_CENTER">
                <StackPane.margin>
