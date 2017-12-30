@@ -53,14 +53,17 @@ public class RegularRulesManager implements RulesManager {
             return -1;
 
         int yDiff = Math.abs(currLocation.Y()-destination.Y());
-        int diff = yDiff + Math.abs(currLocation.X()-destination.X());
+        int xDiff = Math.abs(currLocation.X()-destination.X());
+        if(xDiff == 3 || yDiff == 3) {
+            return -1;
+        }
+        int diff = yDiff + xDiff;
 
         if(diff == 2) {
             if(game.getCurrMov() == null) {
                 if(yDiff == 2) {
                     return -1;
                 }
-               // game.endMove();
                 return 2;
             } else {
                 return -1;

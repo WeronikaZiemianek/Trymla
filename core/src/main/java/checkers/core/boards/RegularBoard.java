@@ -69,7 +69,14 @@ public class RegularBoard implements Board, Serializable {
 
     @Override
     public Checker getFieldType(Coordinates location) {
-        return board[location.X()][location.Y()].getType();
+        try{
+            Checker result = board[location.X()][location.Y()].getType();
+            return result;
+        }
+        catch (Exception e)
+        {
+            return Checker.OTHER;
+        }
     }
 
     @Override

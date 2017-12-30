@@ -41,7 +41,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     @Override
     public void endJump(Move lastMove) throws RemoteException {
-        game.updatePlayers(lastMove);
+        game.endJump(lastMove, this);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
     @Override
     public void endMove(Move lastMove) throws RemoteException {
         if(isMyTurn) {
-            game.endMove(lastMove);
+            game.endMove(lastMove, this);
         }
     }
 

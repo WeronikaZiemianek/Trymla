@@ -480,7 +480,7 @@
                   <Insets top="500.0" />
                </StackPane.margin>
             </Button>
-            <Label fx:id="winnerNameLabel" alignment="CENTER" prefHeight="75.0" prefWidth="300.0" text="cos" StackPane.alignment="TOP_CENTER">
+            <Label fx:id="winnerNameLabel" alignment="CENTER" prefHeight="75.0" prefWidth="300.0" StackPane.alignment="TOP_CENTER">
                <StackPane.margin>
                   <Insets top="400.0" />
                </StackPane.margin>

@@ -9,7 +9,7 @@ import checkers.server.rules.RulesManager;
 public interface Game { ;
     void startGame();
     Coordinates getCurrMov();
-    void endMove(Move lastMove);
+    void endMove(Move lastMove, Player player);
     boolean addPlayer(Player player);
     GameState getState();
     void disconnectPlayer(Player player);
@@ -19,6 +19,6 @@ public interface Game { ;
     int getNumOfPlayers();
     void updatePlayers(Move lastMove);
     boolean canMove();
-    Move getLastMove();
+    void endJump(Move lastMove, Player player);
 }
 

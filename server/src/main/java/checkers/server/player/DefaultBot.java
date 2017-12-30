@@ -49,7 +49,7 @@ public class DefaultBot implements Player {
             if (value == -1) {
                 makeSth();
             }
-            game.endMove(new Move(new Coordinates(x, y), new Coordinates(tempX, tempY), color));
+            game.endMove(new Move(new Coordinates(x, y), new Coordinates(tempX, tempY), color), this);
         }
     }
 

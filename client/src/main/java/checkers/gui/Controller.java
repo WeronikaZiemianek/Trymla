@@ -37,6 +37,7 @@ public class Controller {
     private boolean didGameStart;
     private Coordinates location;
     private Coordinates destination;
+    private Node locationNode;
 
     //mainPage -------------------------------
     @FXML
@@ -297,7 +298,11 @@ public class Controller {
                     ObservableList<Node> boardChildren = board.getChildren();
                     for(Node node : boardChildren) {
                         if(GridPane.getRowIndex(node) == r && GridPane.getColumnIndex(node) == c) {
-                            ((Circle)node).setFill(chooseColor(playerBoard.getFieldOccupiedBy(new Coordinates(c,r))));
+                            Checker color = playerBoard.getFieldOccupiedBy(new Coordinates(c,r));
+                            ((Circle)node).setFill(chooseColor(color));
+                            if(color != Checker.EMPTY) {
+                                ((Circle)node).setStroke(Color.BLACK);
+                            }
                         }
                     }
                 }
@@ -323,10 +328,14 @@ public class Controller {
                         if(GridPane.getRowIndex(node) == lastMove.getLocation().Y() &&
                                 GridPane.getColumnIndex(node) == lastMove.getLocation().X()) {
                             ((Circle)node).setFill(Color.TRANSPARENT);
+                            ((Circle)node).setStroke(Color.WHITE);
                         }
                         if(GridPane.getRowIndex(node) == lastMove.getDestination().Y() &&
                                 GridPane.getColumnIndex(node) == lastMove.getDestination().X()) {
                             ((Circle)node).setFill(chooseColor(lastMove.getColor()));
+                            if(lastMove.getColor() != Checker.EMPTY) {
+                                ((Circle)node).setStroke(Color.BLACK);
+                            }
                         }
                     }
                 }
@@ -340,25 +349,36 @@ public class Controller {
 
     public void fieldOnClick(MouseEvent event) {
         logger.debug("You have clicked");
-        int y = GridPane.getRowIndex((Node) event.getTarget());
-        int x = GridPane.getColumnIndex((Node) event.getTarget());
+        Node node = (Node)event.getTarget();
+        int y = GridPane.getRowIndex(node);
+        int x = GridPane.getColumnIndex(node);
         if(isLocationChosen) {
             destination = new Coordinates(x,y);
             logger.debug("destination is chosen");
-            isLocationChosen = false;
             try {
                 int move = player.makeMove(location, destination);
                 if(move == 2) {
+                    ((Circle)locationNode).setStroke(Color.BLACK);
                     player.endMove(new Move(location, destination, player.getColor()));
                     this.gamePage.setDisable(true);
                 }
                 if(move == 4) {
                     player.endJump(new Move(location, destination, player.getColor()));
                 }
+                if(move == -1) {
+                    if(((Circle)locationNode).getFill().equals(Color.TRANSPARENT)) {
+                        ((Circle) locationNode).setStroke(Color.WHITE);
+                    } else {
+                        ((Circle) locationNode).setStroke(Color.BLACK);
+                    }
+                }
+                isLocationChosen = false;
             } catch(RemoteException e) {
                 e.printStackTrace();
             }
         } else {
+            locationNode = node;
+            ((Circle)locationNode).setStroke(Color.ORANGE);
             location = new Coordinates(x,y);
             isLocationChosen = true;
             logger.debug("location is chosen");

@@ -23,8 +23,10 @@ public class RegularGame implements Game {
     private Turn turn;
     private Move lastMove;
     private int passesInRow;
+    private String winner;
 
     public RegularGame(Board board, RulesManager rulesManager, int turnPlayer) {
+        winner = null;
         passesInRow = 0;
         players = new ArrayList<>();
         playersInHome = new ArrayList<>();
@@ -48,9 +50,28 @@ public class RegularGame implements Game {
             buf++;
             playersInHome.set(index,buf);
             if(playersInHome.get(index) == 10) {
-                endGame(players.get(index));
+                endGameForPlayer(index);
+                logger.info("ending game for player ".concat(players.get(index).getPlayerName()));
             }
         }
+    }
+
+    private synchronized void endGameForPlayer(int index) {
+        Player winnerPlayer = players.get(index);
+        if(winner == null) {
+            winner = winnerPlayer.getPlayerName();
+        }
+        winnerPlayer.endGame(winner);
+        players.remove(index);
+        playersInHome.remove(index);
+        numOfPlayers--;
+        if(numOfPlayers == 1) {
+            endGame(winner);
+        }
+        if(turnPlayer == index) {
+            endMove(null, null);
+        }
+        logger.info("number of players is ".concat(String.valueOf(numOfPlayers*10 + players.size())));
     }
 
     @Override
@@ -72,7 +93,6 @@ public class RegularGame implements Game {
                 board.makeMove(currLocation, destination);
                 passesInRow = 0;
                 logger.info(board.toString());
-                countHome(currLocation, destination, player);
                 return validationOfMove;
             }
         }
@@ -103,21 +123,31 @@ public class RegularGame implements Game {
         state = GameState.RUNNING;
     }
 
-    private void endGame(Player player) {
-        String login;
+    private void endGame(String player) {
         state = GameState.CLOSED;
-        if(player == null) {
-            login = null;
-        } else {
-            login = player.getPlayerName();
+        if(winner == null) {
+            if(player != null) {
+                winner = player;
+            }
         }
         for(Player p : players) {
-            p.endGame(login);
+            p.endGame(winner);
         }
     }
 
     @Override
-    public synchronized void endMove(Move lastMove) {
+    public synchronized void endJump(Move lastMove, Player player) {
+        if(lastMove != null) {
+            countHome(lastMove.getLocation(), lastMove.getDestination(), player);
+        }
+        updatePlayers(lastMove);
+    }
+
+    @Override
+    public synchronized void endMove(Move lastMove, Player player) {
+        if(lastMove != null) {
+            countHome(lastMove.getLocation(), lastMove.getDestination(), player);
+        }
         passesInRow++;
         if(passesInRow == board.getExNumOfPlayers()+1) {
             endGame(null);
@@ -157,10 +187,16 @@ public class RegularGame implements Game {
     @Override
     public synchronized void updatePlayers(Move lastMove) {
         logger.debug("updating players");
+        if(players.size() == 0) {
+            endGame(winner);
+        }
         for(Player p: players) {
             if(p != players.get(turnPlayer)) {
                 p.update(false, lastMove);
             }
+        }
+        if(turnPlayer >= players.size()) {
+            turnPlayer = 0;
         }
         players.get(turnPlayer).update(true, lastMove);
     }
@@ -179,9 +215,6 @@ public class RegularGame implements Game {
     @Override
     public synchronized void disconnectPlayer(Player player) {
         int index = players.indexOf(player);
-//        if(turnPlayer == index) {
-//            endMove(null);
-//        }
         String login = "bot".concat(String.valueOf(index));
         Player bot = new DefaultBot(login);
         players.remove(index);
@@ -201,8 +234,4 @@ public class RegularGame implements Game {
         return state;
     }
 
-    @Override
-    public Move getLastMove() {
-        return lastMove;
-    }
 }
