@@ -21,7 +21,6 @@ public class RegularGame implements Game {
     private GameState state;
     private Logger logger;
     private Turn turn;
-    private Move lastMove;
     private int passesInRow;
     private String winner;
 
@@ -89,7 +88,6 @@ public class RegularGame implements Game {
                     turn.setCanMove(false);
                 }
                 turn.setCurrMov(destination);
-                lastMove = new Move(currLocation, destination, player.getColor());
                 board.makeMove(currLocation, destination);
                 passesInRow = 0;
                 logger.info(board.toString());
@@ -145,6 +143,10 @@ public class RegularGame implements Game {
 
     @Override
     public synchronized void endMove(Move lastMove, Player player) {
+        turnPlayer++;
+        if(numOfPlayers <= turnPlayer) {
+            turnPlayer = 0;
+        }
         if(lastMove != null) {
             countHome(lastMove.getLocation(), lastMove.getDestination(), player);
         }
@@ -153,10 +155,6 @@ public class RegularGame implements Game {
             endGame(null);
         }
         logger.debug("Player ends move");
-        turnPlayer++;
-        if(numOfPlayers <= turnPlayer) {
-            turnPlayer = 0;
-        }
         turn = new Turn(players.get(turnPlayer));
         updatePlayers(lastMove);
     }
@@ -195,10 +193,12 @@ public class RegularGame implements Game {
                 p.update(false, lastMove);
             }
         }
-        if(turnPlayer >= players.size()) {
+        try {
+            players.get(turnPlayer).update(true, lastMove);
+        } catch(IndexOutOfBoundsException e) {
             turnPlayer = 0;
+            players.get(turnPlayer).update(true, lastMove);
         }
-        players.get(turnPlayer).update(true, lastMove);
     }
 
     @Override
