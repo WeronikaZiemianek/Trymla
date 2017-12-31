@@ -60,15 +60,16 @@ public class RegularGame implements Game {
         if(winner == null) {
             winner = winnerPlayer.getPlayerName();
         }
-        winnerPlayer.endGame(winner);
-        players.remove(index);
-        playersInHome.remove(index);
-        numOfPlayers--;
-        if(numOfPlayers == 1) {
+        if(numOfPlayers == 2) {
             endGame(winner);
-        }
-        if(turnPlayer == index) {
-            endMove(null, null);
+        } else {
+            winnerPlayer.endGame(winner);
+            players.remove(index);
+            playersInHome.remove(index);
+            numOfPlayers--;
+            if(turnPlayer == index) {
+                endMove(null, null);
+            }
         }
         logger.info("number of players is ".concat(String.valueOf(numOfPlayers*10 + players.size())));
     }
@@ -185,9 +186,6 @@ public class RegularGame implements Game {
     @Override
     public synchronized void updatePlayers(Move lastMove) {
         logger.debug("updating players");
-        if(players.size() == 0) {
-            endGame(winner);
-        }
         for(Player p: players) {
             if(p != players.get(turnPlayer)) {
                 p.update(false, lastMove);

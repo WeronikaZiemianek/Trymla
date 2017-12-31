@@ -9,6 +9,8 @@ import checkers.server.game.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 public class DefaultBot implements Player {
     private boolean isMyTurn;
     private Board board;
@@ -21,6 +23,7 @@ public class DefaultBot implements Player {
     private int y;
     private int tempX;
     private int tempY;
+    boolean isGameOver;
 
     public DefaultBot(String login) {
         this.login = login;
@@ -34,6 +37,9 @@ public class DefaultBot implements Player {
 
     @Override
     public void update(Boolean isMyTurn, Move lastMove) {
+        if(isGameOver) {
+            return;
+        }
         this.isMyTurn = isMyTurn;
         if (isMyTurn) {
             x = 0;
@@ -49,12 +55,18 @@ public class DefaultBot implements Player {
             if (value == -1) {
                 makeSth();
             }
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch(InterruptedException e) {
+                e.printStackTrace();
+            }
             game.endMove(new Move(new Coordinates(x, y), new Coordinates(tempX, tempY), color), this);
         }
     }
 
     @Override
     public void endGame(String login) {
+        isGameOver = true;
         logger.info("game finished winner is: " + login);
     }
 
