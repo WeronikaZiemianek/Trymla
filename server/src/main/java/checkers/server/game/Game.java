@@ -20,5 +20,6 @@ public interface Game { ;
     void updatePlayers(Move lastMove);
     boolean canMove();
     void endJump(Move lastMove, Player player);
+    void increaseNumOfBots();
 }
 

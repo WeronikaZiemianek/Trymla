@@ -55,11 +55,6 @@ public class DefaultBot implements Player {
             if (value == -1) {
                 makeSth();
             }
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch(InterruptedException e) {
-                e.printStackTrace();
-            }
             game.endMove(new Move(new Coordinates(x, y), new Coordinates(tempX, tempY), color), this);
         }
     }

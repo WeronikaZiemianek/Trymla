@@ -23,8 +23,10 @@ public class RegularGame implements Game {
     private Turn turn;
     private int passesInRow;
     private String winner;
+    private volatile int numOfBots;
 
     public RegularGame(Board board, RulesManager rulesManager, int turnPlayer) {
+        numOfBots = 0;
         winner = null;
         passesInRow = 0;
         players = new ArrayList<>();
@@ -42,26 +44,27 @@ public class RegularGame implements Game {
         return numOfPlayers;
     }
 
-    private void countHome(Coordinates currLocation, Coordinates destination, Player player) {
+    private boolean countHome(Coordinates currLocation, Coordinates destination, Player player) {
         if((board.getFieldType(currLocation) != player.getColor() && board.getFieldType(destination) == player.getColor())) {
             int index = players.indexOf(player);
             int buf = playersInHome.get(index);
             buf++;
             playersInHome.set(index,buf);
             if(playersInHome.get(index) == 10) {
-                endGameForPlayer(index);
-                logger.info("ending game for player ".concat(players.get(index).getPlayerName()));
+                return endGameForPlayer(index);
             }
         }
+        return false;
     }
 
-    private synchronized void endGameForPlayer(int index) {
+    private synchronized boolean endGameForPlayer(int index) {
         Player winnerPlayer = players.get(index);
         if(winner == null) {
             winner = winnerPlayer.getPlayerName();
         }
-        if(numOfPlayers == 2) {
+        if(numOfPlayers == 2 || numOfPlayers == numOfBots + 1) {
             endGame(winner);
+            return true;
         } else {
             winnerPlayer.endGame(winner);
             players.remove(index);
@@ -72,6 +75,7 @@ public class RegularGame implements Game {
             }
         }
         logger.info("number of players is ".concat(String.valueOf(numOfPlayers*10 + players.size())));
+        return false;
     }
 
     @Override
@@ -149,7 +153,9 @@ public class RegularGame implements Game {
             turnPlayer = 0;
         }
         if(lastMove != null) {
-            countHome(lastMove.getLocation(), lastMove.getDestination(), player);
+            if(countHome(lastMove.getLocation(), lastMove.getDestination(), player)) {
+                return;
+            }
         }
         passesInRow++;
         if(passesInRow == board.getExNumOfPlayers()+1) {
@@ -206,7 +212,6 @@ public class RegularGame implements Game {
 
     @Override
     public Coordinates getCurrMov() {
-        logger.info("value of currMov " + turn.getCurrMov());
         return turn.getCurrMov();
     }
 
@@ -218,6 +223,7 @@ public class RegularGame implements Game {
         players.remove(index);
         players.add(index, bot);
         bot.setGameAndColor(this, board.colorForPlayer(index));
+        increaseNumOfBots();
         logger.debug(String.valueOf(players.size()));
         for(Player p : players) {
             p.replaceWithBot(login, index);
@@ -232,5 +238,8 @@ public class RegularGame implements Game {
     public GameState getState() {
         return state;
     }
+
+    @Override
+    public void increaseNumOfBots() { numOfBots++; }
 
 }
