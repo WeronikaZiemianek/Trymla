@@ -52,6 +52,10 @@ public class DefaultBot implements Player {
                 jumped = false;
                 makeJump(tempX, tempY);
             }
+            if(value == -1){
+                value = makeMoveAnySide();
+            }
+
             if (value == -1) {
                 makeSth();
             }
