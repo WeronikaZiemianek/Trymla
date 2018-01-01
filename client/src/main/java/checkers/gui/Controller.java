@@ -302,6 +302,8 @@ public class Controller {
                             ((Circle)node).setFill(chooseColor(color));
                             if(color != Checker.EMPTY) {
                                 ((Circle)node).setStroke(Color.BLACK);
+                            } else {
+                                ((Circle)node).setStroke(Color.WHITE);
                             }
                         }
                     }
