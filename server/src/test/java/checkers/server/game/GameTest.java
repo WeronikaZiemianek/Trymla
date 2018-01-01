@@ -66,17 +66,9 @@ public class GameTest {
     }
 
     @Test
-    public void testMakingMovesByBots() throws RemoteException {
-        startGame3();
-        assertEquals(4, player1.makeMove(new Coordinates(4,4), new Coordinates(8,4)));
-        player1.endMove(null);
-        System.out.println(game.getBoard());
-    }
-
-    @Test
     public void testMakingMoreMovesByBots() throws RemoteException {
         startGame3();
-        for (int i=0; i<200;i++)
+        for (int i=0; i<50;i++)
          player0.endMove(null);
 
         player0.endMove(null);

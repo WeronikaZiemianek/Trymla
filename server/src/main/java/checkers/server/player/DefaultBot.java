@@ -9,8 +9,6 @@ import checkers.server.game.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
-
 public class DefaultBot implements Player {
     private boolean isMyTurn;
     private Board board;
@@ -46,20 +44,20 @@ public class DefaultBot implements Player {
             y = 0;
             tempX = 0;
             tempY = 0;
-            int value = makeMove(0, 0);
+            int value = makeJumpWithSearch(); // tu robi skok
 
             while (jumped) {
                 jumped = false;
-                makeJump(tempX, tempY);
+                makeJump(tempX, tempY); // to sprawdza czy skacze jeszcze raz
             }
             if(value == -1){
-                value = makeMoveAnySide();
+                value = makeMoveByOneWithSearch(); // tu robi jak nie skoczył ani nie ruszył ale jeszcze jest jakaś logika ruchu
             }
 
             if (value == -1) {
-                makeSth();
+                makeSth(); // tu robi cokolwiek aby się nie zawiesić
             }
-            game.endMove(new Move(new Coordinates(x, y), new Coordinates(tempX, tempY), color), this);
+            game.endMove(new Move(new Coordinates(x, y), new Coordinates(tempX, tempY), color), this); // zwraca zrobiony ruch dla UI
         }
     }
 
@@ -104,6 +102,27 @@ public class DefaultBot implements Player {
 
                     if (board.getFieldOccupiedBy(new Coordinates(x, y)) == color) {
                         return makeMoveByOne(x, y);
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    private int makeJumpWithSearch(){
+        for (int x = 0; x < 25; x++) {
+            for (int y = 0; y < 17; y++) {
+
+                this.x = x;
+                this.y = y;
+                tempX = x;
+                tempY = y;
+
+                if (board.getFieldOccupiedBy(new Coordinates(x, y)) == color) {
+                    int jump = makeJump(x, y);
+                    if (jump != -2) {
+                        jumped = true;
+                        return jump;
                     }
                 }
             }
@@ -384,7 +403,7 @@ public class DefaultBot implements Player {
         return -1;
     }
 
-    private int makeMoveAnySide() {
+    private int makeMoveByOneWithSearch() {
         for (int x = 0; x < 25; x++) {
             for (int y = 0; y < 17; y++) {
 
@@ -530,8 +549,53 @@ public class DefaultBot implements Player {
     }
 
     private int makeSth(){
-        for (int x = 0; x < 25; x++) {
-            for (int y = 0; y < 17; y++) {
+        if(color == Checker.BLACK || color == Checker.BLUE) {
+            for (int x = 0; x < 25; x++) { //specjalnie szuka od 2 strony aby nie robić cięgle tego samego tylko aby się odblokowac
+                for (int y = 0; y < 17; y++) {
+
+                    this.x = x;
+                    this.y = y;
+                    tempX = x;
+                    tempY = y;
+
+                    if (board.getFieldOccupiedBy(new Coordinates(x, y)) == color) {
+                        if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y + 1), color) != -1) {
+                            tempX += 1;
+                            tempY += 1;
+                            return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y + 1), this);
+                        }
+                        if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
+                            tempX -= 1;
+                            tempY += 1;
+                            return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
+                        }
+                        if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
+                            tempX -= 1;
+                            tempY -= 1;
+                            return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+                        }
+                        if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
+                            tempX += 1;
+                            tempY -= 1;
+                            return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
+                        }
+                        if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 2, y), color) != -1) {
+                            tempX += 2;
+                            return game.makeMove(new Coordinates(x, y), new Coordinates(x + 2, y), this);
+                        }
+                        if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 2, y), color) != -1) {
+                            tempX -= 2;
+                            return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
+                        }
+                    }
+
+                }
+            }
+        }
+        else
+        {
+        for (int x = 24; x >= 0; x--) { //specjalnie szuka od 2 strony aby nie robić cięgle tego samego tylko aby się odblokowac
+            for (int y = 16; y >= 0; y--) {
 
                 this.x = x;
                 this.y = y;
@@ -539,25 +603,25 @@ public class DefaultBot implements Player {
                 tempY = y;
 
                 if (board.getFieldOccupiedBy(new Coordinates(x, y)) == color) {
-                    if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
-                        tempX -= 1;
-                        tempY -= 1;
-                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+                    if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y + 1), color) != -1) {
+                        tempX += 1;
+                        tempY += 1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y + 1), this);
                     }
                     if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y + 1), color) != -1) {
                         tempX -= 1;
                         tempY += 1;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y + 1), this);
                     }
+                    if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 1, y - 1), color) != -1) {
+                        tempX -= 1;
+                        tempY -= 1;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 1, y - 1), this);
+                    }
                     if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y - 1), color) != -1) {
                         tempX += 1;
                         tempY -= 1;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y - 1), this);
-                    }
-                    if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 1, y + 1), color) != -1) {
-                        tempX += 1;
-                        tempY += 1;
-                        return game.makeMove(new Coordinates(x, y), new Coordinates(x + 1, y + 1), this);
                     }
                     if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x + 2, y), color) != -1) {
                         tempX += 2;
@@ -567,10 +631,12 @@ public class DefaultBot implements Player {
                         tempX -= 2;
                         return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y), this);
                     }
-
                 }
+
             }
         }
+        }
+
         return  -1;
     }
 
