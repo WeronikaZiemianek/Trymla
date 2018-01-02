@@ -69,4 +69,17 @@ public class RegularBoardTest {
         }
     }
 
+    @Test
+    public void WrongNumberOfSetsExeptoion(){
+        try{
+            Board board = factory.createNewBoard(7);
+
+            assertTrue(false);
+        }
+        catch (WrongNumberOfSetsException e)
+        {
+            assertTrue(true);
+        }
+    }
+
 }
