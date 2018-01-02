@@ -1,6 +1,5 @@
-package checkers.gui;
+package checkers.client.gui;
 import checkers.client.ClientConnection;
-import checkers.client.GUIClient;
 import checkers.client.LoginAndColor;
 import checkers.core.Checker;
 import checkers.core.Coordinates;

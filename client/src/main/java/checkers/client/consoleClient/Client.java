@@ -1,4 +1,6 @@
-package checkers.client;
+package checkers.client.consoleClient;
+
+import checkers.client.consoleClient.ConsoleClient;
 
 import java.rmi.RemoteException;
 

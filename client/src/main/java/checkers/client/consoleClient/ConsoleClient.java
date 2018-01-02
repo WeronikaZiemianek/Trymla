@@ -1,4 +1,7 @@
-package checkers.client;
+package checkers.client.consoleClient;
+import checkers.client.ClientConnection;
+import checkers.client.LoginAndColor;
+import checkers.client.consoleClient.RegularClient;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.clientServerInterfaces.Client;

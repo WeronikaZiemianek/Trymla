@@ -1,4 +1,4 @@
-package checkers.client;
+package checkers.client.consoleClient;
 
 import checkers.core.Checker;
 import checkers.core.Move;

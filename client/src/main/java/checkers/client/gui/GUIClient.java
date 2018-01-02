@@ -1,9 +1,9 @@
-package checkers.client;
+package checkers.client.gui;
 
 import checkers.core.Checker;
 import checkers.core.Move;
 import checkers.core.clientServerInterfaces.Client;
-import checkers.gui.Controller;
+import checkers.client.gui.Controller;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

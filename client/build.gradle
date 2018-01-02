@@ -4,4 +4,4 @@ dependencies {
     compile project(':core')
 }
 
-mainClassName = 'checkers.gui.Launcher'
+mainClassName = 'checkers.client.gui.Launcher'
