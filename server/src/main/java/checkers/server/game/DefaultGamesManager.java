@@ -34,6 +34,10 @@ public class DefaultGamesManager implements GamesManager {
         }
     }
 
+    public static GamesManager getInstance() {
+        return instance;
+    }
+
     private DefaultGamesManager(){
         random = new Random();
         logger.debug("Creating player factory");

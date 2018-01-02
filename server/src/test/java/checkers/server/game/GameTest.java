@@ -24,7 +24,7 @@ public class GameTest {
     DefaultBot bot3;
 
     @Before
-    public void createGame(){
+    public void createGame() {
         BoardFactory factory = new RegularBoardFactory();
         Board board = factory.createNewBoard(3);
         game = new RegularGame(board, new RegularRulesManager(board), 0);
@@ -121,6 +121,14 @@ public class GameTest {
         player23Move();
         assertEquals(4, player0.makeMove(new Coordinates(13, 15), new Coordinates(11, 13)));
         assertEquals(4, player0.makeMove(new Coordinates(11, 13), new Coordinates(9, 11)));
+    }
+
+    @Test
+    public void testWrongMove() throws RemoteException {
+        startGame();
+        player0Moves();
+        player23Move();
+        assertEquals(-1, player0.makeMove(new Coordinates(14, 14), new Coordinates(11, 13)));
     }
 
 }

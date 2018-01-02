@@ -21,7 +21,6 @@ public class RegularBoardTest {
         Board board = factory.createNewBoard(6);
         board.makeMove( new Coordinates(12,0), new Coordinates(6,6 ));
         assertEquals(Checker.EMPTY, board.getFieldOccupiedBy(new Coordinates(12,0)));
-//        assertEquals(Checker.GREEN, board.getFieldOccupiedBy(new Coordinates(6,6)));
     }
 
     @Test
@@ -42,6 +41,18 @@ public class RegularBoardTest {
     public void testWrongMove() {
         Board board = factory.createNewBoard(3);
         board.makeMove(new Coordinates(20, 4), new Coordinates(21,7));
+    }
+
+    @Test
+    public void colorForPlayerInBoardFor4() {
+        Board board = factory.createNewBoard(4);
+        assertEquals(Checker.BLACK ,board.colorForPlayer(3));
+    }
+
+    @Test
+    public void colorForPlayerInBoardFor3() {
+        Board board = factory.createNewBoard(3);
+        assertEquals(Checker.YELLOW,board.colorForPlayer(1));
     }
 
 }

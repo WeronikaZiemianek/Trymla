@@ -168,4 +168,8 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
         return login;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
 }
