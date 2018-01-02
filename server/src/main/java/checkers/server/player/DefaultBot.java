@@ -166,14 +166,13 @@ public class DefaultBot implements Player {
                 }
                 if (game.GetRulesManager().checkMove(game, new Coordinates(x, y), new Coordinates(x - 2, y - 2), color) != -1) {
 
-                }
-
-                if (board.getFieldType(new Coordinates(x - 2, y - 2)) == Checker.EMPTY ||
-                        board.getFieldType(new Coordinates(x - 2, y - 2)) == Checker.BLUE ||
-                        board.getFieldType(new Coordinates(x - 2, y - 2)) == Checker.YELLOW) {
-                    tempX -= 2;
-                    tempY -= 2;
-                    return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y - 2), this);
+                    if (board.getFieldType(new Coordinates(x - 2, y - 2)) == Checker.EMPTY ||
+                            board.getFieldType(new Coordinates(x - 2, y - 2)) == Checker.BLUE ||
+                            board.getFieldType(new Coordinates(x - 2, y - 2)) == Checker.YELLOW) {
+                        tempX -= 2;
+                        tempY -= 2;
+                        return game.makeMove(new Coordinates(x, y), new Coordinates(x - 2, y - 2), this);
+                    }
                 }
                 break;
 
