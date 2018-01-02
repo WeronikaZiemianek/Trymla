@@ -7,10 +7,6 @@ public class Turn {
     private Player player;
     private Coordinates currMov;
 
-    public boolean isCanMove() {
-        return canMove;
-    }
-
     public void setCanMove(boolean canMove) {
         this.canMove = canMove;
     }

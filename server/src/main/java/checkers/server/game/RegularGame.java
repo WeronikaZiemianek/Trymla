@@ -80,13 +80,13 @@ public class RegularGame implements Game {
 
     @Override
     synchronized public int makeMove(Coordinates currLocation, Coordinates destination, Player player) {
-        logger.info("making move i game");
+        logger.debug("making move in game");
         if(state != GameState.RUNNING) {
             logger.warn("game not running");
             return -1;
         }
         if(player.equals(turn.getPlayer())) {
-            logger.info("player == turnPlayer");
+            logger.debug("player == turnPlayer");
             int validationOfMove = rulesManager.checkMove(this, currLocation, destination, player.getColor());
             if(validationOfMove != -1) {
                 if(validationOfMove == 2) {
@@ -95,7 +95,7 @@ public class RegularGame implements Game {
                 turn.setCurrMov(destination);
                 board.makeMove(currLocation, destination);
                 passesInRow = 0;
-                logger.info(board.toString());
+                logger.info("\n" + board.toString());
                 return validationOfMove;
             }
         }
@@ -191,7 +191,11 @@ public class RegularGame implements Game {
 
     @Override
     public synchronized void updatePlayers(Move lastMove) {
-        logger.debug("updating players");
+        if(lastMove != null)  {
+            logger.info("updating players\n last move from: " + lastMove.getLocation().X() + " " + lastMove.getLocation().Y() +
+            "\n to: " + lastMove.getDestination().X() + " " + lastMove.getDestination().Y() +
+            "\n with: " + lastMove.getColor());
+        }
         for(Player p: players) {
             if(p != players.get(turnPlayer)) {
                 p.update(false, lastMove);

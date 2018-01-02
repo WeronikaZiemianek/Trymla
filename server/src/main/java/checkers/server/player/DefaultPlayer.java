@@ -84,7 +84,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
 
     @Override
     public void addNewPlayer(String login, Checker color) {
-        logger.info("new player " + login + " " + color + " in player " + this.login);
+        logger.debug("new player " + login + " " + color + " in player " + this.login);
         if(client != null) {
             try {
                 client.newPlayerAdded(login, color);
@@ -159,7 +159,7 @@ public class DefaultPlayer extends UnicastRemoteObject implements RemotePlayer, 
         if(client == null) {
             logger.error("client player is null");
         } else {
-            logger.info("client player added to player");
+            logger.debug("client player added to player");
         }
     }
 
