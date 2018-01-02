@@ -3,7 +3,6 @@ package checkers.server.player;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
 import checkers.core.Move;
-import checkers.server.Player;
 import checkers.core.boards.Board;
 import checkers.server.game.Game;
 import org.slf4j.Logger;
