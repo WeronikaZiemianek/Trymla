@@ -1,7 +1,7 @@
 package checkers.server.game;
 
 import checkers.core.clientServerInterfaces.Client;
-import checkers.server.Player;
+import checkers.server.player.Player;
 import checkers.core.clientServerInterfaces.RemotePlayer;
 import checkers.core.boards.Board;
 import checkers.core.boards.BoardFactory;

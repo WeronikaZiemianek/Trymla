@@ -2,7 +2,7 @@ package checkers.server.game;
 
 import checkers.core.Coordinates;
 import checkers.core.Move;
-import checkers.server.Player;
+import checkers.server.player.Player;
 import checkers.core.boards.Board;
 import checkers.server.player.DefaultBot;
 import checkers.server.rules.RulesManager;

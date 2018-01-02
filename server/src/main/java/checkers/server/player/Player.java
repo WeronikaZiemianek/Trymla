@@ -1,4 +1,4 @@
-package checkers.server;
+package checkers.server.player;
 
 import checkers.core.Checker;
 import checkers.core.Move;
