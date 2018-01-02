@@ -1,5 +1,5 @@
 package checkers.server.game;
-import checkers.server.Player;
+import checkers.server.player.Player;
 import checkers.server.player.DefaultPlayer;
 import org.junit.Before;
 import org.junit.Test;
