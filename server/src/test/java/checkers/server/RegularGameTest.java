@@ -43,6 +43,18 @@ public class RegularGameTest
         assertEquals(Checker.RED, board.getFieldOccupiedBy(new Coordinates(10,12)));
     }
 
+    @Test
+    public void getNumOfPlayers () throws RemoteException {
+        Player Janusz = new DefaultPlayer(gamesManager,"Janusz");
+        regularGame.addPlayer(Janusz);
+        Player Jan = new DefaultPlayer(gamesManager,"Janusz");
+        regularGame.addPlayer(Jan);
+        Player usz = new DefaultPlayer(gamesManager,"Janusz");
+        regularGame.addPlayer(usz);
+        Player J = new DefaultPlayer(gamesManager,"Janusz");
+        regularGame.addPlayer(J);
+        assertEquals(4,regularGame.getNumOfPlayers());
+    }
 
 
     @Test

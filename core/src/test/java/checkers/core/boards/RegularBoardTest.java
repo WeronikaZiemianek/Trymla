@@ -3,6 +3,7 @@ package checkers.core.boards;
 import checkers.core.Checker;
 import checkers.core.Coordinates;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,6 +54,19 @@ public class RegularBoardTest {
     public void colorForPlayerInBoardFor3() {
         Board board = factory.createNewBoard(3);
         assertEquals(Checker.YELLOW,board.colorForPlayer(1));
+    }
+
+    @Test
+    public void WrongMoveExeption() {
+        try{
+            Board board = factory.createNewBoard(3);
+            board.makeMove(new Coordinates(0,0),new Coordinates(0,0));
+            assertTrue(false);
+        }
+        catch (WrongMoveException e)
+        {
+            assertTrue(true);
+        }
     }
 
 }
