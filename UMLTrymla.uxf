@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>0</y>
+      <w>650</w>
+      <h>580</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::RegularGame
+--
+-players: java.util.List
+-playersInHome: java.util.List
+-numOfPlayers: int
+-turnPlayer: int
+-rulesManager: checkers.server.rules.RulesManager
+-board: checkers.core.boards.Board
+-state: checkers.server.game.GameState
+-logger: org.slf4j.Logger
+-turn: checkers.server.game.Turn
+-passesInRow: int
+-winner: java.lang.String
+-numOfBots: int
+--
++RegularGame(checkers.core.boards.Board, checkers.server.rules.RulesManager, int): ctor
++getNumOfPlayers(): int
+-countHome(checkers.core.Coordinates, checkers.core.Coordinates, checkers.server.Player): boolean
+-endGameForPlayer(int): boolean
++makeMove(checkers.core.Coordinates, checkers.core.Coordinates, checkers.server.Player): int
++getBoard(): checkers.core.boards.Board
++GetRulesManager(): checkers.server.rules.RulesManager
+-initInHome(): void
++startGame(): void
+-endGame(java.lang.String): void
++endJump(checkers.core.Move, checkers.server.Player): void
++endMove(checkers.core.Move, checkers.server.Player): void
++addPlayer(checkers.server.Player): boolean
++updatePlayers(checkers.core.Move): void
++canMove(): boolean
++getCurrMov(): checkers.core.Coordinates
++disconnectPlayer(checkers.server.Player): void
++getState(): checkers.server.game.GameState
++increaseNumOfBots(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>0</y>
+      <w>560</w>
+      <h>580</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::RegularGame
+--
+-players: List&lt;Player&gt;
+-playersInHome: List&lt;Integer&gt;
+-numOfPlayers: int
+-turnPlayer: int
+-rulesManager: RulesManager
+-board: Board
+-state: GameState
+-logger: Logger
+-turn: Turn
+-passesInRow: int
+-winner: String
+-numOfBots: int
+--
++RegularGame(Board board, RulesManager rulesManager, int turnPlayer): ctor
++getNumOfPlayers(): int
+-countHome(Coordinates currLocation, Coordinates destination, Player player): boolean
+-endGameForPlayer(int index): boolean
++makeMove(Coordinates currLocation, Coordinates destination, Player player): int
++getBoard(): Board
++GetRulesManager(): RulesManager
+-initInHome(): void
++startGame(): void
+-endGame(String player): void
++endJump(Move lastMove, Player player): void
++endMove(Move lastMove, Player player): void
++addPlayer(Player player): boolean
++updatePlayers(Move lastMove): void
++canMove(): boolean
++getCurrMov(): Coordinates
++disconnectPlayer(Player player): void
++getState(): GameState
++increaseNumOfBots(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1240</x>
+      <y>0</y>
+      <w>510</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultBot
+--
+-isMyTurn: boolean
+-board: checkers.core.boards.Board
+-color: checkers.core.Checker
+-game: checkers.server.game.Game
+-login: java.lang.String
+-logger: org.slf4j.Logger
+-jumped: boolean
+-x: int
+-y: int
+-tempX: int
+-tempY: int
+~isGameOver: boolean
+--
++DefaultBot(java.lang.String): ctor
++getColor(): checkers.core.Checker
++update(java.lang.Boolean, checkers.core.Move): void
++endGame(java.lang.String): void
++addNewPlayer(java.lang.String, checkers.core.Checker): void
++makeMove(): void
+-makeJumpWithSearch(): int
+-makeJump(int, int): int
+-makeMoveByOneWithSearch(): int
+-makeSth(): int
++setGameAndColor(checkers.server.game.Game, checkers.core.Checker): void
++getPlayerName(): java.lang.String
++replaceWithBot(java.lang.String, int): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1760</x>
+      <y>0</y>
+      <w>510</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultPlayer
+--
+-isMyTurn: boolean
+-color: checkers.core.Checker
+-game: checkers.server.game.Game
+-gamesManager: checkers.server.game.GamesManager
+-login: java.lang.String
+-client: checkers.core.clientServerInterfaces.Client
+-logger: org.slf4j.Logger
+--
++DefaultPlayer(checkers.server.game.GamesManager, java.lang.String): ctor
++getColor(): checkers.core.Checker
++getBoard(): checkers.core.boards.Board
++endJump(checkers.core.Move): void
++disconnect(): void
++update(java.lang.Boolean, checkers.core.Move): void
++endGame(java.lang.String): void
++addNewPlayer(java.lang.String, checkers.core.Checker): void
++makeMove(checkers.core.Coordinates, checkers.core.Coordinates): int
++endMove(checkers.core.Move): void
++createGame(int): boolean
++joinGame(): boolean
++addBot(): void
++setGameAndColor(checkers.server.game.Game, checkers.core.Checker): void
++getPlayerName(): java.lang.String
++replaceWithBot(java.lang.String, int): void
++getClientPlayer(): void
++getLogin(): java.lang.String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2280</x>
+      <y>0</y>
+      <w>350</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultBot
+--
+-isMyTurn: boolean
+-board: Board
+-color: Checker
+-game: Game
+-login: String
+-logger: Logger
+-jumped = false: boolean
+-x: int
+-y: int
+-tempX: int
+-tempY: int
+~isGameOver: boolean
+--
++DefaultBot(String login): ctor
++getColor(): Checker
++update(Boolean isMyTurn, Move lastMove): void
++endGame(String login): void
++addNewPlayer(String login, Checker color): void
++makeMove(): void
+-makeJumpWithSearch(): int
+-makeJump(int x, int y): int
+-makeMoveByOneWithSearch(): int
+-makeSth(): int
++setGameAndColor(Game game, Checker color): void
++getPlayerName(): String
++replaceWithBot(String login, int index): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>590</y>
+      <w>430</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultPlayer
+--
+-isMyTurn: boolean
+-color: Checker
+-game: Game
+-gamesManager: GamesManager
+-login: String
+-client: Client
+-logger: Logger
+--
++DefaultPlayer(GamesManager gamesManager, String login): ctor
++getColor(): Checker
++getBoard(): Board
++endJump(Move lastMove): void
++disconnect(): void
++update(Boolean isMyTurn, Move lastMove): void
++endGame(String login): void
++addNewPlayer(String login, Checker color): void
++makeMove(Coordinates location, Coordinates destination): int
++endMove(Move lastMove): void
++createGame(int numOfPlayers): boolean
++joinGame(): boolean
++addBot(): void
++setGameAndColor(Game game, Checker color): void
++getPlayerName(): String
++replaceWithBot(String login, int index): void
++getClientPlayer(): void
++getLogin(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>590</y>
+      <w>310</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::GameTest
+--
+~game: checkers.server.game.Game
+~player0: checkers.server.player.DefaultPlayer
+~player1: checkers.server.player.DefaultPlayer
+~player2: checkers.server.player.DefaultPlayer
+~bot1: checkers.server.player.DefaultBot
+~bot2: checkers.server.player.DefaultBot
+~bot3: checkers.server.player.DefaultBot
+--
++GameTest(): ctor
++createGame(): void
+-startGame(): void
+-startGame3(): void
++testIfGameStartsProperly(): void
++testMakingMoves(): void
++testMakingMovesByBots(): void
++testMakingMoreMovesByBots(): void
++testMakingTwoMovesInRow(): void
++testMakingJump(): void
+-player0Moves(): void
++player2Move(): void
+-player23Move(): void
++make2Jumps(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>590</y>
+      <w>250</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::GameTest
+--
+~game: Game
+~player0: DefaultPlayer
+~player1: DefaultPlayer
+~player2: DefaultPlayer
+~bot1: DefaultBot
+~bot2: DefaultBot
+~bot3: DefaultBot
+--
++createGame(): void
+-startGame(): void
+-startGame3(): void
++testIfGameStartsProperly(): void
++testMakingMoves(): void
++testMakingMoreMovesByBots(): void
++testMakingTwoMovesInRow(): void
++testMakingJump(): void
+-player0Moves(): void
++player2Move(): void
+-player23Move(): void
++make2Jumps(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>590</y>
+      <w>550</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::DefaultGamesManager
+--
+~logger: org.slf4j.Logger
+-playerFactory: checkers.server.player.DefaultPlayerFactory
+-connection: checkers.server.Connection
+-boardFactory: checkers.core.boards.BoardFactory
+-runningGames: java.util.ArrayList
+-openGame: checkers.server.game.Game
+-random: java.util.Random
+-instance: checkers.server.game.GamesManager
+--
++makeInstance(): void
+-DefaultGamesManager(): ctor
++createNewGame(int): boolean
++getClientPlayer(checkers.server.Player): checkers.core.clientServerInterfaces.Client
++addPlayer(checkers.core.clientServerInterfaces.RemotePlayer): void
++joinGame(checkers.server.Player): boolean
++addBot(): void
++removePlayer(checkers.core.clientServerInterfaces.RemotePlayer): void
+~DefaultGamesManager(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1590</x>
+      <y>590</y>
+      <w>480</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::DefaultGamesManager
+--
+~logger = LoggerFactory.getLogger(DefaultGamesManager.class): Logger
+-playerFactory: DefaultPlayerFactory
+-connection: Connection
+-boardFactory: BoardFactory
+-runningGames: ArrayList&lt;Game&gt;
+-openGame: Game
+-random: Random
+-instance: GamesManager
+--
+-DefaultGamesManager(): ctor
++makeInstance(): void
++createNewGame(int numOfPlayers): boolean
++getClientPlayer(Player player): Client
++addPlayer(RemotePlayer player): void
++joinGame(Player player): boolean
++addBot(): void
++removePlayer(RemotePlayer player): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2080</x>
+      <y>590</y>
+      <w>620</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server.game::Game
+--
+--
++startGame(): void
++getCurrMov(): checkers.core.Coordinates
++endMove(checkers.core.Move, checkers.server.Player): void
++addPlayer(checkers.server.Player): boolean
++getState(): checkers.server.game.GameState
++disconnectPlayer(checkers.server.Player): void
++GetRulesManager(): checkers.server.rules.RulesManager
++makeMove(checkers.core.Coordinates, checkers.core.Coordinates, checkers.server.Player): int
++getBoard(): checkers.core.boards.Board
++getNumOfPlayers(): int
++updatePlayers(checkers.core.Move): void
++canMove(): boolean
++endJump(checkers.core.Move, checkers.server.Player): void
++increaseNumOfBots(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>1080</y>
+      <w>530</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server.game::Game
+--
+--
+~startGame(): void
+~getCurrMov(): Coordinates
+~endMove(Move lastMove, Player player): void
+~addPlayer(Player player): boolean
+~getState(): GameState
+~disconnectPlayer(Player player): void
+~GetRulesManager(): RulesManager
+~makeMove(Coordinates currLocation, Coordinates destination, Player player): int
+~getBoard(): Board
+~getNumOfPlayers(): int
+~updatePlayers(Move lastMove): void
+~canMove(): boolean
+~endJump(Move lastMove, Player player): void
+~increaseNumOfBots(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>1080</y>
+      <w>440</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>checkers.server::RegularRulesManagerTest
+--
+-regularGame: checkers.server.game.RegularGame
+-factory: checkers.core.boards.RegularBoardFactory
+-regularRulesManager: checkers.server.rules.RegularRulesManager
+-board: checkers.core.boards.RegularBoard
+--
++RegularRulesManagerTest(): ctor
++createGame(): void
++testMoveCheckMove(): void
++test4MovesCheckMove(): void
++testJumpCheckMove(): void
++testWrongJumpCheckMove(): void
++test4JumpsCheckMove(): void
++testEscapeFromHouse(): void
++testEscapeFromTriangle(): void
++testFieldIsNotEmpty(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>1080</y>
+      <w>310</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>checkers.server::RegularRulesManagerTest
+--
+-regularGame: RegularGame
+-factory: RegularBoardFactory
+-regularRulesManager: RegularRulesManager
+-board: RegularBoard
+--
++createGame(): void
++testMoveCheckMove(): void
++test4MovesCheckMove(): void
++testJumpCheckMove(): void
++testWrongJumpCheckMove(): void
++test4JumpsCheckMove(): void
++testEscapeFromHouse(): void
++testEscapeFromTriangle(): void
++testFieldIsNotEmpty(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1320</x>
+      <y>1080</y>
+      <w>310</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::Turn
+--
+-player: checkers.server.Player
+-currMov: checkers.core.Coordinates
+-canMove: boolean
+--
++setCanMove(boolean): void
++getCanMove(): boolean
++Turn(checkers.server.Player): ctor
++getCurrMov(): checkers.core.Coordinates
++setCurrMov(checkers.core.Coordinates): void
++getPlayer(): checkers.server.Player
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1640</x>
+      <y>1080</y>
+      <w>270</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::Turn
+--
+-player: Player
+-currMov: Coordinates
+-canMove: boolean
+--
++Turn(Player player): ctor
++setCanMove(boolean canMove): void
++getCanMove(): boolean
++getCurrMov(): Coordinates
++setCurrMov(Coordinates currMov): void
++getPlayer(): Player
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1920</x>
+      <y>1080</y>
+      <w>400</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::GameState
+--
++OPEN: checkers.server.game.GameState
++CLOSED: checkers.server.game.GameState
++RUNNING: checkers.server.game.GameState
+-$VALUES: checkers.server.game.GameState[]
+--
++values(): checkers.server.game.GameState[]
++valueOf(java.lang.String): checkers.server.game.GameState
+-GameState(java.lang.String, int): ctor
+~GameState(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2330</x>
+      <y>1080</y>
+      <w>510</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server::Player
+--
+--
++getColor(): checkers.core.Checker
++update(java.lang.Boolean, checkers.core.Move): void
++endGame(java.lang.String): void
++addNewPlayer(java.lang.String, checkers.core.Checker): void
++setGameAndColor(checkers.server.game.Game, checkers.core.Checker): void
++getPlayerName(): java.lang.String
++replaceWithBot(java.lang.String, int): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>1400</y>
+      <w>410</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>checkers.server::RegularGameTest
+--
+-regularGame: checkers.server.game.RegularGame
+-factory: checkers.core.boards.RegularBoardFactory
+-board: checkers.core.boards.Board
+-gamesManager: checkers.server.game.DefaultGamesManager
+--
++RegularGameTest(): ctor
++createGame(): void
++testMakeMove(): void
++testEndMove(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>1400</y>
+      <w>350</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server::Player
+--
+--
+~getColor(): Checker
+~update(Boolean isMyTurn, Move lastMove): void
+~endGame(String login): void
+~addNewPlayer(String login, Checker color): void
+~setGameAndColor(Game game, Checker color): void
+~getPlayerName(): String
+~replaceWithBot(String login, int index): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>1400</y>
+      <w>550</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server.game::GamesManager
+--
+--
++addPlayer(checkers.core.clientServerInterfaces.RemotePlayer): void
++joinGame(checkers.server.Player): boolean
++createNewGame(int): boolean
++addBot(): void
++getClientPlayer(checkers.server.Player): checkers.core.clientServerInterfaces.Client
++removePlayer(checkers.core.clientServerInterfaces.RemotePlayer): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1350</x>
+      <y>1400</y>
+      <w>300</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server.game::GamesManager
+--
+--
+~addPlayer(RemotePlayer player): void
+~joinGame(Player player): boolean
+~createNewGame(int numOfPlayers): boolean
+~addBot(): void
+~getClientPlayer(Player player): Client
+~removePlayer(RemotePlayer player): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1660</x>
+      <y>1400</y>
+      <w>270</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>checkers.server::RegularGameTest
+--
+-regularGame: RegularGame
+-factory: RegularBoardFactory
+-board: Board
+-gamesManager: DefaultGamesManager
+--
++createGame(): void
++testMakeMove(): void
++testEndMove(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1940</x>
+      <y>1400</y>
+      <w>550</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>checkers.server::Connection
+--
+-registry: java.rmi.registry.Registry
+-logger: org.slf4j.Logger
+--
++Connection(checkers.core.clientServerInterfaces.PlayerFactory): ctor
++putPlayer(checkers.core.clientServerInterfaces.RemotePlayer): void
++getClientPlayer(checkers.server.Player): checkers.core.clientServerInterfaces.Client
++unbindPlayer(checkers.core.clientServerInterfaces.RemotePlayer): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2500</x>
+      <y>1400</y>
+      <w>820</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>checkers.server.rules::RegularRulesManager
+--
+-board: checkers.core.boards.Board
+-logger: org.slf4j.Logger
+--
++RegularRulesManager(checkers.core.boards.Board): ctor
+-checkChecker(checkers.core.Checker, checkers.core.Coordinates): java.lang.Boolean
+-checkIfEscapesFromTriangle(checkers.core.Coordinates, checkers.core.Coordinates, checkers.core.Checker): java.lang.Boolean
++checkMove(checkers.server.game.Game, checkers.core.Coordinates, checkers.core.Coordinates, checkers.core.Checker): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>1600</y>
+      <w>270</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>checkers.server::Connection
+--
+-registry: Registry
+-logger: Logger
+--
++Connection(PlayerFactory factory): ctor
++putPlayer(RemotePlayer player): void
++getClientPlayer(Player player): Client
++unbindPlayer(RemotePlayer player): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>1600</y>
+      <w>700</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>checkers.server.rules::RegularRulesManager
+--
+-board: Board
+-logger: Logger
+--
++RegularRulesManager(Board board): ctor
+-checkChecker(Checker checker, Coordinates currLocation): Boolean
+-checkIfEscapesFromTriangle(Coordinates currLocation, Coordinates destination, Checker checker): Boolean
++checkMove(Game game, Coordinates currLocation, Coordinates destination, Checker checker): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>1600</y>
+      <w>440</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultPlayerFactory
+--
+-manager: checkers.server.game.GamesManager
+-players: java.util.ArrayList
+--
++DefaultPlayerFactory(checkers.server.game.GamesManager): ctor
++createPlayer(java.lang.String): boolean
++removePlayer(checkers.server.Player): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1450</x>
+      <y>1600</y>
+      <w>360</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultPlayerFactory
+--
+-manager: GamesManager
+-players: ArrayList&lt;DefaultPlayer&gt;
+--
++DefaultPlayerFactory(GamesManager manager): ctor
++createPlayer(String login): boolean
++removePlayer(Player player): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1820</x>
+      <y>1600</y>
+      <w>200</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>checkers.server::Server
+--
+~logger: org.slf4j.Logger
+--
+-Server(): ctor
++main(java.lang.String[]): void
+~Server(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2030</x>
+      <y>1600</y>
+      <w>190</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>checkers.server::TurnTest
+--
+--
++TurnTest(): ctor
++testGetCurrentMove(): void
++testSetCurrentMove(): void
++testGetPlayer(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>1770</y>
+      <w>380</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>checkers.server::Server
+--
+~logger = LoggerFactory.getLogger(Server.class): Logger
+--
+-Server(): ctor
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>1770</y>
+      <w>190</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>checkers.server::TurnTest
+--
+--
++testGetCurrentMove(): void
++testSetCurrentMove(): void
++testGetPlayer(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>1770</y>
+      <w>290</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultBot$1
+--
+~$SwitchMap$checkers$core$Checker: int[]
+--
+~DefaultBot$1(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>1770</y>
+      <w>810</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server.rules::RulesManager
+--
+--
++checkMove(checkers.server.game.Game, checkers.core.Coordinates, checkers.core.Coordinates, checkers.core.Checker): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1720</x>
+      <y>1770</y>
+      <w>640</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+checkers.server.rules::RulesManager
+--
+--
+~checkMove(Game game, Coordinates currLocation, Coordinates destination, Checker checker): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2370</x>
+      <y>1770</y>
+      <w>280</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultPlayerTest
+--
+--
++DefaultPlayerTest(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>1890</y>
+      <w>230</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>checkers.server.game::GameState
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>250</x>
+      <y>1890</y>
+      <w>280</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>checkers.server.player::DefaultPlayerTest
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
