@@ -228,6 +228,10 @@ public class RegularGame implements Game {
         players.add(index, bot);
         bot.setGameAndColor(this, board.colorForPlayer(index));
         increaseNumOfBots();
+        if (numOfPlayers == numOfBots) {
+            endGame(winner);
+            return;
+        }
         logger.debug(String.valueOf(players.size()));
         for(Player p : players) {
             p.replaceWithBot(login, index);
@@ -244,6 +248,8 @@ public class RegularGame implements Game {
     }
 
     @Override
-    public void increaseNumOfBots() { numOfBots++; }
+    public void increaseNumOfBots() {
+        numOfBots++;
+    }
 
 }
